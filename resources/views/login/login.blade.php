@@ -56,7 +56,8 @@
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
                     
-                    <form class="md-float-material form-material" action="{{url('/postlogin')}}">
+                    <form class="md-float-material form-material" action="{{url('/postlogin')}}" method="post">
+                        @csrf
                         <div class="text-center">
                             <img src="{{asset('assets\images\logo.png')}}" alt="logo.png">
                         </div>

@@ -14,7 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Login
-Route::get('/', 'Authcontroller@index');
+Route::get('/', 'Authcontroller@index')->name('login');
+Route::post('/postlogin', 'Authcontroller@postlogin');
+Route::get('/logout', 'Authcontroller@logout');
 
 // Dashboard
-Route::get('/dashboard', 'Dashboard@index');
+Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
+	Route::get('/dashboard', 'Dashboard@index');
+});
+
+// Kasir
+Route::group(['middleware' => ['auth', 'checkRole:kasir']], function(){
+	Route::get('/kasir', 'Kasir@index');
+});

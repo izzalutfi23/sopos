@@ -186,7 +186,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="auth-normal-sign-in.htm">
+                                            <a href="{{url('/logout')}}">
                                                 <i class="feather icon-log-out"></i> Logout
                                             </a>
                                         </li>
