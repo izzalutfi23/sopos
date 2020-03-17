@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $primaryKey = 'id';
+    
+    public function karyawan(){
+        return $this->hasOne('App\Karyawan', 'id_user', 'id');
+    }    
 }
