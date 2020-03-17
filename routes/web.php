@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Login
-Route::('/', 'Authcontroller@index')
+Route::get('/', 'Authcontroller@index');
 
 // Dashboard
 Route::get('/dashboard', 'Dashboard@index');
