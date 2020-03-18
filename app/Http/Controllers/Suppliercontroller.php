@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Supplier;
+use App\Suppliermodel;
 use Illuminate\Http\Request;
 
-class Supplier extends Controller
+class Suppliercontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class Supplier extends Controller
      */
     public function index()
     {
-        //
+        return view('admin/supplier');
     }
 
     /**

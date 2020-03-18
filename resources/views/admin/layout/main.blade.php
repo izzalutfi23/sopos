@@ -24,6 +24,10 @@
   <link rel="stylesheet" type="text/css" href="{{asset('bower_components\bootstrap\css\bootstrap.min.css')}}">
   <!-- feather Awesome -->
   <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\feather\css\feather.css')}}">
+  <!-- Data Table Css -->
+  <link rel="stylesheet" type="text/css" href="{{asset('bower_components\datatables.net-bs4\css\dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets\pages\data-table\css\buttons.dataTables.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('bower_components\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css')}}">
   <!-- Style.css -->
   <link rel="stylesheet" type="text/css" href="{{asset('assets\css\style.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('assets\css\jquery.mCustomScrollbar.css')}}">
@@ -153,14 +157,14 @@
                         <div class="pcoded-inner-navbar main-menu">
                             <div class="pcoded-navigatio-lavel">Navigation</div>
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="">
-                                    <a href="navbar-light.htm">
+                                <li class="active">
+                                    <a href="{{url('/dashboard')}}">
                                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                         <span class="pcoded-mtext">Dashboard</span>
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a href="navbar-light.htm">
+                                    <a href="{{url('/supplier')}}">
                                         <span class="pcoded-micon"><i class="feather icon-user"></i></span>
                                         <span class="pcoded-mtext">Supplier</span>
                                         <span class="pcoded-badge label label-success">100</span>
@@ -332,6 +336,18 @@
 <script type="text/javascript" src="{{asset('bower_components\jquery-slimscroll\js\jquery.slimscroll.js')}}"></script>
 <!-- modernizr js -->
 <script type="text/javascript" src="{{asset('bower_components\modernizr\js\modernizr.js')}}"></script>
+<script type="text/javascript" src="{{asset('bower_components\modernizr\js\css-scrollbars.js')}}"></script>
+<!-- data-table js -->
+<script src="{{asset('bower_components\datatables.net\js\jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('bower_components\datatables.net-buttons\js\dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('assets\pages\data-table\js\jszip.min.js')}}"></script>
+<script src="{{asset('assets\pages\data-table\js\pdfmake.min.js')}}"></script>
+<script src="{{asset('assets\pages\data-table\js\vfs_fonts.js')}}"></script>
+<script src="{{asset('bower_components\datatables.net-buttons\js\buttons.print.min.js')}}"></script>
+<script src="{{asset('bower_components\datatables.net-buttons\js\buttons.html5.min.js')}}"></script>
+<script src="{{asset('bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('bower_components\datatables.net-responsive\js\dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('bower_components\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js')}}"></script>
 <!-- Chart js -->
 <script type="text/javascript" src="{{asset('bower_components\chart.js\js\Chart.js')}}"></script>
 <!-- amchart js -->
@@ -345,6 +361,7 @@
 <script src="{{asset('assets\js\vartical-layout.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets\pages\dashboard\custom-dashboard.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets\js\script.min.js')}}"></script>
+<script src="{{asset('assets\pages\data-table\js\data-table-custom.js')}}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
