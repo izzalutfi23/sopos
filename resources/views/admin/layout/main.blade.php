@@ -153,148 +153,101 @@
                         <div class="pcoded-inner-navbar main-menu">
                             <div class="pcoded-navigatio-lavel">Navigation</div>
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu active pcoded-trigger">
-                                    <a href="javascript:void(0)">
+                                <li class="">
+                                    <a href="navbar-light.htm">
                                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                         <span class="pcoded-mtext">Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="navbar-light.htm">
+                                        <span class="pcoded-micon"><i class="feather icon-user"></i></span>
+                                        <span class="pcoded-mtext">Supplier</span>
+                                        <span class="pcoded-badge label label-success">100</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="navbar-light.htm">
+                                        <span class="pcoded-micon"><i class="feather icon-users"></i></span>
+                                        <span class="pcoded-mtext">Customer</span>
+                                        <span class="pcoded-badge label label-danger">100</span>
+                                    </a>
+                                </li>
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-layers"></i></span>
+                                        <span class="pcoded-mtext">Produk</span>
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class="active">
                                             <a href="index-1.htm">
-                                                <span class="pcoded-mtext">Default</span>
+                                                <span class="pcoded-mtext">Kategori</span>
                                             </a>
                                         </li>
                                         <li class="">
                                             <a href="dashboard-crm.htm">
-                                                <span class="pcoded-mtext">CRM</span>
+                                                <span class="pcoded-mtext">Unit</span>
                                             </a>
                                         </li>
-                                        <li class=" ">
+                                        <li class="">
                                             <a href="dashboard-analytics.htm">
-                                                <span class="pcoded-mtext">Analytics</span>
-                                                <span class="pcoded-badge label label-info ">NEW</span>
+                                                <span class="pcoded-mtext">Item</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
-                                        <span class="pcoded-mtext">Page layouts</span>
-                                        <span class="pcoded-badge label label-warning">NEW</span>
+                                        <span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span>
+                                        <span class="pcoded-mtext">Transaksi</span>
                                     </a>
                                     <ul class="pcoded-submenu">
-                                        <li class=" pcoded-hasmenu">
-                                            <a href="javascript:void(0)">
-                                                <span class="pcoded-mtext">Vertical</span>
-                                            </a>
-                                            <ul class="pcoded-submenu">
-                                                <li class=" ">
-                                                    <a href="menu-static.htm">
-                                                        <span class="pcoded-mtext">Static Layout</span>
-                                                    </a>
-                                                </li>
-                                                <li class=" ">
-                                                    <a href="menu-header-fixed.htm">
-                                                        <span class="pcoded-mtext">Header Fixed</span>
-                                                    </a>
-                                                </li>
-                                                <li class=" ">
-                                                    <a href="menu-compact.htm">
-                                                        <span class="pcoded-mtext">Compact</span>
-                                                    </a>
-                                                </li>
-                                                <li class=" ">
-                                                    <a href="menu-sidebar.htm">
-                                                        <span class="pcoded-mtext">Sidebar Fixed</span>
-                                                    </a>
-                                                </li>
-
-                                            </ul>
-                                        </li>
-                                        <li class=" pcoded-hasmenu">
-                                            <a href="javascript:void(0)">
-                                                <span class="pcoded-mtext">Horizontal</span>
-                                            </a>
-                                            <ul class="pcoded-submenu">
-                                                <li class=" ">
-                                                    <a href="menu-horizontal-static.htm" target="_blank">
-                                                        <span class="pcoded-mtext">Static Layout</span>
-                                                    </a>
-                                                </li>
-                                                <li class=" ">
-                                                    <a href="menu-horizontal-fixed.htm" target="_blank">
-                                                        <span class="pcoded-mtext">Fixed layout</span>
-                                                    </a>
-                                                </li>
-                                                <li class=" ">
-                                                    <a href="menu-horizontal-icon.htm" target="_blank">
-                                                        <span class="pcoded-mtext">Static With Icon</span>
-                                                    </a>
-                                                </li>
-                                                <li class=" ">
-                                                    <a href="menu-horizontal-icon-fixed.htm" target="_blank">
-                                                        <span class="pcoded-mtext">Fixed With Icon</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="menu-bottom.htm">
-                                                <span class="pcoded-mtext">Bottom Menu</span>
+                                        <li class="active">
+                                            <a href="index-1.htm">
+                                                <span class="pcoded-mtext">Stock In</span>
                                             </a>
                                         </li>
-                                        <li class=" ">
-                                            <a href="box-layout.htm" target="_blank">
-                                                <span class="pcoded-mtext">Box Layout</span>
+                                        <li class="">
+                                            <a href="dashboard-crm.htm">
+                                                <span class="pcoded-mtext">Stock Out</span>
                                             </a>
                                         </li>
-                                        <li class=" ">
-                                            <a href="menu-rtl.htm" target="_blank">
-                                                <span class="pcoded-mtext">RTL</span>
+                                    </ul>
+                                </li>
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span>
+                                        <span class="pcoded-mtext">Laporan</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="active">
+                                            <a href="index-1.htm">
+                                                <span class="pcoded-mtext">Penjualan</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="dashboard-crm.htm">
+                                                <span class="pcoded-mtext">Stock Out/Out</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="">
                                     <a href="navbar-light.htm">
-                                        <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
-                                        <span class="pcoded-mtext">Navigation</span>
+                                        <span class="pcoded-micon"><i class="feather icon-map"></i></span>
+                                        <span class="pcoded-mtext">Cabang Toko</span>
+                                        <span class="pcoded-badge label label-warning">100</span>
                                     </a>
-                                </li>
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="feather icon-layers"></i></span>
-                                        <span class="pcoded-mtext">Widget</span>
-                                        <span class="pcoded-badge label label-danger">100+</span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="widget-statistic.htm">
-                                                <span class="pcoded-mtext">Statistic</span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="widget-data.htm">
-                                                <span class="pcoded-mtext">Data</span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="widget-chart.htm">
-                                                <span class="pcoded-mtext">Chart Widget</span>
-                                            </a>
-                                        </li>
-
-                                    </ul>
                                 </li>
                             </ul>
                             
-                            <div class="pcoded-navigatio-lavel">Support</div>
+                            <div class="pcoded-navigatio-lavel">Pengaturan</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="">
                                     <a href="http://html.codedthemes.com/Adminty/doc" target="_blank">
-                                        <span class="pcoded-micon"><i class="feather icon-monitor"></i></span>
-                                        <span class="pcoded-mtext">Documentation</span>
+                                        <span class="pcoded-micon"><i class="feather icon-user"></i></span>
+                                        <span class="pcoded-mtext">User / Karyawan</span>
+                                        <span class="pcoded-badge label label-primary">100</span>
                                     </a>
                                 </li>
                                 <li class="">
