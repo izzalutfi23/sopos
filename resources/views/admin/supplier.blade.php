@@ -55,8 +55,42 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <h5>Static Modal</h5>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing lorem impus dolorsit.onsectetur adipiscing</p>
+                                                <form class="wizard-form" id="verticle-wizard" action="#">
+                                                    <fieldset>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label for="userName-2" class="block">User name *</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <input id="userName-22" name="userName" type="text" class=" form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label for="email-2" class="block">Email *</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <input id="email-22" name="email" type="email" class=" form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label for="password-2" class="block">Password *</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <input id="password-22" name="password" type="password" class="form-control ">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label for="confirm-2" class="block">Confirm Password *</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <input id="confirm-22" name="confirm" type="password" class="form-control ">
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Close</button>
