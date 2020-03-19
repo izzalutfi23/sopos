@@ -157,14 +157,14 @@
                         <div class="pcoded-inner-navbar main-menu">
                             <div class="pcoded-navigatio-lavel">Navigation</div>
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="active">
+                                <li class="{{ (request()->segment(2) == '') ? 'active' : '' }}">
                                     <a href="{{url('/dashboard')}}">
                                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                         <span class="pcoded-mtext">Dashboard</span>
                                     </a>
                                 </li>
-                                <li class="">
-                                    <a href="{{url('/supplier')}}">
+                                <li class="{{ (request()->segment(2) == 'supplier') ? 'active' : '' }}">
+                                    <a href="{{url('/dashboard/supplier')}}">
                                         <span class="pcoded-micon"><i class="feather icon-user"></i></span>
                                         <span class="pcoded-mtext">Supplier</span>
                                         <span class="pcoded-badge label label-success">100</span>
