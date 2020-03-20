@@ -22,6 +22,8 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
   <!-- Required Fremwork -->
   <link rel="stylesheet" type="text/css" href="{{asset('bower_components\bootstrap\css\bootstrap.min.css')}}">
+  <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\icofont\css\icofont.css')}}">
   <!-- feather Awesome -->
   <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\feather\css\feather.css')}}">
   <!-- Data Table Css -->
