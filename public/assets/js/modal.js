@@ -1,8 +1,22 @@
   'use strict';
 $(document).ready(function () {
 //Basic alert
-	document.querySelector('.sweet-1').onclick = function(){
-		swal("Here's a message!", "It's pretty, isn't it?")
+	document.querySelector('.sweet-1').onclick = function(e){
+		e.preventDefault();
+		const href = $(this).attr('href');
+		swal({
+					title: "Are you sure?",
+					text: "Your will not be able to recover this imaginary file!",
+					type: "warning",
+					showCancelButton: true,
+					confirmButtonClass: "btn-danger",
+					confirmButtonText: "Yes, delete it!",
+					closeOnConfirm: false,
+				},
+				function(){
+					swal("Deleted!", "Your imaginary file has been deleted.", "success");
+					document.location.href = href;
+				});
 	};
 	//success message
 	document.querySelector('.alert-success-msg').onclick = function(){

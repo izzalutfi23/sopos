@@ -22,6 +22,10 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
   <!-- Required Fremwork -->
   <link rel="stylesheet" type="text/css" href="{{asset('bower_components\bootstrap\css\bootstrap.min.css')}}">
+  <!-- sweet alert framework -->
+  <link rel="stylesheet" type="text/css" href="{{asset('bower_components\sweetalert\css\sweetalert.css')}}">
+  <!-- animation nifty modal window effects css -->
+  <link rel="stylesheet" type="text/css" href="{{asset('assets\css\component.css')}}">
   <!-- ico font -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\icofont\css\icofont.css')}}">
   <!-- feather Awesome -->
@@ -364,6 +368,12 @@
 <script type="text/javascript" src="{{asset('assets\pages\dashboard\custom-dashboard.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets\js\script.min.js')}}"></script>
 <script src="{{asset('assets\pages\data-table\js\data-table-custom.js')}}"></script>
+<!-- sweet alert js -->
+<script type="text/javascript" src="{{asset('bower_components\sweetalert\js\sweetalert.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets\js\modal.js')}}"></script>
+<!-- modalEffects js nifty modal window effects -->
+<script type="text/javascript" src="{{asset('assets\js\modalEffects.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets\js\classie.js')}}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>

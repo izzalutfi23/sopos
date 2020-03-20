@@ -125,8 +125,8 @@
                                         <td>61</td>
                                         <td>2011/04/25</td>
                                         <td align="center">
-                                            <div class="btn btn-primary" data-toggle="modal" data-target="#edit"><i class="feather icon-edit" style="padding: 0; margin: 0;"></i></div>
-                                            <a href="#"><div class="btn btn-danger"><i class="feather icon-trash" style="padding: 0; margin: 0;"></i></div></a>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit"><i class="feather icon-edit" style="padding: 0; margin: 0;"></i></button>
+                                            <a href="{{url('/dashboard')}}" class="sweet-1"><button class="btn btn-danger"><i class="feather icon-trash" style="padding: 0; margin: 0;"></i></button></a>
                                         </td>
                                     </tr>
 
