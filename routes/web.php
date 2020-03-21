@@ -21,7 +21,11 @@ Route::get('/logout', 'Authcontroller@logout');
 // Dashboard
 Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 	Route::get('/dashboard', 'Dashboard@index');
+	// Supplier
 	Route::get('/dashboard/supplier', 'Suppliercontroller@index');
+	Route::post('/dashboard/supplier', 'Suppliercontroller@store');
+	Route::patch('/dashboard/supplier/{suppliermodel}', 'Suppliercontroller@update');
+	Route::get('/dashboard/supplier/{suppliermodel}', 'Suppliercontroller@destroy');
 });
 
 // Kasir

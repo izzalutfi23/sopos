@@ -29,7 +29,16 @@
         </div>
     </div>
     <!-- Page-header end -->
-
+    <!-- Alert Success -->
+    @if (session('status'))
+    <div class="alert alert-success background-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="padding: 0; margin: 0;">
+            <i class="icofont icofont-close-line-circled text-white"></i>
+        </button>
+        <strong>Success!</strong> {{session('status')}}
+    </div>
+    @endif
+    <!-- Alert Success End -->
     <!-- Page-body start -->
     <div class="page-body">
         <div class="row">
@@ -55,19 +64,20 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="#" method="post">
+                                                <form action="{{url('/dashboard/supplier')}}" method="post">
+                                                @csrf
                                                     <fieldset>
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
                                                                 <label class="block">Nama Supplier *</label>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <input name="nama_supplier" type="text" class=" form-control" required="required">
+                                                                <input name="nama_suplier" type="text" class=" form-control" required="required">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
-                                                                <label for="email-2" class="block">No Hp *</label>
+                                                                <label class="block">No Hp *</label>
                                                             </div>
                                                             <div class="col-sm-12">
                                                                 <input name="no_hp" type="number" class=" form-control" required="required">
@@ -118,20 +128,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($supplier as $data)
                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$data->nama_suplier}}</td>
+                                        <td>{{$data->no_hp}}</td>
+                                        <td>{{$data->alamat}}</td>
+                                        <td>{{$data->deskripsi}}</td>
                                         <td align="center">
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit"><i class="feather icon-edit" style="padding: 0; margin: 0;"></i></button>
-                                            <a href="{{url('/dashboard')}}" class="sweet-1"><button class="btn btn-danger"><i class="feather icon-trash" style="padding: 0; margin: 0;"></i></button></a>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit{{$data->id}}"><i class="feather icon-edit" style="padding: 0; margin: 0;"></i></button>
+                                            <a href="{{url('/dashboard/supplier/'.$data->id)}}" class="sweet-1"><button class="btn btn-danger"><i class="feather icon-trash" style="padding: 0; margin: 0;"></i></button></a>
                                         </td>
                                     </tr>
 
                                     <!-- Modal Edit Supplier -->
-                                    <div class="modal fade" id="edit" tabindex="-1" role="dialog">
+                                    <div class="modal fade" id="edit{{$data->id}}" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -141,14 +152,16 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="#" method="post">
+                                                    <form action="{{url('/dashboard/supplier/'.$data->id)}}" method="post">
+                                                    @csrf
+                                                    @method('patch')
                                                         <fieldset>
                                                             <div class="form-group row">
                                                                 <div class="col-sm-12">
                                                                     <label class="block">Nama Supplier *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <input name="nama_supplier" type="text" class=" form-control" required="required">
+                                                                    <input name="nama_suplier" type="text" class=" form-control" value="{{$data->nama_suplier}}">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -156,7 +169,7 @@
                                                                     <label for="email-2" class="block">No Hp *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <input name="no_hp" type="number" class=" form-control" required="required">
+                                                                    <input name="no_hp" type="number" class=" form-control" value="{{$data->no_hp}}">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -164,7 +177,7 @@
                                                                     <label class="block">Alamat *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <textarea class="form-control" name="alamat" required="required"></textarea>
+                                                                    <textarea class="form-control" name="alamat">{{$data->alamat}}</textarea>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -172,20 +185,21 @@
                                                                     <label class="block">Deskripsi</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <textarea class="form-control" name="deskripsi"></textarea>
+                                                                    <textarea class="form-control" name="deskripsi">{{$data->deskripsi}}</textarea>
                                                                 </div>
                                                             </div>
                                                         </fieldset>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Batal</button>
-                                                        <button type="submit" class="btn btn-primary waves-effect waves-light ">Simpan</button>
+                                                        <button type="submit" class="btn btn-primary waves-effect waves-light ">Edit</button>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Modal Edit Supplier End -->
+                                    @endforeach
 
                                 </tbody>
                             </table>

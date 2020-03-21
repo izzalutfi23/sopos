@@ -14,7 +14,10 @@ class Suppliercontroller extends Controller
      */
     public function index()
     {
-        return view('admin/supplier');
+        $supplier = Suppliermodel::all();
+        $data['supplier'] = $supplier;
+
+        return view('admin/supplier', $data);
     }
 
     /**
@@ -35,16 +38,18 @@ class Suppliercontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Suppliermodel::create($request->all());
+
+        return redirect('/dashboard/supplier')->with('status', '1 Data berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Supplier  $supplier
+     * @param  \App\Suppliermodel  $suppliermodel
      * @return \Illuminate\Http\Response
      */
-    public function show(Supplier $supplier)
+    public function show(Suppliermodel $suppliermodel)
     {
         //
     }
@@ -52,10 +57,10 @@ class Suppliercontroller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Supplier  $supplier
+     * @param  \App\Suppliermodel  $suppliermodel
      * @return \Illuminate\Http\Response
      */
-    public function edit(Supplier $supplier)
+    public function edit(Suppliermodel $suppliermodel)
     {
         //
     }
@@ -64,21 +69,28 @@ class Suppliercontroller extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Supplier  $supplier
+     * @param  \App\Suppliermodel  $suppliermodel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(Request $request, Suppliermodel $suppliermodel)
     {
-        //
+        Suppliermodel::where('id', $suppliermodel->id)->update([
+            'nama_suplier' => $request->nama_suplier,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
+            'deskripsi' => $request->deskripsi
+        ]);
+
+        return redirect('/dashboard/supplier')->with('status', '1 Data berhasil diedit');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Supplier  $supplier
+     * @param  \App\Suppliermodel  $suppliermodel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Supplier $supplier)
+    public function destroy(Suppliermodel $suppliermodel)
     {
         //
     }

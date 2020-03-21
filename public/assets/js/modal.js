@@ -1,7 +1,8 @@
   'use strict';
+
 $(document).ready(function () {
 //Basic alert
-	document.querySelector('.sweet-1').onclick = function(e){
+	$('.sweet-1').on('click',function(e){
 		e.preventDefault();
 		const href = $(this).attr('href');
 		swal({
@@ -11,13 +12,13 @@ $(document).ready(function () {
 					showCancelButton: true,
 					confirmButtonClass: "btn-danger",
 					confirmButtonText: "Yes, delete it!",
-					closeOnConfirm: false,
+					closeOnConfirm: false
 				},
 				function(){
 					swal("Deleted!", "Your imaginary file has been deleted.", "success");
 					document.location.href = href;
 				});
-	};
+	});
 	//success message
 	document.querySelector('.alert-success-msg').onclick = function(){
 		swal("Good job!", "You clicked the button!", "success");
