@@ -6,12 +6,13 @@ $(document).ready(function () {
 		e.preventDefault();
 		const href = $(this).attr('href');
 		swal({
-					title: "Are you sure?",
-					text: "Your will not be able to recover this imaginary file!",
+					title: "Kamu Yakin?",
+					text: "Data yang kamu pilih akan dihapus!",
 					type: "warning",
 					showCancelButton: true,
 					confirmButtonClass: "btn-danger",
-					confirmButtonText: "Yes, delete it!",
+					confirmButtonText: "Ya, Hapus!",
+					cancelButtonText: "Batal",
 					closeOnConfirm: false
 				},
 				function(){

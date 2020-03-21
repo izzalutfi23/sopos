@@ -92,6 +92,8 @@ class Suppliercontroller extends Controller
      */
     public function destroy(Suppliermodel $suppliermodel)
     {
-        //
+        Suppliermodel::destroy('id', $suppliermodel->id);
+
+        return redirect('/dashboard/supplier');
     }
 }
