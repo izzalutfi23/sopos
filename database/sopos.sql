@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Mar 2020 pada 17.21
+-- Waktu pembuatan: 24 Mar 2020 pada 09.15
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.0
 
@@ -187,7 +187,6 @@ CREATE TABLE `penjualan` (
   `id_cabang` int(10) UNSIGNED NOT NULL,
   `id_karyawan` int(10) UNSIGNED NOT NULL,
   `faktur` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl` date NOT NULL,
   `total` int(10) UNSIGNED NOT NULL,
   `diskon` int(10) UNSIGNED NOT NULL,
   `total_akhir` int(10) UNSIGNED NOT NULL,
@@ -225,7 +224,6 @@ CREATE TABLE `stockout` (
   `id_produk` int(10) UNSIGNED NOT NULL,
   `qty` int(10) UNSIGNED NOT NULL,
   `detail` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl` date NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -241,7 +239,6 @@ CREATE TABLE `stokin` (
   `id_produk` int(10) UNSIGNED NOT NULL,
   `id_supplier` int(10) UNSIGNED NOT NULL,
   `qty` int(10) UNSIGNED NOT NULL,
-  `tgl` date NOT NULL,
   `foto` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -262,6 +259,17 @@ CREATE TABLE `supplier` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `supplier`
+--
+
+INSERT INTO `supplier` (`id`, `nama_suplier`, `no_hp`, `alamat`, `deskripsi`, `created_at`, `updated_at`) VALUES
+(1, 'Qota', '089768765675', 'Desa Mlagen', 'Bos Rokok', '2020-03-21 02:27:27', '2020-03-21 02:27:27'),
+(2, 'Rizky Noor I', '085647876342', 'Kota Cilacap', 'Pemilik Toko Elektronik', '2020-03-21 02:32:06', '2020-03-21 02:32:06'),
+(3, 'Luki', '087867656543', 'Purwodadi', 'Pemilik Toko kelontong', '2020-03-22 02:46:37', '2020-03-21 05:11:24'),
+(4, 'edit 2', '089765432675', 'b', 'b', '2020-03-23 04:44:22', '2020-03-21 20:58:17'),
+(5, 'b', '8', 'b', 'b', '2020-03-23 21:35:16', '2020-03-23 21:35:16');
 
 -- --------------------------------------------------------
 
@@ -449,7 +457,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori`
@@ -491,7 +499,7 @@ ALTER TABLE `stokin`
 -- AUTO_INCREMENT untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `unit`
@@ -503,7 +511,7 @@ ALTER TABLE `unit`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
