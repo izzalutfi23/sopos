@@ -26,6 +26,14 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 	Route::post('/dashboard/supplier', 'Suppliercontroller@store');
 	Route::patch('/dashboard/supplier/{suppliermodel}', 'Suppliercontroller@update');
 	Route::get('/dashboard/supplier/{suppliermodel}', 'Suppliercontroller@destroy');
+	// Customer
+	Route::get('/dashboard/customer', 'Customercontroller@index');
+	// Kategori
+	Route::get('/dashboard/kategori', 'Kategoricontroller@index');
+	// Unit
+	Route::get('/dashboard/unit', 'Unitcontroller@index');
+	// Item
+	Route::get('/dashboard/item', 'Itemcontroller@index');
 });
 
 // Kasir

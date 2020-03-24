@@ -176,31 +176,31 @@
                                         <span class="pcoded-badge label label-success">100</span>
                                     </a>
                                 </li>
-                                <li class="">
-                                    <a href="navbar-light.htm">
+                                <li class="{{ (request()->segment(2) == 'customer') ? 'active' : '' }}">
+                                    <a href="{{url('/dashboard/customer')}}">
                                         <span class="pcoded-micon"><i class="feather icon-users"></i></span>
                                         <span class="pcoded-mtext">Customer</span>
                                         <span class="pcoded-badge label label-danger">100</span>
                                     </a>
                                 </li>
-                                <li class="pcoded-hasmenu">
+                                <li class="pcoded-hasmenu {{ (request()->segment(2) == 'kategori' || request()->segment(2) == 'unit' || request()->segment(2) == 'item') ? 'active pcoded-trigger' : '' }}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-layers"></i></span>
                                         <span class="pcoded-mtext">Produk</span>
                                     </a>
                                     <ul class="pcoded-submenu">
-                                        <li class="active">
-                                            <a href="index-1.htm">
+                                        <li class="{{ (request()->segment(2) == 'kategori') ? 'active' : '' }}">
+                                            <a href="{{url('/dashboard/kategori')}}">
                                                 <span class="pcoded-mtext">Kategori</span>
                                             </a>
                                         </li>
-                                        <li class="">
-                                            <a href="dashboard-crm.htm">
+                                        <li class="{{ (request()->segment(2) == 'unit') ? 'active' : '' }}">
+                                            <a href="{{url('/dashboard/unit')}}">
                                                 <span class="pcoded-mtext">Unit</span>
                                             </a>
                                         </li>
-                                        <li class="">
-                                            <a href="dashboard-analytics.htm">
+                                        <li class="{{ (request()->segment(2) == 'item') ? 'active' : '' }}">
+                                            <a href="{{url('/dashboard/item')}}">
                                                 <span class="pcoded-mtext">Item</span>
                                             </a>
                                         </li>
