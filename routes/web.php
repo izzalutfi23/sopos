@@ -28,6 +28,9 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 	Route::get('/dashboard/supplier/{suppliermodel}', 'Suppliercontroller@destroy');
 	// Customer
 	Route::get('/dashboard/customer', 'Customercontroller@index');
+	Route::post('dashboard/customer', 'Customercontroller@store');
+	Route::patch('dashboard/customer/{customermodel}', 'Customercontroller@update');
+	Route::get('dashboard/customer/{customermodel}', 'Customercontroller@destroy');
 	// Kategori
 	Route::get('/dashboard/kategori', 'Kategoricontroller@index');
 	// Unit

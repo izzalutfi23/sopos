@@ -48,7 +48,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-lg-6">
-                                <h4>Data Supplier</h4>
+                                <h4>Data Customer</h4>
                             </div>
                             <div class="col-lg-6">
                                 <div class="btn btn-primary float-right" data-toggle="modal" data-target="#tambah"><i class="feather icon-plus"></i>Tambah</div>
@@ -58,21 +58,42 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Tambah Data Supplier</h4>
+                                                <h4 class="modal-title">Tambah Data Customer</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{url('/dashboard/supplier')}}" method="post">
+                                                <form action="{{url('/dashboard/customer')}}" method="post">
                                                 @csrf
                                                     <fieldset>
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
-                                                                <label class="block">Nama Supplier *</label>
+                                                                <label class="block">Nama Customer *</label>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <input name="nama_suplier" type="text" class=" form-control" required="required">
+                                                                <input name="nama_customer" type="text" class=" form-control" required="required">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label class="block">Jenis Kelamin *</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-radio">
+                                                                    <div class="radio radio-inline">
+                                                                        <label>
+                                                                            <input type="radio" name="j_kel" value="L" required="required">
+                                                                            <i class="helper"></i>Laki-laki
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="radio radio-inline">
+                                                                        <label>
+                                                                            <input type="radio" name="j_kel" value="P" required="required">
+                                                                            <i class="helper"></i>Perempuan
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -89,14 +110,6 @@
                                                             </div>
                                                             <div class="col-sm-12">
                                                                 <textarea class="form-control" name="alamat" required="required"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <label class="block">Deskripsi</label>
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <textarea class="form-control" name="deskripsi"></textarea>
                                                             </div>
                                                         </div>
                                                     </fieldset>
@@ -120,55 +133,77 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Supplier</th>
+                                        <th>Nama Customer</th>
+                                        <th>Jenis Kelamin</th>
                                         <th>No HP</th>
-                                        <th>Alamat </th>
-                                        <th>Deskripsi</th>
+                                        <th>Alamat</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($customer as $data)
                                     <tr>
-                                        <td>1</td>
-                                        <td>text</td>
-                                        <td>text</td>
-                                        <td>text</td>
-                                        <td>text</td>
+
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$data->nama_customer}}</td>
+                                        <td>{{$data->j_kel}}</td>
+                                        <td>{{$data->no_hp}}</td>
+                                        <td>{{$data->alamat}}</td>
                                         <td align="center">
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit"><i class="feather icon-edit" style="padding: 0; margin: 0;"></i></button>
-                                            <a href="{{url('/dashboard/supplier')}}" class="sweet-1"><button class="btn btn-danger"><i class="feather icon-trash" style="padding: 0; margin: 0;"></i></button></a>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit{{$data->id}}"><i class="feather icon-edit" style="padding: 0; margin: 0;"></i></button>
+                                            <a href="{{url('/dashboard/customer/'.$data->id)}}" class="sweet-1"><button class="btn btn-danger"><i class="feather icon-trash" style="padding: 0; margin: 0;"></i></button></a>
                                         </td>
                                     </tr>
-
                                     <!-- Modal Edit Supplier -->
-                                    <div class="modal fade" id="edit" tabindex="-1" role="dialog">
+                                    <div class="modal fade" id="edit{{$data->id}}" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Edit Data Supplier</h4>
+                                                    <h4 class="modal-title">Edit Data Customer</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{url('/dashboard/supplier')}}" method="post">
-                                                    @csrf
-                                                    @method('patch')
+                                                    <form action="{{url('/dashboard/customer/'.$data->id)}}" method="post">
+                                                        @csrf
+                                                        @method('patch')
                                                         <fieldset>
                                                             <div class="form-group row">
                                                                 <div class="col-sm-12">
-                                                                    <label class="block">Nama Supplier *</label>
+                                                                    <label class="block">Nama Customer *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <input name="nama_suplier" type="text" class=" form-control" value="">
+                                                                    <input name="nama_customer" type="text" class=" form-control" value="{{$data->nama_customer}}">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <div class="col-sm-12">
-                                                                    <label for="email-2" class="block">No Hp *</label>
+                                                                    <label class="block">Jenis Kelamin *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <input name="no_hp" type="number" class=" form-control" value="">
+                                                                    <div class="form-radio">
+                                                                        <div class="radio radio-inline">
+                                                                            <label>
+                                                                                <input type="radio" name="j_kel" value="L" @if($data->j_kel == 'L') checked="checked" @endif>
+                                                                                <i class="helper"></i>Laki-laki
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="radio radio-inline">
+                                                                            <label>
+                                                                                <input type="radio" name="j_kel" value="P" @if($data->j_kel == 'P') checked="checked" @endif>
+                                                                                <i class="helper"></i>Perempuan
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-12">
+                                                                    <label class="block">No Hp *</label>
+                                                                </div>
+                                                                <div class="col-sm-12">
+                                                                    <input name="no_hp" type="number" class=" form-control" value="{{$data->no_hp}}">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -176,15 +211,7 @@
                                                                     <label class="block">Alamat *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <textarea class="form-control" name="alamat"></textarea>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <div class="col-sm-12">
-                                                                    <label class="block">Deskripsi</label>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <textarea class="form-control" name="deskripsi"></textarea>
+                                                                    <textarea class="form-control" name="alamat">{{$data->alamat}}</textarea>
                                                                 </div>
                                                             </div>
                                                         </fieldset>
@@ -198,6 +225,7 @@
                                         </div>
                                     </div>
                                     <!-- Modal Edit Supplier End -->
+                                    @endforeach()
                                 </tbody>
                             </table>
                         </div>

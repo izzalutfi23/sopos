@@ -14,7 +14,10 @@ class Customercontroller extends Controller
      */
     public function index()
     {
-        return view('admin/customer');
+        $customer = Customermodel::all();
+        $data['customer'] = $customer;
+
+        return view('admin/customer', $data);
     }
 
     /**
@@ -35,7 +38,9 @@ class Customercontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Customermodel::create($request->all());
+
+        return redirect('/dashboard/customer')->with('status', '1 Data berhasil ditambahkan');
     }
 
     /**
@@ -69,7 +74,14 @@ class Customercontroller extends Controller
      */
     public function update(Request $request, Customermodel $customermodel)
     {
-        //
+        Customermodel::where('id', $customermodel->id)->update([
+            'nama_customer' => $request->nama_customer,
+            'j_kel' => $request->j_kel,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat
+        ]);
+
+        return redirect('/dashboard/customer')->with('status', '1 Data berhasil diedit');
     }
 
     /**
@@ -80,6 +92,8 @@ class Customercontroller extends Controller
      */
     public function destroy(Customermodel $customermodel)
     {
-        //
+        Customermodel::destroy('id', $customermodel->id);
+
+        return redirect('/dashboard/customer');;
     }
 }
