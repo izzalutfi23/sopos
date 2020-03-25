@@ -94,6 +94,6 @@ class Suppliercontroller extends Controller
     {
         Suppliermodel::destroy('id', $suppliermodel->id);
 
-        return redirect('/dashboard/supplier');
+        return redirect('/dashboard/supplier')->with('hapus', '1 Data supplier berhasil dihapus');
     }
 }

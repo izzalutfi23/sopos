@@ -9,7 +9,7 @@
                 <div class="page-header-title">
                     <div class="d-inline">
                         <h4>Kategori</h4>
-                        <span>Halaman untuk menampung data supplier</span>
+                        <span>Halaman untuk menampung data kategori</span>
                     </div>
                 </div>
             </div>
@@ -30,6 +30,7 @@
     </div>
     <!-- Page-header end -->
     <!-- Alert Success -->
+    <div class="flash-data" data-flashdata="{{session('hapus')}}"></div>
     @if (session('status'))
     <div class="alert alert-success background-success">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="padding: 0; margin: 0;">

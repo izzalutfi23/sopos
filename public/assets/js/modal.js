@@ -1,6 +1,17 @@
   'use strict';
 
 $(document).ready(function () {
+
+	// Modal sukses hapus
+	const flashData = $('.flash-data').data('flashdata');
+
+	if(flashData){
+		swal({
+			title: "Berhasil",
+			text: flashData,
+			type: "success"
+		});
+	}
 //Basic alert
 	$('.sweet-1').on('click',function(e){
 		e.preventDefault();
@@ -16,7 +27,6 @@ $(document).ready(function () {
 					closeOnConfirm: false
 				},
 				function(){
-					swal("Deleted!", "Your imaginary file has been deleted.", "success");
 					document.location.href = href;
 				});
 	});

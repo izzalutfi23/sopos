@@ -94,6 +94,6 @@ class Customercontroller extends Controller
     {
         Customermodel::destroy('id', $customermodel->id);
 
-        return redirect('/dashboard/customer');;
+        return redirect('/dashboard/customer')->with('hapus', '1 Data customer berhasil dihapus');
     }
 }

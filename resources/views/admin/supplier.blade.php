@@ -30,6 +30,7 @@
     </div>
     <!-- Page-header end -->
     <!-- Alert Success -->
+    <div class="flash-data" data-flashdata="{{session('hapus')}}"></div>
     @if (session('status'))
     <div class="alert alert-success background-success">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="padding: 0; margin: 0;">
@@ -124,7 +125,6 @@
                                         <th>No HP</th>
                                         <th>Alamat </th>
                                         <th>Deskripsi</th>
-                                        <th>Tgl</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -136,7 +136,6 @@
                                         <td>{{$data->no_hp}}</td>
                                         <td>{{$data->alamat}}</td>
                                         <td>{{$data->deskripsi}}</td>
-                                        <td>{{$data->tgl()}}</td>
                                         <td align="center">
                                             <button class="btn btn-primary" data-toggle="modal" data-target="#edit{{$data->id}}"><i class="feather icon-edit" style="padding: 0; margin: 0;"></i></button>
                                             <a href="{{url('/dashboard/supplier/'.$data->id)}}" class="sweet-1"><button class="btn btn-danger"><i class="feather icon-trash" style="padding: 0; margin: 0;"></i></button></a>

@@ -14,7 +14,10 @@ class Unitcontroller extends Controller
      */
     public function index()
     {
-        return view('admin/unit');
+        $unit = Unitmodel::all();
+        $data['unit'] = $unit;
+
+        return view('admin/unit', $data);
     }
 
     /**
@@ -35,7 +38,9 @@ class Unitcontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Unitmodel::create($request->all());
+
+        return redirect('/dashboard/unit')->with('status', '1 Data berhasil ditambahkan');
     }
 
     /**
@@ -69,7 +74,11 @@ class Unitcontroller extends Controller
      */
     public function update(Request $request, Unitmodel $unitmodel)
     {
-        //
+        Unitmodel::where('id', $unitmodel->id)->update([
+            'nama_unit' => $request->nama_unit
+        ]);
+
+        return redirect('/dashboard/unit')->with('status', '1 Data berhasil diedit');
     }
 
     /**
@@ -80,6 +89,8 @@ class Unitcontroller extends Controller
      */
     public function destroy(Unitmodel $unitmodel)
     {
-        //
+        Unitmodel::destroy('id', $unitmodel->id);
+
+        return redirect('/dashboard/unit')->with('hapus', '1 Data unit berhasil dihapus');
     }
 }

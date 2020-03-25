@@ -91,6 +91,6 @@ class Kategoricontroller extends Controller
     {
         Kategorimodel::destroy('id', $kategorimodel->id);
 
-        return redirect('/dashboard/kategori');
+        return redirect('/dashboard/kategori')->with('hapus', '1 Data kategori berhasil dihapus');
     }
 }
