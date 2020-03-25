@@ -33,6 +33,9 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 	Route::get('dashboard/customer/{customermodel}', 'Customercontroller@destroy');
 	// Kategori
 	Route::get('/dashboard/kategori', 'Kategoricontroller@index');
+	Route::post('/dashboard/kategori', 'Kategoricontroller@store');
+	Route::patch('/dashboard/kategori/{kategorimodel}', 'Kategoricontroller@update');
+	Route::get('/dashboard/kategori/{kategorimodel}', 'Kategoricontroller@destroy');
 	// Unit
 	Route::get('/dashboard/unit', 'Unitcontroller@index');
 	// Item

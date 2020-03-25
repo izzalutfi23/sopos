@@ -90,7 +90,7 @@
                             <i class="feather icon-menu"></i>
                         </a>
                         <a href="index-1.htm">
-                            <img class="img-fluid" src="{{asset('assets\images\logo.png')}}" alt="Theme-Logo">
+                            <img class="img-fluid float-left" width="65%" height="25px" style="padding-left: 4%;" src="{{asset('assets\images\sps.png')}}" alt="Theme-Logo">
                         </a>
                         <a class="mobile-options">
                             <i class="feather icon-more-horizontal"></i>

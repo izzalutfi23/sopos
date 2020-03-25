@@ -14,7 +14,10 @@ class Kategoricontroller extends Controller
      */
     public function index()
     {
-        return view('admin/kategori');
+        $kategori = Kategorimodel::all();
+        $data['kategori'] = $kategori;
+
+        return view('admin/kategori', $data);
     }
 
     /**
@@ -35,7 +38,9 @@ class Kategoricontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Kategorimodel::create($request->all());
+
+        return redirect('/dashboard/kategori')->with('status', '1 Data berhasil ditambahkan');
     }
 
     /**
@@ -69,7 +74,11 @@ class Kategoricontroller extends Controller
      */
     public function update(Request $request, Kategorimodel $kategorimodel)
     {
-        //
+        Kategorimodel::where('id', $kategorimodel->id)->update([
+            'nama_kategori' => $request->nama_kategori
+        ]);
+
+        return redirect('/dashboard/kategori')->with('status', '1 Data berhasil diedit');
     }
 
     /**
@@ -80,6 +89,8 @@ class Kategoricontroller extends Controller
      */
     public function destroy(Kategorimodel $kategorimodel)
     {
-        //
+        Kategorimodel::destroy('id', $kategorimodel->id);
+
+        return redirect('/dashboard/kategori');
     }
 }
