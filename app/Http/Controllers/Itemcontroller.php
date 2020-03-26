@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Itemmodel;
+use App\Kategorimodel;
+use App\Unitmodel;
 use Illuminate\Http\Request;
 
 class Itemcontroller extends Controller
@@ -14,7 +16,16 @@ class Itemcontroller extends Controller
      */
     public function index()
     {
-        return view('admin/item');
+        $item = Itemmodel::all();
+        $kategori = Kategorimodel::all();
+        $unit = Unitmodel::all();
+
+        $data = array(
+            'item' => $item,
+            'kategori' => $kategori,
+            'unit' => $unit
+        );
+        return view('admin/item', $data);
     }
 
     /**
@@ -35,7 +46,10 @@ class Itemcontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->request->add(['stok' => 0]);
+        Itemmodel::create($request->all());
+
+        return redirect('/dashboard/item')->with('status', '1 Data berhasil ditambahkan');
     }
 
     /**
@@ -69,7 +83,16 @@ class Itemcontroller extends Controller
      */
     public function update(Request $request, Itemmodel $itemmodel)
     {
-        //
+        Itemmodel::where('id', $itemmodel->id)->update([
+            'id_kategori' => $request->id_kategori,
+            'id_unit' => $request->id_unit,
+            'kode_produk' => $request->kode_produk,
+            'nama_produk' => $request->nama_produk,
+            'harga' => $request->harga,
+            'diskon' => $request->diskon
+        ]);
+
+        return redirect('/dashboard/item')->with('status', '1 Data berhasil diedit');
     }
 
     /**
@@ -80,6 +103,8 @@ class Itemcontroller extends Controller
      */
     public function destroy(Itemmodel $itemmodel)
     {
-        //
+        Itemmodel::destroy('id', $itemmodel->id);
+
+        return redirect('/dashboard/item')->with('hapus', '1 Data item berhasil dihapus');
     }
 }

@@ -65,22 +65,70 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{url('/dashboard/supplier')}}" method="post">
-                                                @csrf
+                                                <form action="{{url('/dashboard/item')}}" method="post">
+                                                    @csrf
                                                     <fieldset>
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
-                                                                <label class="block">Nama Supplier *</label>
+                                                                <label class="block">Kategori *</label>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <input name="nama_suplier" type="text" class=" form-control" required="required">
+                                                                <select name="id_kategori" class="form-control" required="required">
+                                                                    @foreach($kategori as $kat)
+                                                                    <option value="{{$kat->id}}">{{$kat->nama_kategori}}</option>
+                                                                    @endforeach()
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label class="block">Satuan *</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <select name="id_unit" class="form-control" required="required">
+                                                                    @foreach($unit as $unt)
+                                                                    <option value="{{$unt->id}}">{{$unt->nama_unit}}</option>
+                                                                    @endforeach()
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label class="block">Kode Produk *</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <input name="kode_produk" type="text" class=" form-control" required="required" placeholder="barcode / qrcode">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label class="block">Nama Produk *</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <input name="nama_produk" type="text" class=" form-control" required="required">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label class="block">Harga *</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <input name="harga" type="number" class=" form-control" required="required">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label class="block">Diskon *</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <input name="diskon" type="number" class=" form-control" value="0">
                                                             </div>
                                                         </div>
                                                     </fieldset>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Batal</button>
-                                                <button type="submit" class="btn btn-primary waves-effect waves-light ">Simpan</button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Batal</button>
+                                                    <button type="submit" class="btn btn-primary waves-effect waves-light ">Simpan</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -97,84 +145,116 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Supplier</th>
-                                        <th>No HP</th>
-                                        <th>Alamat </th>
-                                        <th>Deskripsi</th>
+                                        <th>Kode</th>
+                                        <th>Nama Produk</th>
+                                        <th>Kategori</th>
+                                        <th>Satuan</th>
+                                        <th>Harga</th>
+                                        <th>Stok</th>
+                                        <th>Diskon</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($item as $data)
                                     <tr>
-                                        <td>1</td>
-                                        <td>text</td>
-                                        <td>text</td>
-                                        <td>text</td>
-                                        <td>text</td>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$data->kode_produk}}</td>
+                                        <td>{{$data->nama_produk}}</td>
+                                        <td>{{$data->kategori->nama_kategori}}</td>
+                                        <td>{{$data->unit->nama_unit}}</td>
+                                        <th>Rp {{number_format($data->harga)}}</th>
+                                        <th>{{$data->stok}}</th>
+                                        <th>{{$data->diskon}}%</th>
                                         <td align="center">
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit"><i class="feather icon-edit" style="padding: 0; margin: 0;"></i></button>
-                                            <a href="{{url('/dashboard/supplier')}}" class="sweet-1"><button class="btn btn-danger"><i class="feather icon-trash" style="padding: 0; margin: 0;"></i></button></a>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit{{$data->id}}"><i class="feather icon-edit" style="padding: 0; margin: 0;"></i></button>
+                                            <a href="{{url('/dashboard/item/'.$data->id)}}" class="sweet-1"><button class="btn btn-danger"><i class="feather icon-trash" style="padding: 0; margin: 0;"></i></button></a>
                                         </td>
                                     </tr>
 
                                     <!-- Modal Edit Supplier -->
-                                    <div class="modal fade" id="edit" tabindex="-1" role="dialog">
+                                    <div class="modal fade" id="edit{{$data->id}}" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Edit Data Supplier</h4>
+                                                    <h4 class="modal-title">Edit Data Item</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{url('/dashboard/supplier')}}" method="post">
-                                                    @csrf
-                                                    @method('patch')
+                                                    <form action="{{url('/dashboard/item/'.$data->id)}}" method="post">
+                                                        @csrf
+                                                        @method('patch')
                                                         <fieldset>
                                                             <div class="form-group row">
                                                                 <div class="col-sm-12">
-                                                                    <label class="block">Nama Supplier *</label>
+                                                                    <label class="block">Kategori *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <input name="nama_suplier" type="text" class=" form-control" value="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <div class="col-sm-12">
-                                                                    <label for="email-2" class="block">No Hp *</label>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <input name="no_hp" type="number" class=" form-control" value="">
+                                                                    <select name="id_kategori" class="form-control" required="required">
+                                                                        @foreach($kategori as $kat)
+                                                                        <option @if($kat->nama_kategori == $data->kategori->nama_kategori) selected="selected" @endif value="{{$kat->id}}">{{$kat->nama_kategori}}</option>
+                                                                        @endforeach()
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <div class="col-sm-12">
-                                                                    <label class="block">Alamat *</label>
+                                                                    <label class="block">Satuan *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <textarea class="form-control" name="alamat"></textarea>
+                                                                    <select name="id_unit" class="form-control" required="required">
+                                                                        @foreach($unit as $unt)
+                                                                        <option @if($unt->nama_unit == $data->unit->nama_unit) selected="selected" @endif value="{{$unt->id}}">{{$unt->nama_unit}}</option>
+                                                                        @endforeach()
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <div class="col-sm-12">
-                                                                    <label class="block">Deskripsi</label>
+                                                                    <label class="block">Kode Produk *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <textarea class="form-control" name="deskripsi"></textarea>
+                                                                    <input name="kode_produk" type="text" class="form-control" value="{{$data->kode_produk}}" placeholder="barcode / qrcode">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-12">
+                                                                    <label class="block">Nama Produk *</label>
+                                                                </div>
+                                                                <div class="col-sm-12">
+                                                                    <input name="nama_produk" type="text" class=" form-control" value="{{$data->nama_produk}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-12">
+                                                                    <label class="block">Harga *</label>
+                                                                </div>
+                                                                <div class="col-sm-12">
+                                                                    <input name="harga" type="number" class=" form-control" value="{{$data->harga}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-12">
+                                                                    <label class="block">Diskon *</label>
+                                                                </div>
+                                                                <div class="col-sm-12">
+                                                                    <input name="diskon" type="number" class=" form-control" value="{{$data->diskon}}">
                                                                 </div>
                                                             </div>
                                                         </fieldset>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Batal</button>
-                                                        <button type="submit" class="btn btn-primary waves-effect waves-light ">Edit</button>
+                                                        <button type="submit" class="btn btn-primary waves-effect waves-light ">Simpan</button>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Modal Edit Supplier End -->
+                                    @endforeach()
                                 </tbody>
                             </table>
                         </div>

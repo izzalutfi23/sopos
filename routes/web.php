@@ -43,6 +43,9 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 	Route::get('/dashboard/unit/{unitmodel}', 'Unitcontroller@destroy');
 	// Item
 	Route::get('/dashboard/item', 'Itemcontroller@index');
+	Route::post('/dashboard/item', 'Itemcontroller@store');
+	Route::patch('/dashboard/item/{itemmodel}', 'Itemcontroller@update');
+	Route::get('/dashboard/item/{itemmodel}', 'Itemcontroller@destroy');
 	// Stock In
 	Route::get('/dashboard/stockin', 'Stockincontroller@index');
 	// Stock Out
