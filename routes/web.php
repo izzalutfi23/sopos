@@ -43,6 +43,10 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 	Route::get('/dashboard/unit/{unitmodel}', 'Unitcontroller@destroy');
 	// Item
 	Route::get('/dashboard/item', 'Itemcontroller@index');
+	// Stock In
+	Route::get('/dashboard/stockin', 'Stockincontroller@index');
+	// Stock Out
+	Route::get('/dashboard/stockout', 'Stockoutcontroller@index');
 });
 
 // Kasir

@@ -1,5 +1,5 @@
 @extends('admin/layout/main')
-@section('title', 'Item - Online Poin of Sales')
+@section('title', 'Stock In - Online Poin of Sales')
 @section('container')
 <div class="page-wrapper">
     <!-- Page-header start -->
@@ -8,8 +8,8 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Item</h4>
-                        <span>Halaman untuk menampung data item</span>
+                        <h4>Stock In</h4>
+                        <span>Halaman untuk menampung data stockin</span>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                         </li>
                         <li class="breadcrumb-item"><a href="#!">Dashboard</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">Item</a>
+                        <li class="breadcrumb-item"><a href="#!">Stockin</a>
                         </li>
                     </ul>
                 </div>
@@ -49,7 +49,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-lg-6">
-                                <h4>Data Item</h4>
+                                <h4>Data Supplier</h4>
                             </div>
                             <div class="col-lg-6">
                                 <div class="btn btn-primary float-right" data-toggle="modal" data-target="#tambah"><i class="feather icon-plus"></i>Tambah</div>
@@ -59,7 +59,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Tambah Data Item</h4>
+                                                <h4 class="modal-title">Tambah Data Supplier</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -74,6 +74,30 @@
                                                             </div>
                                                             <div class="col-sm-12">
                                                                 <input name="nama_suplier" type="text" class=" form-control" required="required">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label class="block">No Hp *</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <input name="no_hp" type="number" class=" form-control" required="required">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label class="block">Alamat *</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <textarea class="form-control" name="alamat" required="required"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label class="block">Deskripsi</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <textarea class="form-control" name="deskripsi"></textarea>
                                                             </div>
                                                         </div>
                                                     </fieldset>

@@ -206,19 +206,19 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="pcoded-hasmenu">
+                                <li class="pcoded-hasmenu {{ (request()->segment(2) == 'stockin' || request()->segment(2) == 'stockout') ? 'active pcoded-trigger' : '' }}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span>
                                         <span class="pcoded-mtext">Transaksi</span>
                                     </a>
                                     <ul class="pcoded-submenu">
-                                        <li class="active">
-                                            <a href="index-1.htm">
+                                        <li class="{{ (request()->segment(2) == 'stockin') ? 'active' : '' }}">
+                                            <a href="{{url('/dashboard/stockin')}}">
                                                 <span class="pcoded-mtext">Stock In</span>
                                             </a>
                                         </li>
-                                        <li class="">
-                                            <a href="dashboard-crm.htm">
+                                        <li class="{{ (request()->segment(2) == 'stockout') ? 'active' : '' }}">
+                                            <a href="{{url('/dashboard/stockout')}}">
                                                 <span class="pcoded-mtext">Stock Out</span>
                                             </a>
                                         </li>
