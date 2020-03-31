@@ -59,7 +59,7 @@
                     <form class="md-float-material form-material" action="{{url('/postlogin')}}" method="post">
                         @csrf
                         <div class="text-center">
-                            <img src="{{asset('assets\images\logo.png')}}" alt="logo.png">
+                            <img width="200px" height="50px" src="{{asset('assets\images\sps.png')}}" alt="logo.png">
                         </div>
                         <div class="auth-box card">
                             <div class="card-block">

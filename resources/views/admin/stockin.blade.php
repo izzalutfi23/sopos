@@ -70,34 +70,44 @@
                                                     <fieldset>
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
-                                                                <label class="block">Nama Supplier *</label>
+                                                                <label class="block">Produk *</label>
+                                                            </div>
+                                                            <div class="col-sm-8 col-lg-12">
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control">
+                                                                     <span class="input-group-addon" data-toggle="modal" data-target="#item" style="margin-top: 0;"><i class="feather icon-search" style="color: #FFF;"></i></span>
+
+                                                                     <!-- Modal Pilih Item -->
+                                                                     <div class="modal fade" id="item" role="dialog">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h4 class="modal-title">Edit Data Supplier</h4>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    Conten
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Batal</button>
+                                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light ">Edit</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                     <!-- Modal Pilih Item Enb -->
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label class="block">Nama Produk *</label>
                                                             </div>
                                                             <div class="col-sm-12">
                                                                 <input name="nama_suplier" type="text" class=" form-control" required="required">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <label class="block">No Hp *</label>
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <input name="no_hp" type="number" class=" form-control" required="required">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <label class="block">Alamat *</label>
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <textarea class="form-control" name="alamat" required="required"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <label class="block">Deskripsi</label>
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <textarea class="form-control" name="deskripsi"></textarea>
                                                             </div>
                                                         </div>
                                                     </fieldset>
