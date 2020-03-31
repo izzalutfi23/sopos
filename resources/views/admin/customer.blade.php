@@ -52,28 +52,31 @@
                                 <h4>Data Customer</h4>
                             </div>
                             <div class="col-lg-6">
-                                <div class="btn btn-primary float-right" data-toggle="modal" data-target="#tambah"><i class="feather icon-plus"></i>Tambah</div>
-                                
+                                <div class="btn btn-primary float-right" data-toggle="modal" data-target="#tambah"><i
+                                        class="feather icon-plus"></i>Tambah</div>
+
                                 <!-- Modal Tambah Supplier -->
                                 <div class="modal fade" id="tambah" tabindex="-1" role="dialog">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Tambah Data Customer</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
                                                 <form action="{{url('/dashboard/customer')}}" method="post">
-                                                @csrf
+                                                    @csrf
                                                     <fieldset>
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
                                                                 <label class="block">Nama Customer *</label>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <input name="nama_customer" type="text" class=" form-control" required="required">
+                                                                <input name="nama_customer" type="text"
+                                                                    class=" form-control" required="required">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -84,13 +87,15 @@
                                                                 <div class="form-radio">
                                                                     <div class="radio radio-inline">
                                                                         <label>
-                                                                            <input type="radio" name="j_kel" value="L" required="required">
+                                                                            <input type="radio" name="j_kel" value="L"
+                                                                                required="required">
                                                                             <i class="helper"></i>Laki-laki
                                                                         </label>
                                                                     </div>
                                                                     <div class="radio radio-inline">
                                                                         <label>
-                                                                            <input type="radio" name="j_kel" value="P" required="required">
+                                                                            <input type="radio" name="j_kel" value="P"
+                                                                                required="required">
                                                                             <i class="helper"></i>Perempuan
                                                                         </label>
                                                                     </div>
@@ -102,7 +107,8 @@
                                                                 <label class="block">No Hp *</label>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <input name="no_hp" type="number" class=" form-control" required="required">
+                                                                <input name="no_hp" type="number" class=" form-control"
+                                                                    required="required">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -110,14 +116,17 @@
                                                                 <label class="block">Alamat *</label>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <textarea class="form-control" name="alamat" required="required"></textarea>
+                                                                <textarea class="form-control" name="alamat"
+                                                                    required="required"></textarea>
                                                             </div>
                                                         </div>
                                                     </fieldset>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Batal</button>
-                                                <button type="submit" class="btn btn-primary waves-effect waves-light ">Simpan</button>
+                                                <button type="button" class="btn btn-default waves-effect "
+                                                    data-dismiss="modal">Batal</button>
+                                                <button type="submit"
+                                                    class="btn btn-primary waves-effect waves-light ">Simpan</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -151,8 +160,12 @@
                                         <td>{{$data->no_hp}}</td>
                                         <td>{{$data->alamat}}</td>
                                         <td align="center">
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit{{$data->id}}"><i class="feather icon-edit" style="padding: 0; margin: 0;"></i></button>
-                                            <a href="{{url('/dashboard/customer/'.$data->id)}}" class="sweet-1"><button class="btn btn-danger"><i class="feather icon-trash" style="padding: 0; margin: 0;"></i></button></a>
+                                            <button class="btn btn-primary" data-toggle="modal"
+                                                data-target="#edit{{$data->id}}"><i class="feather icon-edit"
+                                                    style="padding: 0; margin: 0;"></i></button>
+                                            <a href="{{url('/dashboard/customer/'.$data->id)}}" class="sweet-1"><button
+                                                    class="btn btn-danger"><i class="feather icon-trash"
+                                                        style="padding: 0; margin: 0;"></i></button></a>
                                         </td>
                                     </tr>
                                     <!-- Modal Edit Supplier -->
@@ -161,12 +174,14 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">Edit Data Customer</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{url('/dashboard/customer/'.$data->id)}}" method="post">
+                                                    <form action="{{url('/dashboard/customer/'.$data->id)}}"
+                                                        method="post">
                                                         @csrf
                                                         @method('patch')
                                                         <fieldset>
@@ -175,7 +190,9 @@
                                                                     <label class="block">Nama Customer *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <input name="nama_customer" type="text" class=" form-control" value="{{$data->nama_customer}}">
+                                                                    <input name="nama_customer" type="text"
+                                                                        class=" form-control"
+                                                                        value="{{$data->nama_customer}}">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -186,13 +203,17 @@
                                                                     <div class="form-radio">
                                                                         <div class="radio radio-inline">
                                                                             <label>
-                                                                                <input type="radio" name="j_kel" value="L" @if($data->j_kel == 'L') checked="checked" @endif>
+                                                                                <input type="radio" name="j_kel"
+                                                                                    value="L" @if($data->j_kel == 'L')
+                                                                                checked="checked" @endif>
                                                                                 <i class="helper"></i>Laki-laki
                                                                             </label>
                                                                         </div>
                                                                         <div class="radio radio-inline">
                                                                             <label>
-                                                                                <input type="radio" name="j_kel" value="P" @if($data->j_kel == 'P') checked="checked" @endif>
+                                                                                <input type="radio" name="j_kel"
+                                                                                    value="P" @if($data->j_kel == 'P')
+                                                                                checked="checked" @endif>
                                                                                 <i class="helper"></i>Perempuan
                                                                             </label>
                                                                         </div>
@@ -204,7 +225,8 @@
                                                                     <label class="block">No Hp *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <input name="no_hp" type="number" class=" form-control" value="{{$data->no_hp}}">
+                                                                    <input name="no_hp" type="number"
+                                                                        class=" form-control" value="{{$data->no_hp}}">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -212,14 +234,17 @@
                                                                     <label class="block">Alamat *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <textarea class="form-control" name="alamat">{{$data->alamat}}</textarea>
+                                                                    <textarea class="form-control"
+                                                                        name="alamat">{{$data->alamat}}</textarea>
                                                                 </div>
                                                             </div>
                                                         </fieldset>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Batal</button>
-                                                        <button type="submit" class="btn btn-primary waves-effect waves-light ">Edit</button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default waves-effect "
+                                                        data-dismiss="modal">Batal</button>
+                                                    <button type="submit"
+                                                        class="btn btn-primary waves-effect waves-light ">Edit</button>
                                                     </form>
                                                 </div>
                                             </div>
