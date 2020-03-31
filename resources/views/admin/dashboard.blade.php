@@ -20,7 +20,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
+                        <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update :
+                            2:15 am</p>
                     </div>
                 </div>
             </div>
@@ -38,7 +39,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
+                        <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update :
+                            2:15 am</p>
                     </div>
                 </div>
             </div>
@@ -56,7 +58,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
+                        <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update :
+                            2:15 am</p>
                     </div>
                 </div>
             </div>
@@ -74,7 +77,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
+                        <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update :
+                            2:15 am</p>
                     </div>
                 </div>
             </div>
@@ -85,7 +89,9 @@
                 <div class="card">
                     <div class="card-header">
                         <h5>Sales Analytics</h5>
-                        <span class="text-muted">For more details about usage, please refer <a href="https://www.amcharts.com/online-store/" target="_blank">amCharts</a> licences.</span>
+                        <span class="text-muted">For more details about usage, please refer <a
+                                href="https://www.amcharts.com/online-store/" target="_blank">amCharts</a>
+                            licences.</span>
                         <div class="card-header-right">
                             <ul class="list-unstyled card-option">
                                 <li><i class="feather icon-maximize full-card"></i></li>
