@@ -52,21 +52,22 @@
                                 <h4>Data Supplier</h4>
                             </div>
                             <div class="col-lg-6">
-                                <div class="btn btn-primary float-right" data-toggle="modal" data-target="#tambah"><i class="feather icon-plus"></i>Tambah</div>
-                                
+                                <div class="btn btn-primary float-right" data-toggle="modal" data-target="#multi"><i
+                                        class="feather icon-plus"></i>Tambah</div>
+
                                 <!-- Modal Tambah Supplier -->
-                                <div class="modal fade" id="tambah" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
+                                <div class="modal fade" id="multi">
+                                    <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Tambah Data Supplier</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
+                                                <h4 class="modal-title">Tambah Data Stock In</h4>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">×</button>
                                             </div>
+                                            <div class="container"></div>
                                             <div class="modal-body">
                                                 <form action="{{url('/dashboard/supplier')}}" method="post">
-                                                @csrf
+                                                    @csrf
                                                     <fieldset>
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
@@ -75,29 +76,11 @@
                                                             <div class="col-sm-8 col-lg-12">
                                                                 <div class="input-group">
                                                                     <input type="text" class="form-control">
-                                                                     <span class="input-group-addon" data-toggle="modal" data-target="#item" style="margin-top: 0;"><i class="feather icon-search" style="color: #FFF;"></i></span>
-
-                                                                     <!-- Modal Pilih Item -->
-                                                                     <div class="modal fade" id="item" role="dialog">
-                                                                        <div class="modal-dialog" role="document">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <h4 class="modal-title">Edit Data Supplier</h4>
-                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                        <span aria-hidden="true">&times;</span>
-                                                                                    </button>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    Conten
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Batal</button>
-                                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light ">Edit</button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                     <!-- Modal Pilih Item Enb -->
+                                                                    <span class="input-group-addon" data-toggle="modal"
+                                                                        data-target="#item" style="margin-top: 0;"><i
+                                                                            class="feather icon-search"
+                                                                            style="color: #FFF;"></i>
+                                                                    </span>
 
                                                                 </div>
                                                             </div>
@@ -107,20 +90,68 @@
                                                                 <label class="block">Nama Produk *</label>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <input name="nama_suplier" type="text" class=" form-control" required="required">
+                                                                <input name="nama_suplier" type="text"
+                                                                    class=" form-control" required="required">
                                                             </div>
                                                         </div>
                                                     </fieldset>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Batal</button>
-                                                <button type="submit" class="btn btn-primary waves-effect waves-light ">Simpan</button>
+                                                <button type="button" class="btn btn-default waves-effect "
+                                                    data-dismiss="modal">Batal</button>
+                                                <button type="submit"
+                                                    class="btn btn-primary waves-effect waves-light ">Simpan</button>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Modal Tambah Supplier End -->
+                                <!-- Modal pilih item -->
+                                <div class="modal fade" id="item">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Pilih Item</h4>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">×</button>
+                                            </div>
+                                            <div class="container"></div>
+                                            <div class="modal-body">
+                                                <div class="dt-responsive table-responsive">
+                                                    <table id="simpletable"
+                                                        class="table table-striped table-bordered nowrap">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>No</th>
+                                                                <th>Kode</th>
+                                                                <th>Nama Produk</th>
+                                                                <th>Kategori</th>
+                                                                <th>Satuan</th>
+                                                                <th>Harga</th>
+                                                                <th>Stok</th>
+                                                                <th>Diskon</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>ok</td>
+                                                                <td>ok</td>
+                                                                <td>ok</td>
+                                                                <td>ok</td>
+                                                                <td>ok</td>
+                                                                <td>ok</td>
+                                                                <td>ok</td>
+                                                                <td>ok</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal pilih item end -->
+                                <!-- Modal Tambah Supplier end -->
 
                             </div>
                         </div>
@@ -146,8 +177,12 @@
                                         <td>text</td>
                                         <td>text</td>
                                         <td align="center">
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit"><i class="feather icon-edit" style="padding: 0; margin: 0;"></i></button>
-                                            <a href="{{url('/dashboard/supplier')}}" class="sweet-1"><button class="btn btn-danger"><i class="feather icon-trash" style="padding: 0; margin: 0;"></i></button></a>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit"><i
+                                                    class="feather icon-edit"
+                                                    style="padding: 0; margin: 0;"></i></button>
+                                            <a href="{{url('/dashboard/supplier')}}" class="sweet-1"><button
+                                                    class="btn btn-danger"><i class="feather icon-trash"
+                                                        style="padding: 0; margin: 0;"></i></button></a>
                                         </td>
                                     </tr>
 
@@ -157,21 +192,23 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">Edit Data Supplier</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <form action="{{url('/dashboard/supplier')}}" method="post">
-                                                    @csrf
-                                                    @method('patch')
+                                                        @csrf
+                                                        @method('patch')
                                                         <fieldset>
                                                             <div class="form-group row">
                                                                 <div class="col-sm-12">
                                                                     <label class="block">Nama Supplier *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <input name="nama_suplier" type="text" class=" form-control" value="">
+                                                                    <input name="nama_suplier" type="text"
+                                                                        class=" form-control" value="">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -179,7 +216,8 @@
                                                                     <label for="email-2" class="block">No Hp *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <input name="no_hp" type="number" class=" form-control" value="">
+                                                                    <input name="no_hp" type="number"
+                                                                        class=" form-control" value="">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -187,7 +225,8 @@
                                                                     <label class="block">Alamat *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <textarea class="form-control" name="alamat"></textarea>
+                                                                    <textarea class="form-control"
+                                                                        name="alamat"></textarea>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -195,14 +234,17 @@
                                                                     <label class="block">Deskripsi</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <textarea class="form-control" name="deskripsi"></textarea>
+                                                                    <textarea class="form-control"
+                                                                        name="deskripsi"></textarea>
                                                                 </div>
                                                             </div>
                                                         </fieldset>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Batal</button>
-                                                        <button type="submit" class="btn btn-primary waves-effect waves-light ">Edit</button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default waves-effect "
+                                                        data-dismiss="modal">Batal</button>
+                                                    <button type="submit"
+                                                        class="btn btn-primary waves-effect waves-light ">Edit</button>
                                                     </form>
                                                 </div>
                                             </div>
