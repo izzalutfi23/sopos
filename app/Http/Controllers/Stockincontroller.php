@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Stockinmodel;
+use App\Itemmodel;
+use App\Suppliermodel;
 use Illuminate\Http\Request;
 
 class Stockincontroller extends Controller
@@ -14,7 +16,13 @@ class Stockincontroller extends Controller
      */
     public function index()
     {
-        return view('admin/stockin');
+        $supplier = Suppliermodel::all();
+        $item = Itemmodel::all();
+        $data = array(
+            'item' => $item,
+            'supplier' => $supplier
+        );
+        return view('admin/stockin', $data);
     }
 
     /**

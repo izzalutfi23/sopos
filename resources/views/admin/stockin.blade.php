@@ -64,7 +64,6 @@
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-hidden="true">×</button>
                                             </div>
-                                            <div class="container"></div>
                                             <div class="modal-body">
                                                 <form action="{{url('/dashboard/supplier')}}" method="post">
                                                     @csrf
@@ -75,23 +74,45 @@
                                                             </div>
                                                             <div class="col-sm-8 col-lg-12">
                                                                 <div class="input-group">
-                                                                    <input type="text" class="form-control">
+                                                                    <input type="hidden" name="id_produk" id="item_id">
+                                                                    <input type="text" readonly name="nama_produk"
+                                                                        id="product_name" class="form-control">
                                                                     <span class="input-group-addon" data-toggle="modal"
                                                                         data-target="#item" style="margin-top: 0;"><i
                                                                             class="feather icon-search"
                                                                             style="color: #FFF;"></i>
                                                                     </span>
-
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
-                                                                <label class="block">Nama Produk *</label>
+                                                                <label class="block">Nama Supplier *</label>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <input name="nama_suplier" type="text"
-                                                                    class=" form-control" required="required">
+                                                                <select name="id_supplier" class="form-control">
+                                                                    @foreach($supplier as $sup)
+                                                                    <option value="{{$sup->id}}">{{$sup->nama_suplier}}
+                                                                    </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label class="block">Stok/Jumlah</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <input name="qty" type="number" class=" form-control"
+                                                                    required="required">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label class="block">Foto Bukti (jika ada)</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <input name="foto" type="file" class=" form-control">
                                                             </div>
                                                         </div>
                                                     </fieldset>
@@ -129,20 +150,26 @@
                                                                 <th>Satuan</th>
                                                                 <th>Harga</th>
                                                                 <th>Stok</th>
-                                                                <th>Diskon</th>
+                                                                <th>Aksi</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            @foreach($item as $ditem)
                                                             <tr>
-                                                                <td>ok</td>
-                                                                <td>ok</td>
-                                                                <td>ok</td>
-                                                                <td>ok</td>
-                                                                <td>ok</td>
-                                                                <td>ok</td>
-                                                                <td>ok</td>
-                                                                <td>ok</td>
+                                                                <td>{{$loop->iteration}}</td>
+                                                                <td>{{$ditem->kode_produk}}</td>
+                                                                <td>{{$ditem->nama_produk}}</td>
+                                                                <td>{{$ditem->kategori->nama_kategori}}</td>
+                                                                <td>{{$ditem->unit->nama_unit}}</td>
+                                                                <td>Rp {{number_format($ditem->harga)}}</td>
+                                                                <td>{{$ditem->stok}}</td>
+                                                                <td>
+                                                                    <button class="btn btn-primary" id="select"
+                                                                        data-id="{{$ditem->id}}"
+                                                                        data-namaproduk="{{$ditem->nama_produk}}">Pilih</button>
+                                                                </td>
                                                             </tr>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>
