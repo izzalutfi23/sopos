@@ -10,6 +10,13 @@
 	        $('#item').modal('toggle');
 	    });
 
+	    $(document).on('click', '#selectedit', function () {
+	        var item_id = $(this).data('idedit');
+	        var nama_produk = $(this).data('namaprodukedit');
+	        $('#item_idedit').val(item_id);
+	        $('#product_nameedit').val(nama_produk);
+	    });
+
 	    // Modal sukses hapus
 	    const flashData = $('.flash-data').data('flashdata');
 

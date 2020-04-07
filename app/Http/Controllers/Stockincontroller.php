@@ -16,9 +16,11 @@ class Stockincontroller extends Controller
      */
     public function index()
     {
+        $stockin = Stockinmodel::all();
         $supplier = Suppliermodel::all();
         $item = Itemmodel::all();
         $data = array(
+            'stockin' => $stockin,
             'item' => $item,
             'supplier' => $supplier
         );
@@ -43,7 +45,27 @@ class Stockincontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->hasFile('foto')){
+            $request->file('foto')->move('foto/', $request->file('foto')->getClientOriginalName());
+            $nama_file = $request->file('foto')->getClientOriginalName();
+            Stockinmodel::create([
+                'id_produk' => $request->id_produk,
+                'id_supplier' => $request->id_supplier,
+                'qty' => $request->qty,
+                'foto' => $nama_file
+            ]);
+        }
+        else{
+            Stockinmodel::create([
+                'id_produk' => $request->id_produk,
+                'id_supplier' => $request->id_supplier,
+                'qty' => $request->qty
+            ]);
+        }
+
+        Itemmodel::where('id', $request->id_produk)->increment('stok', $request->qty);
+
+        return redirect('/dashboard/stockin')->with('status', '1 Data berhasil ditambahkan');
     }
 
     /**
