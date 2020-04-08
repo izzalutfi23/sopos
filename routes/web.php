@@ -49,6 +49,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 	// Stock In
 	Route::get('/dashboard/stockin', 'Stockincontroller@index');
 	Route::post('/dashboard/stockin', 'Stockincontroller@store');
+	Route::get('/dashboard/stockin/{stockinmodel}', 'Stockincontroller@destroy');
 	// Stock Out
 	Route::get('/dashboard/stockout', 'Stockoutcontroller@index');
 });

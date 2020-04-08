@@ -110,6 +110,11 @@ class Stockincontroller extends Controller
      */
     public function destroy(Stockinmodel $stockinmodel)
     {
-        //
+        // Menghapus jumlah stok barang ketika data stockin dihapus
+        Itemmodel::where('id', $stockinmodel->id_produk)->decrement('stok', $stockinmodel->qty);
+        
+        Stockinmodel::destroy('id', $stockinmodel->id);
+
+        return redirect('/dashboard/stockin')->with('hapus', '1 Data item berhasil dihapus');
     }
 }

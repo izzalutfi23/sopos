@@ -201,8 +201,8 @@
                                     @foreach($stockin as $data)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$data->id_produk}}</td>
-                                        <td>{{$data->id_supplier}}</td>
+                                        <td>{{$data->produk->nama_produk}}</td>
+                                        <td>{{$data->supplier->nama_suplier}}</td>
                                         <td>{{$data->qty}}</td>
                                         <td>
                                             @if($data->foto)
@@ -211,10 +211,7 @@
                                             @endif
                                         </td>
                                         <td align="center">
-                                            <button class="btn btn-primary" data-toggle="modal"
-                                                data-target="#edit{{$data->id}}"><i class="feather icon-edit"
-                                                    style="padding: 0; margin: 0;"></i></button>
-                                            <a href="{{url('/dashboard/supplier')}}" class="sweet-1"><button
+                                            <a href="{{url('/dashboard/stockin/'.$data->id)}}" class="sweet-1"><button
                                                     class="btn btn-danger"><i class="feather icon-trash"
                                                         style="padding: 0; margin: 0;"></i></button></a>
                                         </td>
@@ -222,137 +219,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-
-                            @foreach($stockin as $de)
-                            <!-- Modal Edit Stockin -->
-                            <div class="modal fade" id="edit{{$de->id}}">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Edit Data Stock In</h4>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-hidden="true">×</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="{{url('/dashboard/stockin')}}" method="post"
-                                                enctype="multipart/form-data">
-                                                @csrf
-                                                <fieldset>
-                                                    <div class="form-group row">
-                                                        <div class="col-sm-12">
-                                                            <label class="block">Produk *</label>
-                                                        </div>
-                                                        <div class="col-sm-8 col-lg-12">
-                                                            <div class="input-group">
-                                                                <input type="hidden" name="id_produk" id="item_id">
-                                                                <input type="text" readonly name="nama_produk"
-                                                                    id="product_nameedit" class="form-control">
-                                                                <span class="input-group-addon" data-toggle="modal"
-                                                                    data-target="#item{{$de->id}}"
-                                                                    style="margin-top: 0;"><i
-                                                                        class="feather icon-search"
-                                                                        style="color: #FFF;"></i>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <div class="col-sm-12">
-                                                            <label class="block">Nama Supplier *</label>
-                                                        </div>
-                                                        <div class="col-sm-12">
-                                                            <select name="id_supplier" class="form-control">
-                                                                @foreach($supplier as $sup)
-                                                                <option value="{{$sup->id}}">
-                                                                    {{$sup->nama_suplier}}
-                                                                </option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <div class="col-sm-12">
-                                                            <label class="block">Stok/Jumlah</label>
-                                                        </div>
-                                                        <div class="col-sm-12">
-                                                            <input name="qty" type="number" class=" form-control"
-                                                                required="required">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <div class="col-sm-12">
-                                                            <label class="block">Foto Bukti (jika ada)</label>
-                                                        </div>
-                                                        <div class="col-sm-12">
-                                                            <input name="foto" type="file" class=" form-control">
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default waves-effect "
-                                                data-dismiss="modal">Batal</button>
-                                            <button type="submit"
-                                                class="btn btn-primary waves-effect waves-light ">Simpan</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Modal pilih item -->
-                            <div class="modal fade" id="item{{$de->id}}">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Pilih Item</h4>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-hidden="true">×</button>
-                                        </div>
-                                        <div class="container"></div>
-                                        <div class="modal-body">
-                                            <div class="dt-responsive table-responsive">
-                                                <table id="order-table"
-                                                    class="table table-striped table-bordered nowrap">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>No</th>
-                                                            <th>Kode</th>
-                                                            <th>Nama Produk</th>
-                                                            <th>Kategori</th>
-                                                            <th>Satuan</th>
-                                                            <th>Harga</th>
-                                                            <th>Stok</th>
-                                                            <th>Aksi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach($item as $ditem)
-                                                        <tr>
-                                                            <td>{{$loop->iteration}}</td>
-                                                            <td>{{$ditem->kode_produk}}</td>
-                                                            <td>{{$ditem->nama_produk}}</td>
-                                                            <td>{{$ditem->kategori->nama_kategori}}</td>
-                                                            <td>{{$ditem->unit->nama_unit}}</td>
-                                                            <td>Rp {{number_format($ditem->harga)}}</td>
-                                                            <td>{{$ditem->stok}}</td>
-                                                            <td>
-                                                                <button class="btn btn-primary" id="selectedit{{$de->id}}"
-                                                                    data-idedit="{{$ditem->id}}"
-                                                                    data-namaprodukedit="{{$ditem->nama_produk}}">Pilih</button>
-                                                            </td>
-                                                        </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Modal pilih item end -->
-                            <!-- Modal Edit Stockin end -->
-                            @endforeach
-
                         </div>
                     </div>
                 </div>

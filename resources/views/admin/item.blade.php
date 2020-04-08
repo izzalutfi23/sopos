@@ -163,9 +163,9 @@
                                         <td>{{$data->nama_produk}}</td>
                                         <td>{{$data->kategori->nama_kategori}}</td>
                                         <td>{{$data->unit->nama_unit}}</td>
-                                        <th>Rp {{number_format($data->harga)}}</th>
-                                        <th>{{$data->stok}}</th>
-                                        <th>{{$data->diskon}}%</th>
+                                        <td>Rp {{number_format($data->harga)}}</td>
+                                        <td>{{$data->stok}}</td>
+                                        <td>{{$data->diskon}}%</td>
                                         <td align="center">
                                             <button class="btn btn-primary" data-toggle="modal" data-target="#edit{{$data->id}}"><i class="feather icon-edit" style="padding: 0; margin: 0;"></i></button>
                                             <a href="{{url('/dashboard/item/'.$data->id)}}" class="sweet-1"><button class="btn btn-danger"><i class="feather icon-trash" style="padding: 0; margin: 0;"></i></button></a>
