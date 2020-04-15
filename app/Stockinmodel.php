@@ -17,4 +17,17 @@ class Stockinmodel extends Model
     public function supplier(){
     	return $this->belongsTo('App\Suppliermodel', 'id_supplier', 'id');
     }
+
+    public function tgl()
+    {
+    	\Carbon\Carbon::setLocale('id');
+    	return \Carbon\Carbon::parse($this->attributes['created_at'])
+    	->format('d M Y');
+    }
+
+    public function upd()
+    {
+    	return \Carbon\Carbon::parse($this->attributes['updated_at'])
+    	->diffForHumans();
+    }
 }

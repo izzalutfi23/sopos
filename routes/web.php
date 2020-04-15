@@ -52,6 +52,8 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 	Route::get('/dashboard/stockin/{stockinmodel}', 'Stockincontroller@destroy');
 	// Stock Out
 	Route::get('/dashboard/stockout', 'Stockoutcontroller@index');
+	// Penjualan
+	Route::get('/dashboard/penjualan', 'Penjualancontroller@index');
 });
 
 // Kasir

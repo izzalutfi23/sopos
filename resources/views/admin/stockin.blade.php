@@ -193,6 +193,7 @@
                                         <th>Nama Barang</th>
                                         <th>Nama Supplier</th>
                                         <th>Jumlah/Qty </th>
+                                        <th>Tanggal</th>
                                         <th>foto</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -204,6 +205,7 @@
                                         <td>{{$data->produk->nama_produk}}</td>
                                         <td>{{$data->supplier->nama_suplier}}</td>
                                         <td>{{$data->qty}}</td>
+                                        <td>{{$data->tgl()}}</td>
                                         <td>
                                             @if($data->foto)
                                             <img src="{{asset('/foto/'.$data->foto)}}" width="60px" height="70px">

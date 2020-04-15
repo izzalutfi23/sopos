@@ -224,14 +224,14 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="pcoded-hasmenu">
+                                <li class="pcoded-hasmenu {{ (request()->segment(2) == 'penjualan' || request()->segment(2) == 'laporanstock') ? 'active pcoded-trigger' : '' }}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span>
                                         <span class="pcoded-mtext">Laporan</span>
                                     </a>
                                     <ul class="pcoded-submenu">
-                                        <li class="active">
-                                            <a href="index-1.htm">
+                                        <li class="{{ (request()->segment(2) == 'penjualan') ? 'active' : '' }}">
+                                            <a href="{{url('/dashboard/penjualan')}}">
                                                 <span class="pcoded-mtext">Penjualan</span>
                                             </a>
                                         </li>
