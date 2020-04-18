@@ -77,7 +77,7 @@
                                                                 <div class="input-group">
                                                                     <input type="hidden" name="id_produk" id="item_id">
                                                                     <input type="text" readonly name="nama_produk"
-                                                                        id="product_name" class="form-control">
+                                                                        id="product_name" class="form-control" required>
                                                                     <span class="input-group-addon" data-toggle="modal"
                                                                         data-target="#item" style="margin-top: 0;"><i
                                                                             class="feather icon-search"
