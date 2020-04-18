@@ -1,5 +1,5 @@
 @extends('admin/layout/main')
-@section('title', 'Kategori - Online Poin of Sales')
+@section('title', 'Cabang Toko - Online Poin of Sales')
 @section('container')
 <div class="page-wrapper">
     <!-- Page-header start -->
@@ -8,8 +8,8 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Kategori</h4>
-                        <span>Halaman untuk menampung data kategori</span>
+                        <h4>Cabang Toko</h4>
+                        <span>Halaman untuk menampung data Cabang Toko</span>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-lg-6">
-                                <h4>Data Kategori</h4>
+                                <h4>Data Cabang Toko</h4>
                             </div>
                             <div class="col-lg-6">
                                 <div class="btn btn-primary float-right" data-toggle="modal" data-target="#tambah"><i class="feather icon-plus"></i>Tambah</div>
@@ -59,21 +59,29 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Tambah Data Kategori</h4>
+                                                <h4 class="modal-title">Tambah Data Cabang Toko</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{url('/dashboard/kategori')}}" method="post">
+                                                <form action="{{url('/dashboard/cabangtoko')}}" method="post">
                                                     @csrf
                                                     <fieldset>
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
-                                                                <label class="block">Nama Kategori *</label>
+                                                                <label class="block">Nama Cabang Toko *</label>
                                                             </div>
                                                             <div class="col-sm-12">
-                                                                <input name="nama_kategori" type="text" class=" form-control" required="required">
+                                                                <input name="nama_toko" type="text" class=" form-control" required="required">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <label class="block">Alamat Cabang Toko *</label>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <textarea name="alamat" id="alamat" cols="20" rows="5" class="form-control" required="required"></textarea>
                                                             </div>
                                                         </div>
                                                     </fieldset>
@@ -97,18 +105,22 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Kategori</th>
+                                        <th>Nama Toko</th>
+                                        <th>Alamat</th>
+                                        <th>Tanggal</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($kategori as $data)
+                                    @foreach($cabangtoko as $data)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$data->nama_kategori}}</td>
+                                        <td>{{$data->nama_toko}}</td>
+                                        <td>{{ \Illuminate\Support\Str::limit($data->alamat, 50, $end='...') }}</td>
+                                        <td>{{$data->tgl()}}</td>
                                         <td align="center">
                                             <button class="btn btn-primary" data-toggle="modal" data-target="#edit{{$data->id}}"><i class="feather icon-edit" style="padding: 0; margin: 0;"></i></button>
-                                            <a href="{{url('/dashboard/kategori/'.$data->id)}}" class="sweet-1"><button class="btn btn-danger"><i class="feather icon-trash" style="padding: 0; margin: 0;"></i></button></a>
+                                            <a href="{{url('/dashboard/cabangtoko/'.$data->id)}}" class="sweet-1"><button class="btn btn-danger"><i class="feather icon-trash" style="padding: 0; margin: 0;"></i></button></a>
                                         </td>
                                     </tr>
 
@@ -117,22 +129,30 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Edit Data Kategori</h4>
+                                                    <h4 class="modal-title">Edit Data Cabang Toko<br>{{$data->nama_toko}}</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{url('/dashboard/kategori/'.$data->id)}}" method="post">
+                                                    <form action="{{url('/dashboard/cabangtoko/'.$data->id)}}" method="post">
                                                         @csrf
                                                         @method('patch')
                                                         <fieldset>
                                                             <div class="form-group row">
                                                                 <div class="col-sm-12">
-                                                                    <label class="block">Nama Kategori *</label>
+                                                                    <label class="block">Nama Cabang *</label>
                                                                 </div>
                                                                 <div class="col-sm-12">
-                                                                    <input name="nama_kategori" type="text" class=" form-control" value="{{$data->nama_kategori}}">
+                                                                    <input name="nama_toko" type="text" class=" form-control" value="{{$data->nama_toko}}" required="required">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-12">
+                                                                    <label class="block">Alamat *</label>
+                                                                </div>
+                                                                <div class="col-sm-12">
+                                                                    <textarea name="alamat" id="alamat" cols="20" rows="5" class="form-control" required="required">{{$data->alamat}}</textarea>
                                                                 </div>
                                                             </div>
                                                         </fieldset>

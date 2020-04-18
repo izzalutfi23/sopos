@@ -242,15 +242,15 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="">
-                                    <a href="navbar-light.htm">
+                                <li class="{{ (request()->segment(2) == 'cabangtoko') ? 'active' : '' }}">
+                                    <a href="{{url('/dashboard/cabangtoko')}}">
                                         <span class="pcoded-micon"><i class="feather icon-map"></i></span>
                                         <span class="pcoded-mtext">Cabang Toko</span>
                                         <span class="pcoded-badge label label-warning">100</span>
                                     </a>
                                 </li>
                             </ul>
-                            
+
                             <div class="pcoded-navigatio-lavel">Pengaturan</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="">
@@ -272,7 +272,7 @@
                     <div class="pcoded-content">
                         <div class="pcoded-inner-content">
                             <div class="main-body">
-                                
+
 
                                 <!-- Container -->
                                 @yield('container')

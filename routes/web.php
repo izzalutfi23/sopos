@@ -51,7 +51,13 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 	Route::post('/dashboard/stockin', 'Stockincontroller@store');
 	Route::get('/dashboard/stockin/{stockinmodel}', 'Stockincontroller@destroy');
 	// Stock Out
-	Route::get('/dashboard/stockout', 'Stockoutcontroller@index');
+    Route::get('/dashboard/stockout', 'Stockoutcontroller@index');
+
+    // Cabang Toko
+    Route::get('/dashboard/cabangtoko', 'Cabangtokocontroller@index');
+    Route::post('/dashboard/cabangtoko', 'Cabangtokocontroller@store');
+    Route::patch('/dashboard/cabangtoko/{cabangtokomodel}', 'Cabangtokocontroller@update');
+	Route::get('/dashboard/cabangtoko/{cabangtokomodel}', 'Cabangtokocontroller@destroy');
 	// Penjualan
 	Route::get('/dashboard/penjualan', 'Penjualancontroller@index');
 });
