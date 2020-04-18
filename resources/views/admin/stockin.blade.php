@@ -40,6 +40,16 @@
     </div>
     @endif
     <!-- Alert Success End -->
+    <!-- Alert form nama_barang ksosong -->
+    @error('nama_produk')
+    <div class="alert alert-danger background-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="padding: 0; margin: 0;">
+            <i class="icofont icofont-close-line-circled text-white"></i>
+        </button>
+        <strong>Error!</strong> Form nama barang harus diisi!
+    </div>
+    @enderror
+    <!-- Alert form nama_barang ksosong end -->
     <!-- Page-body start -->
     <div class="page-body">
         <div class="row">

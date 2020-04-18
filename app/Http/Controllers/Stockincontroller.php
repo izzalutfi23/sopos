@@ -45,6 +45,10 @@ class Stockincontroller extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama_produk'=>'required'
+        ]);
+
         if($request->hasFile('foto')){
             $request->file('foto')->move('foto/', $request->file('foto')->getClientOriginalName());
             $nama_file = $request->file('foto')->getClientOriginalName();
