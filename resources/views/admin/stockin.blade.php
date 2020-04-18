@@ -75,9 +75,9 @@
                                                             </div>
                                                             <div class="col-sm-8 col-lg-12">
                                                                 <div class="input-group">
-                                                                    <input type="hidden" name="id_produk" id="item_id">
+                                                                    <input type="hidden" name="id_produk" id="item_id" required="required">
                                                                     <input type="text" readonly name="nama_produk"
-                                                                        id="product_name" class="form-control" required>
+                                                                        id="product_name" class="form-control" required="required">
                                                                     <span class="input-group-addon" data-toggle="modal"
                                                                         data-target="#item" style="margin-top: 0;"><i
                                                                             class="feather icon-search"
