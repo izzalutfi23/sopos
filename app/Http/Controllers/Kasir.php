@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class Kasir extends Controller
 {
     public function index(){
-    	return view('kasir/layout/main');
+    	return view('kasir/sales');
     }
 }
