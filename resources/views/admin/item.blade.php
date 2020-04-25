@@ -53,7 +53,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="btn btn-primary float-right" data-toggle="modal" data-target="#tambah"><i class="feather icon-plus"></i>Tambah</div>
-                                
+
                                 <!-- Modal Tambah Supplier -->
                                 <div class="modal fade" id="tambah" tabindex="-1" role="dialog">
                                     <div class="modal-dialog" role="document">

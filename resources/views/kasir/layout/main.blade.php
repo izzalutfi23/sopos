@@ -16,6 +16,7 @@
   <meta name="description" content="#">
   <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
   <meta name="author" content="#">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Favicon icon -->
   <link rel="icon" href="{{asset('assets\images\favicon.ico" type="image/x-icon')}}">
   <!-- Google font-->
@@ -307,6 +308,8 @@
 <script type="text/javascript" src="{{asset('assets\js\classie.js')}}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
