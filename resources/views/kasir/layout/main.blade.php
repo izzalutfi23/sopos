@@ -1,217 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>@yield('title')</title>
-    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 10]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  <!-- Meta -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="#">
-  <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
-  <meta name="author" content="#">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-  <!-- Favicon icon -->
-  <link rel="icon" href="{{asset('assets\images\favicon.ico" type="image/x-icon')}}">
-  <!-- Google font-->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
-  <!-- Required Fremwork -->
-  <link rel="stylesheet" type="text/css" href="{{asset('bower_components\bootstrap\css\bootstrap.min.css')}}">
-  <!-- sweet alert framework -->
-  <link rel="stylesheet" type="text/css" href="{{asset('bower_components\sweetalert\css\sweetalert.css')}}">
-  <!-- animation nifty modal window effects css -->
-  <link rel="stylesheet" type="text/css" href="{{asset('assets\css\component.css')}}">
-  <!-- ico font -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\icofont\css\icofont.css')}}">
-  <!-- feather Awesome -->
-  <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\feather\css\feather.css')}}">
-  <!-- Data Table Css -->
-  <link rel="stylesheet" type="text/css" href="{{asset('bower_components\datatables.net-bs4\css\dataTables.bootstrap4.min.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('assets\pages\data-table\css\buttons.dataTables.min.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('bower_components\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css')}}">
-  <!-- Style.css -->
-  <link rel="stylesheet" type="text/css" href="{{asset('assets\css\style.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('assets\css\jquery.mCustomScrollbar.css')}}">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+    <meta name="msapplication-tap-highlight" content="no">
+    <!--
+    =========================================================
+    * ArchitectUI HTML Theme Dashboard - v1.0.0
+    =========================================================
+    * Product Page: https://dashboardpack.com
+    * Copyright 2019 DashboardPack (https://dashboardpack.com)
+    * Licensed under MIT (https://github.com/DashboardPack/architectui-html-theme-free/blob/master/LICENSE)
+    =========================================================
+    * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+    <link href="{{asset('main.css')}}" rel="stylesheet">
+    <!-- <style type="text/css">
+        .scrollbar-sidebar{
+            display:none;
+        }
+    </style> -->
 </head>
 
 <body>
-    <!-- Pre-loader start -->
-    <div class="theme-loader">
-        <div class="ball-scale">
-            <div class='contain'>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+        <div class="app-header header-shadow">
+            <div class="app-header__logo">
+            <img class="img-fluid float-left" width="65%" height="25px" style="padding-left: 4%;" src="{{asset('assets\images\sps.png')}}" alt="Theme-Logo">
+                <div class="header__pane ml-auto">
+                    <div>
+                        <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
+                            data-class="closed-sidebar">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Pre-loader end -->
-    <div id="pcoded" class="pcoded">
-        <div class="pcoded-overlay-box"></div>
-        <div class="pcoded-container navbar-wrapper">
-
-            <nav class="navbar header-navbar pcoded-header">
-                <div class="navbar-wrapper">
-
-                    <div class="navbar-logo">
-                        <a class="mobile-menu" id="mobile-collapse" href="#!">
-                            <i class="feather icon-menu"></i>
-                        </a>
-                        <a href="index-1.htm">
-                            <img class="img-fluid float-left" width="65%" height="25px" style="padding-left: 4%;" src="{{asset('assets\images\sps.png')}}" alt="Theme-Logo">
-                        </a>
-                        <a class="mobile-options">
-                            <i class="feather icon-more-horizontal"></i>
-                        </a>
-                    </div>
-
-                    <div class="navbar-container container-fluid">
-                        <ul class="nav-left">
-                            <li class="header-search">
-                                <div class="main-search morphsearch-search">
-                                    <div class="input-group">
-                                        <span class="input-group-addon search-close"><i class="feather icon-x"></i></span>
-                                        <input type="text" class="form-control">
-                                        <span class="input-group-addon search-btn"><i class="feather icon-search"></i></span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#!" onclick="javascript:toggleFullScreen()">
-                                    <i class="feather icon-maximize full-screen"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav-right">
-                            <li class="user-profile header-notification">
-                                <div class="dropdown-primary dropdown">
-                                    <div class="dropdown-toggle" data-toggle="dropdown">
-                                        <img src="{{asset('assets\images\avatar-4.jpg')}}" class="img-radius" alt="User-Profile-Image">
-                                        <span>{{auth()->user()->karyawan->nama_karyawan}}</span>
-                                        <i class="feather icon-chevron-down"></i>
-                                    </div>
-                                    <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                        <li>
-                                            <a href="#!">
-                                                <i class="feather icon-settings"></i> Settings
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="user-profile.htm">
-                                                <i class="feather icon-user"></i> Profile
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="email-inbox.htm">
-                                                <i class="feather icon-mail"></i> My Messages
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="auth-lock-screen.htm">
-                                                <i class="feather icon-lock"></i> Lock Screen
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{url('/logout')}}">
-                                                <i class="feather icon-log-out"></i> Logout
-                                            </a>
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+            <div class="app-header__mobile-menu">
+                <div>
+                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
                 </div>
-            </nav>
-
-            <div class="pcoded-main-container">
-                <div class="pcoded-wrapper">
-                    <nav class="pcoded-navbar">
-                        <div class="pcoded-inner-navbar main-menu">
-                            <div class="pcoded-navigatio-lavel">Navigation</div>
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li class="{{ (request()->segment(2) == '') ? 'active' : '' }}">
-                                    <a href="{{url('/dashboard')}}">
-                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                                        <span class="pcoded-mtext">Dashboard</span>
-                                    </a>
-                                </li>
-                                <li class="pcoded-hasmenu {{ (request()->segment(2) == 'penjualan' || request()->segment(2) == 'laporanstock') ? 'active pcoded-trigger' : '' }}">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span>
-                                        <span class="pcoded-mtext">Laporan</span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class="{{ (request()->segment(2) == 'penjualan') ? 'active' : '' }}">
-                                            <a href="{{url('/dashboard/penjualan')}}">
-                                                <span class="pcoded-mtext">Penjualan</span>
-                                            </a>
-                                        </li>
-                                        <li class="">
-                                            <a href="dashboard-crm.htm">
-                                                <span class="pcoded-mtext">Stock Out/Out</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-
-                            <div class="pcoded-navigatio-lavel">Pengaturan</div>
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li class="">
-                                    <a href="#" target="_blank">
-                                        <span class="pcoded-micon"><i class="feather icon-help-circle"></i></span>
-                                        <span class="pcoded-mtext">Submit Issue</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                    <div class="pcoded-content">
-                        <div class="pcoded-inner-content">
-                            <div class="main-body">
-
-
-                                <!-- Container -->
-                                @yield('container')
-
-
-                                <div id="styleSelector">
-
+            </div>
+            <div class="app-header__menu">
+                <span>
+                    <button type="button"
+                        class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                        <span class="btn-icon-wrapper">
+                            <i class="fa fa-ellipsis-v fa-w-6"></i>
+                        </span>
+                    </button>
+                </span>
+            </div>
+            <div class="app-header__content">
+                <div class="app-header-right">
+                    <div class="header-btn-lg pr-0">
+                        <div class="widget-content p-0">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="btn-group">
+                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                            class="p-0 btn">
+                                            <img width="42" class="rounded-circle"
+                                                src="{{asset('assets/images/avatars/1.jpg')}}" alt="">
+                                            <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                        </a>
+                                        <div tabindex="-1" role="menu" aria-hidden="true"
+                                            class="dropdown-menu dropdown-menu-right">
+                                            <a href="{{url('/logout')}}"><button type="button" tabindex="0"
+                                                    class="dropdown-item">Logout</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content-left  ml-3 header-user-info">
+                                    <div class="widget-heading">
+                                        {{auth()->user()->karyawan->nama_karyawan}}
+                                    </div>
+                                    <div class="widget-subheading">
+                                        Kasir
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -219,104 +98,59 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div class="app-main">
+            <div class="app-sidebar sidebar-shadow">
+                <div class="app-header__logo">
+                    <div class="logo-src"></div>
+                    <div class="header__pane ml-auto">
+                        <div>
+                            <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
+                                data-class="closed-sidebar">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-header__mobile-menu">
+                    <div>
+                        <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="app-header__menu">
+                    <span>
+                        <button type="button"
+                            class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                            <span class="btn-icon-wrapper">
+                                <i class="fa fa-ellipsis-v fa-w-6"></i>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+                <div class="scrollbar-sidebar">
+                    <div class="app-sidebar__inner">
+                        <ul class="vertical-nav-menu">
+                            <li class="app-sidebar__heading">Kasir</li>
+                            <li>
+                                <a href="{{url('/dashboard')}}"
+                                    class="mm-active">
+                                    <i class="metismenu-icon pe-7s-cart"></i>
+                                    Transaksi
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Warning Section Starts -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 10]>
-<div class="ie-warning">
-    <h1>Warning!!</h1>
-    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-    <div class="iew-container">
-        <ul class="iew-download">
-            <li>
-                <a href="http://www.google.com/chrome/">
-                    <img src="../files/assets/images/browser/chrome.png" alt="Chrome">
-                    <div>Chrome</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.mozilla.org/en-US/firefox/new/">
-                    <img src="../files/assets/images/browser/firefox.png" alt="Firefox">
-                    <div>Firefox</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://www.opera.com">
-                    <img src="../files/assets/images/browser/opera.png" alt="Opera">
-                    <div>Opera</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.apple.com/safari/">
-                    <img src="../files/assets/images/browser/safari.png" alt="Safari">
-                    <div>Safari</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                    <img src="../files/assets/images/browser/ie.png" alt="">
-                    <div>IE (9 & above)</div>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <p>Sorry for the inconvenience!</p>
-</div>
-<![endif]-->
-<!-- Warning Section Ends -->
-<!-- Required Jquery -->
-<script data-cfasync="false" src="..\..\..\cdn-cgi\scripts\5c5dd728\cloudflare-static\email-decode.min.js"></script><script type="text/javascript" src="{{asset('bower_components\jquery\js\jquery.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('bower_components\jquery-ui\js\jquery-ui.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('bower_components\popper.js\js\popper.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('bower_components\bootstrap\js\bootstrap.min.js')}}"></script>
-<!-- jquery slimscroll js -->
-<script type="text/javascript" src="{{asset('bower_components\jquery-slimscroll\js\jquery.slimscroll.js')}}"></script>
-<!-- modernizr js -->
-<script type="text/javascript" src="{{asset('bower_components\modernizr\js\modernizr.js')}}"></script>
-<script type="text/javascript" src="{{asset('bower_components\modernizr\js\css-scrollbars.js')}}"></script>
-<!-- data-table js -->
-<script src="{{asset('bower_components\datatables.net\js\jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('bower_components\datatables.net-buttons\js\dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('assets\pages\data-table\js\jszip.min.js')}}"></script>
-<script src="{{asset('assets\pages\data-table\js\pdfmake.min.js')}}"></script>
-<script src="{{asset('assets\pages\data-table\js\vfs_fonts.js')}}"></script>
-<script src="{{asset('bower_components\datatables.net-buttons\js\buttons.print.min.js')}}"></script>
-<script src="{{asset('bower_components\datatables.net-buttons\js\buttons.html5.min.js')}}"></script>
-<script src="{{asset('bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('bower_components\datatables.net-responsive\js\dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('bower_components\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js')}}"></script>
-<!-- Chart js -->
-<script type="text/javascript" src="{{asset('bower_components\chart.js\js\Chart.js')}}"></script>
-<!-- amchart js -->
-<script src="{{asset('assets\pages\widget\amchart\amcharts.js')}}"></script>
-<script src="{{asset('assets\pages\widget\amchart\serial.js')}}"></script>
-<script src="{{asset('assets\pages\widget\amchart\light.js')}}"></script>
-<script src="{{asset('assets\js\jquery.mCustomScrollbar.concat.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets\js\SmoothScroll.js')}}"></script>
-<script src="{{asset('assets\js\pcoded.min.js')}}"></script>
-<!-- custom js -->
-<script src="{{asset('assets\js\vartical-layout.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets\pages\dashboard\custom-dashboard.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets\js\script.min.js')}}"></script>
-<script src="{{asset('assets\pages\data-table\js\data-table-custom.js')}}"></script>
-<!-- sweet alert js -->
-<script type="text/javascript" src="{{asset('bower_components\sweetalert\js\sweetalert.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets\js\modal.js')}}"></script>
-<!-- modalEffects js nifty modal window effects -->
-<script type="text/javascript" src="{{asset('assets\js\modalEffects.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets\js\classie.js')}}"></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+            @yield('container')
 
-
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-23581568-13');
-</script>
+            <script type="text/javascript" src="{{url('/assets/js/main.js')}}"></script>
 </body>
 
 </html>

@@ -58,12 +58,12 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
     Route::post('/dashboard/cabangtoko', 'Cabangtokocontroller@store');
     Route::patch('/dashboard/cabangtoko/{cabangtokomodel}', 'Cabangtokocontroller@update');
 	Route::get('/dashboard/cabangtoko/{cabangtokomodel}', 'Cabangtokocontroller@destroy');
+
 	// Penjualan
 	Route::get('/dashboard/penjualan', 'Penjualancontroller@index');
 });
 
 // Kasir
 Route::group(['middleware' => ['auth', 'checkRole:kasir']], function(){
-    Route::get('/kasir', 'Kasir@index');
-    Route::post('/kasir/process', 'Kasir@process');
+    Route::get('/kasir', 'Kasircontroller@index');
 });
