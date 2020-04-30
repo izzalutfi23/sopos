@@ -16,8 +16,10 @@ class Kasircontroller extends Controller
     public function index()
     {
         $item = Itemmodel::all();
+        $id = Kasirmodel::latest('id')->first();
         $data = array(
-            'item' => $item
+            'item' => $item,
+            'id'=>$id->id+1
         );
         return view('kasir/sales', $data);
     }

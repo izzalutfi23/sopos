@@ -76,8 +76,8 @@
             <div class="col-md-4">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <p class="text-right">Invoice <strong>TRX300420200001</strong></p>
-                        <strong class="float-right" style="font-size: 50px;">Rp 1.270.000</strong>
+                        <p class="text-right">Invoice <strong>TRX{{date('dmY').'000'.$id}}</strong></p>
+                        <strong class="float-right" style="font-size: 40px;">Rp 1.270.000</strong>
                     </div>
                 </div>
             </div>
@@ -88,8 +88,8 @@
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="table-responsive">
-                        <div class="container" style="margin-top: 10px; margin-bottom: 10px;">
-                            <table width="100%" class="table table-striped table-bordered data">
+                        <div class="container" style="margin-top: 10px; margin-bottom: 10px; padding: 0;">
+                            <table class="table table-striped table-bordered data">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -115,30 +115,14 @@
                                         <td>yf</td>
                                         <td>yf</td>
                                         <td>yf</td>
-                                        <td width="13%">
+                                        <td width="17%">
                                             <a href="{{url('/acara/edit/')}}"><button type="button"
-                                                    class="btn btn-primary btn-sm">Edit</button></a>
+                                                    class="btn btn-primary btn-sm"><i class="pe-7s-pen"></i>
+                                                    Update</button></a>
                                             <a onclick="return confirm('Data akan dihapus!')"
                                                 href="{{url('/acara/del/')}}"><button type="button"
-                                                    class="btn btn-danger btn-sm">Hapus</button></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td width="13%">
-                                            <a href="{{url('/acara/edit/')}}"><button type="button"
-                                                    class="btn btn-primary btn-sm">Edit</button></a>
-                                            <a onclick="return confirm('Data akan dihapus!')"
-                                                href="{{url('/acara/del/')}}"><button type="button"
-                                                    class="btn btn-danger btn-sm">Hapus</button></a>
+                                                    class="btn btn-danger btn-sm"><i class="pe-7s-trash"></i>
+                                                    Hapus</button></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -154,15 +138,35 @@
                 <div class="main-card mb-3 card">
                     <div class="card-body">
                         <form class="">
-                            <div class="position-relative form-group"><input name="tgl" value="01/05/2020" type="email"
-                                    class="form-control"></div>
-                            <div class="position-relative form-group"><input name="kasir" value="Lucky Arif R" readonly
-                                    type="text" class="form-control"></div>
                             <div class="position-relative form-group">
-                                <select name="" class="form-control">
-                                    <option value="umum">Umum</option>
-                                    <option value="member">Member</option>
-                                </select>
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <label class=""><strong>Subtotal</strong></label>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <input name="tgl" value="01/05/2020" type="email" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="position-relative form-group">
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <label class=""><strong>Diskon</strong></label>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <input name="tgl" value="01/05/2020" type="email" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="position-relative form-group">
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <label class=""><strong>Harga Akhir</strong></label>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <input name="tgl" value="01/05/2020" type="email" class="form-control">
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -172,12 +176,26 @@
                 <div class="main-card mb-3 card">
                     <div class="card-body">
                         <form class="">
-                            <div class="position-relative form-group"><label for="exampleEmail"
-                                    class="">Email</label><input name="email" id="exampleEmail"
-                                    placeholder="with a placeholder" type="email" class="form-control"></div>
-                            <div class="position-relative form-group"><label for="examplePassword"
-                                    class="">Password</label><input name="password" id="examplePassword"
-                                    placeholder="password placeholder" type="password" class="form-control"></div>
+                            <div class="position-relative form-group">
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <label class=""><strong>Bayar</strong></label>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <input name="tgl" value="01/05/2020" type="email" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="position-relative form-group">
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <label class=""><strong>Kembalian</strong></label>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <input name="tgl" value="01/05/2020" type="email" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -187,29 +205,31 @@
                 <div class="main-card mb-3 card">
                     <div class="card-body">
                         <form class="">
-                            <div class="position-relative form-group"><label for="exampleEmail"
-                                    class="">Email</label><input name="email" id="exampleEmail"
-                                    placeholder="with a placeholder" type="email" class="form-control"></div>
-                            <div class="position-relative form-group"><label for="examplePassword"
-                                    class="">Password</label><input name="password" id="examplePassword"
-                                    placeholder="password placeholder" type="password" class="form-control"></div>
+                            <div class="position-relative form-group">
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <label class=""><strong>Note</strong></label>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <textarea name="note" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="main-card mb-3 card">
-                    <div class="card-body">
-                        <form class="">
-                            <div class="position-relative form-group"><label for="exampleEmail"
-                                    class="">Email</label><input name="email" id="exampleEmail"
-                                    placeholder="with a placeholder" type="email" class="form-control"></div>
-                            <div class="position-relative form-group"><label for="examplePassword"
-                                    class="">Password</label><input name="password" id="examplePassword"
-                                    placeholder="password placeholder" type="password" class="form-control"></div>
-                        </form>
+                <form class="">
+                    <div class="position-relative form-group">
+                        <button class="btn btn-danger" style="border-radius: 0;"><i class="pe-7s-repeat"></i>
+                            Batal</button>
                     </div>
-                </div>
+                    <div class="position-relative form-group">
+                        <button class="btn btn-success" style="border-radius: 0;"><i class="pe-7s-paper-plane"></i>
+                            Proses Pembayaran</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
