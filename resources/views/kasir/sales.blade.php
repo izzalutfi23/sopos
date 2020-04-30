@@ -33,10 +33,16 @@
                 <div class="main-card mb-3 card">
                     <div class="card-body">
                         <form class="">
-                            <div class="position-relative form-group"><input name="email" id="exampleEmail"
-                                    placeholder="with a placeholder" type="email" class="form-control"></div>
-                            <div class="position-relative form-group"><input name="password" id="examplePassword"
-                                    placeholder="password placeholder" type="password" class="form-control"></div>
+                            <div class="position-relative form-group"><input name="tgl" value="01/05/2020" type="email"
+                                    class="form-control"></div>
+                            <div class="position-relative form-group"><input name="kasir" value="Lucky Arif R" readonly
+                                    type="text" class="form-control"></div>
+                            <div class="position-relative form-group">
+                                <select name="" class="form-control">
+                                    <option value="umum">Umum</option>
+                                    <option value="member">Member</option>
+                                </select>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -45,12 +51,15 @@
                 <div class="main-card mb-3 card">
                     <div class="card-body">
                         <form class="">
-                            <div class="position-relative form-group"><label for="exampleEmail"
-                                    class="">Email</label><input name="email" id="exampleEmail"
-                                    placeholder="with a placeholder" type="email" class="form-control"></div>
-                            <div class="position-relative form-group"><label for="examplePassword"
-                                    class="">Password</label><input name="password" id="examplePassword"
-                                    placeholder="password placeholder" type="password" class="form-control"></div>
+                            <div class="position-relative form-group"><input name="tgl" value="01/05/2020" type="email"
+                                    class="form-control"></div>
+                            <div class="position-relative form-group"><input name="kasir" value="Lucky Arif R" readonly
+                                    type="text" class="form-control"></div>
+                            <div class="position-relative form-group">
+                                <button class="btn btn-primary float-right"><i
+                                        class="pe-7s-cart">
+                                    </i>&nbspTambah</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -77,8 +86,8 @@
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="table-responsive">
-                        <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
-                            <table class="table table-striped table-bordered data">
+                        <div class="container" style="margin-top: 10px; margin-bottom: 10px;">
+                            <table width="100%" class="table table-striped table-bordered data">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -133,6 +142,70 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="main-card mb-3 card">
+                    <div class="card-body">
+                        <form class="">
+                            <div class="position-relative form-group"><input name="tgl" value="01/05/2020" type="email"
+                                    class="form-control"></div>
+                            <div class="position-relative form-group"><input name="kasir" value="Lucky Arif R" readonly
+                                    type="text" class="form-control"></div>
+                            <div class="position-relative form-group">
+                                <select name="" class="form-control">
+                                    <option value="umum">Umum</option>
+                                    <option value="member">Member</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="main-card mb-3 card">
+                    <div class="card-body">
+                        <form class="">
+                            <div class="position-relative form-group"><label for="exampleEmail"
+                                    class="">Email</label><input name="email" id="exampleEmail"
+                                    placeholder="with a placeholder" type="email" class="form-control"></div>
+                            <div class="position-relative form-group"><label for="examplePassword"
+                                    class="">Password</label><input name="password" id="examplePassword"
+                                    placeholder="password placeholder" type="password" class="form-control"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="main-card mb-3 card">
+                    <div class="card-body">
+                        <form class="">
+                            <div class="position-relative form-group"><label for="exampleEmail"
+                                    class="">Email</label><input name="email" id="exampleEmail"
+                                    placeholder="with a placeholder" type="email" class="form-control"></div>
+                            <div class="position-relative form-group"><label for="examplePassword"
+                                    class="">Password</label><input name="password" id="examplePassword"
+                                    placeholder="password placeholder" type="password" class="form-control"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="main-card mb-3 card">
+                    <div class="card-body">
+                        <form class="">
+                            <div class="position-relative form-group"><label for="exampleEmail"
+                                    class="">Email</label><input name="email" id="exampleEmail"
+                                    placeholder="with a placeholder" type="email" class="form-control"></div>
+                            <div class="position-relative form-group"><label for="examplePassword"
+                                    class="">Password</label><input name="password" id="examplePassword"
+                                    placeholder="password placeholder" type="password" class="form-control"></div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -2330,7 +2330,7 @@ pre code {
 .form-control {
     display: block;
     width: 100%;
-    height: calc(2.25rem + 2px);
+    height: calc(2.10rem + 2px);
     padding: .375rem .75rem;
     font-size: 1rem;
     font-weight: 400;
@@ -2339,8 +2339,12 @@ pre code {
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+    border-radius: 0rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    -webkit-border-radius: 0rem;
+    -moz-border-radius: 0rem;
+    -ms-border-radius: 0rem;
+    -o-border-radius: 0rem;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -5275,7 +5279,7 @@ input[type="button"].btn-block {
 
 .card-body {
     flex: 1 1 auto;
-    padding: 1.25rem
+    padding: 1rem;
 }
 
 .card-title {
@@ -11962,7 +11966,7 @@ button,
 }
 
 .app-page-title {
-    padding: 30px;
+    padding: 20px;
     margin: -30px -30px 30px;
     position: relative
 }
