@@ -50,14 +50,22 @@
             <div class="col-md-4">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <form class="">
-                            <div class="position-relative form-group"><input name="tgl" value="01/05/2020" type="email"
-                                    class="form-control"></div>
-                            <div class="position-relative form-group"><input name="kasir" value="Lucky Arif R" readonly
-                                    type="text" class="form-control"></div>
+                        <form action="">
                             <div class="position-relative form-group">
-                                <button class="btn btn-primary float-right"><i
-                                        class="pe-7s-cart">
+                                <div class="input-group">
+                                    <input type="hidden" name="id_produk" id="item_id" required="required">
+                                    <input type="text" id="product_name" class="form-control">
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                            data-target="#item"><i class="pe-7s-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="position-relative form-group">
+                                <input name="tgl" placeholder="Qty" type="email" class="form-control">
+                            </div>
+                            <div class="position-relative form-group">
+                                <button class="btn btn-primary float-right"><i class="pe-7s-cart">
                                     </i>&nbspTambah</button>
                             </div>
                         </form>
@@ -68,14 +76,8 @@
             <div class="col-md-4">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <form class="">
-                            <div class="position-relative form-group"><label for="exampleEmail"
-                                    class="">Email</label><input name="email" id="exampleEmail"
-                                    placeholder="with a placeholder" type="email" class="form-control"></div>
-                            <div class="position-relative form-group"><label for="examplePassword"
-                                    class="">Password</label><input name="password" id="examplePassword"
-                                    placeholder="password placeholder" type="password" class="form-control"></div>
-                        </form>
+                        <p class="text-right">Invoice <strong>TRX300420200001</strong></p>
+                        <strong class="float-right" style="font-size: 50px;">Rp 1.270.000</strong>
                     </div>
                 </div>
             </div>
@@ -240,63 +242,51 @@
 </div>
 @endsection()
 
-<!-- Modal dialog tambah data sekolah -->
-<div class="modal fade" id="tambahacara" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<!-- Modal pilih item -->
+<div class="modal fade" id="item">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Acara</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h4 class="modal-title">Pilih Item</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
+            <div class="container"></div>
             <div class="modal-body">
-                <form action="{{url('/acara')}}" enctype="multipart/form-data" method="post">
-                    @csrf
-                    <div class="position-relative form-group">
-                        <label class="">Nama Acara</label>
-                        <input name="acara" type="text" placeholder="Ex : Lomba Futsal" class="form-control"
-                            required="required">
-                    </div>
-                    <div class="position-relative form-group">
-                        <label class="">Deskripsi</label>
-                        <textarea name="deskripsi" class="form-control" required="required"></textarea>
-                    </div>
-                    <div class="position-relative form-group">
-                        <label class="">Tanggal</label>
-                        <input type="date" name="tanggal" required="required" class="form-control">
-                    </div>
-                    <div class="position-relative form-group">
-                        <label class="">Tempat</label>
-                        <input name="tempat" placeholder="Ex : GOR Jatidiri" type="text" class="form-control"
-                            required="required">
-
-                    </div>
-                    <div class="position-relative form-group">
-                        <label class="">Waktu</label>
-                        <input name="waktu" placeholder="Ex : 08.30" type="text" class="form-control"
-                            required="required">
-                    </div>
-                    <div class="position-relative form-group">
-                        <label class="">Jumlah Peserta</label>
-                        <input name="jml_peserta" placeholder="Ex : 30" type="number" class="form-control"
-                            required="required">
-                    </div>
-                    <div class="position-relative form-group">
-                        <label class="">Keterangan</label>
-                        <input name="keterangan" placeholder="Ex : Bersepatu" type="text" class="form-control"
-                            required="required">
-                    </div>
-                    <div class="position-relative form-group">
-                        <label class="">Foto</label>
-                        <input name="foto" type="file" class="form-control" required="required">
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Tambah</button>
-                </form>
+                <div class="dt-responsive table-responsive">
+                    <table id="example1" class="table table-striped table-bordered nowrap" style="border: none;">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kode</th>
+                                <th>Nama Produk</th>
+                                <th>Kategori</th>
+                                <th>Satuan</th>
+                                <th>Harga</th>
+                                <th>Stok</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($item as $ditem)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$ditem->kode_produk}}</td>
+                                <td>{{$ditem->nama_produk}}</td>
+                                <td>{{$ditem->kategori->nama_kategori}}</td>
+                                <td>{{$ditem->unit->nama_unit}}</td>
+                                <td>Rp {{number_format($ditem->harga)}}</td>
+                                <td>{{$ditem->stok}}</td>
+                                <td>
+                                    <button class="btn btn-primary" id="select" data-id="{{$ditem->id}}"
+                                        data-namaproduk="{{$ditem->nama_produk}}" data-dismiss="modal"
+                                        aria-hidden="true">Pilih</button>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<!-- End modal dialog -->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Kasirmodel;
+use App\Itemmodel;
 use Illuminate\Http\Request;
 
 class Kasircontroller extends Controller
@@ -14,7 +15,11 @@ class Kasircontroller extends Controller
      */
     public function index()
     {
-        return view('kasir/sales');
+        $item = Itemmodel::all();
+        $data = array(
+            'item' => $item
+        );
+        return view('kasir/sales', $data);
     }
 
     /**

@@ -22,11 +22,6 @@
     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
     <link href="{{asset('main.css')}}" rel="stylesheet">
-    <!-- <style type="text/css">
-        .scrollbar-sidebar{
-            display:none;
-        }
-    </style> -->
 </head>
 
 <body>
@@ -141,7 +136,25 @@
 
             @yield('container')
 
-            <script type="text/javascript" src="{{url('/assets/js/main.js')}}"></script>
+            <script type="text/javascript" src="{{asset('/assets/js/main.js')}}"></script>
+
+            <!-- DataTables -->
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#example1').DataTable();
+                });
+
+                $(document).on('click', '#select', function () {
+                    var item_id = $(this).data('id');
+                    var nama_produk = $(this).data('namaproduk');
+                    $('#item_id').val(item_id);
+                    $('#product_name').val(nama_produk);
+                });
+
+            </script>
 </body>
 
 </html>
