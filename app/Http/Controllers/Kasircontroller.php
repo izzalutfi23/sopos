@@ -21,7 +21,7 @@ class Kasircontroller extends Controller
         $item = Itemmodel::all();
         $id = Kasirmodel::latest('id')->first();
         $custom = Customermodel::select('nama_customer')->get();
-        $cart = Cartmodel::all();
+        $cart = Cartmodel::where('id_karyawan', auth()->user()->karyawan->id)->get();
         $data = array(
             'item' => $item,
             'id'=>$id->id+1,
@@ -47,4 +47,22 @@ class Kasircontroller extends Controller
         return redirect('/kasir');
         
     }
+
+    public function updatecart(Request $request, Cartmodel $cartmodel){
+        Itemmodel::where('id', $cartmodel->id_produk)->increment('stok', $cartmodel->qty);
+        Cartmodel::where('id', $cartmodel->id)->update([
+            'qty' => $request->qty
+        ]);
+        Itemmodel::where('id', $cartmodel->id_produk)->decrement('stok', $request->qty);
+
+        return redirect('/kasir');
+    }
+
+    public function delcart(Cartmodel $cartmodel){
+        Itemmodel::where('id', $cartmodel->id_produk)->increment('stok', $cartmodel->qty);
+        Cartmodel::destroy('id', $cartmodel->id);
+
+        return redirect('/kasir');
+    }
+
 }

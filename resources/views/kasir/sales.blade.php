@@ -29,7 +29,7 @@
         @endif
 
         <form action="{{url('/kasir/addcart')}}" method="POST">
-        @csrf
+            @csrf
             <div class="row">
                 <div class="col-md-4">
                     <div class="main-card mb-3 card">
@@ -117,11 +117,10 @@
                                         <td>0</td>
                                         <td>Rp {{number_format($c->produk->harga)}}</td>
                                         <td width="17%">
-                                            <a href="{{url('/acara/edit/')}}"><button type="button"
-                                                    class="btn btn-primary btn-sm"><i class="pe-7s-pen"></i>
-                                                    Update</button></a>
-                                            <a onclick="return confirm('Data akan dihapus!')"
-                                                href="{{url('/acara/del/')}}"><button type="button"
+                                            <button type="button" data-toggle="modal" data-target="#cart{{$c->id}}"
+                                                class="btn btn-primary btn-sm"><i class="pe-7s-pen"></i>
+                                                Update</button>
+                                            <a href="{{url('/kasir/delcart/'.$c->id)}}"><button type="button"
                                                     class="btn btn-danger btn-sm"><i class="pe-7s-trash"></i>
                                                     Hapus</button></a>
                                         </td>
@@ -312,3 +311,38 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Update Cart -->
+@foreach($cart as $ca)
+<div class="modal fade" id="cart{{$ca->id}}">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Update Keranjang</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="container"></div>
+            <div class="modal-body">
+                <form action="{{url('/kasir/editcart/'.$ca->id)}}" method="POST">
+                    @csrf
+                    @method('patch')
+                    <div class="position-relative form-group">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <label class=""><strong>Qty</strong></label>
+                            </div>
+                            <div class="col-lg-10">
+                                <input value="{{$ca->qty}}"
+                                    style="width: 100%; font-size: 18px; padding-left:3%; border-radius: 3px; border: 1px solid#aaa; height: 35px;"
+                                    type="text" name="qty">
+                                <button type="submit" class="btn btn-primary my-2"><i class="pe-7s-pen">
+                                    </i> Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
