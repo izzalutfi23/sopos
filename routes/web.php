@@ -65,5 +65,6 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 
 // Kasir
 Route::group(['middleware' => ['auth', 'checkRole:kasir']], function(){
-    Route::get('/kasir', 'Kasircontroller@index');
+	Route::get('/kasir', 'Kasircontroller@index');
+	Route::post('/kasir/addcart', 'Kasircontroller@addcart');
 });

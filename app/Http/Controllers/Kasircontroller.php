@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Kasirmodel;
 use App\Itemmodel;
+use App\Customermodel;
+use App\Cartmodel;
+
 use Illuminate\Http\Request;
 
 class Kasircontroller extends Controller
@@ -17,76 +20,31 @@ class Kasircontroller extends Controller
     {
         $item = Itemmodel::all();
         $id = Kasirmodel::latest('id')->first();
+        $custom = Customermodel::select('nama_customer')->get();
+        $cart = Cartmodel::all();
         $data = array(
             'item' => $item,
-            'id'=>$id->id+1
+            'id'=>$id->id+1,
+            'custom' => $custom,
+            'cart' => $cart
         );
         return view('kasir/sales', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function addcart(Request $produk){
+        $cart = Cartmodel::where('id_produk', $produk->id_produk)->get();
+        $tcart = $cart->count();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        if($tcart > 0){
+            Cartmodel::where('id_produk', $produk->id_produk)->increment('qty', $produk->qty);
+            Itemmodel::where('id', $produk->id_produk)->decrement('stok', $produk->qty);
+        }
+        else{
+            Cartmodel::create(['id_produk' => $produk->id_produk, 'id_karyawan' => $produk->id_karyawan, 'qty' => $produk->qty]);
+            Itemmodel::where('id', $produk->id_produk)->decrement('stok', $produk->qty);
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Kasirmodel  $kasirmodel
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Kasirmodel $kasirmodel)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Kasirmodel  $kasirmodel
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Kasirmodel $kasirmodel)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Kasirmodel  $kasirmodel
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Kasirmodel $kasirmodel)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Kasirmodel  $kasirmodel
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Kasirmodel $kasirmodel)
-    {
-        //
+        return redirect('/kasir');
+        
     }
 }

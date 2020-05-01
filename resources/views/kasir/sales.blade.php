@@ -28,29 +28,33 @@
         </div>
         @endif
 
-        <div class="row">
-            <div class="col-md-4">
-                <div class="main-card mb-3 card">
-                    <div class="card-body">
-                        <form class="">
-                            <div class="position-relative form-group"><input name="tgl" value="01/05/2020" type="email"
+        <form action="{{url('/kasir/addcart')}}" method="POST">
+        @csrf
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <div class="position-relative form-group"><input name="tgl" value="01/05/2020" type="text"
                                     class="form-control"></div>
-                            <div class="position-relative form-group"><input name="kasir" value="Lucky Arif R" readonly
-                                    type="text" class="form-control"></div>
                             <div class="position-relative form-group">
-                                <select name="" class="form-control">
+                                <input type="hidden" name="id_karyawan" value="{{auth()->user()->karyawan->id}}">
+                                <input name="kasir" value="{{auth()->user()->karyawan->nama_karyawan}}" readonly
+                                    type="text" class="form-control">
+                            </div>
+                            <div class="position-relative form-group">
+                                <select name="customer" class="form-control">
                                     <option value="umum">Umum</option>
-                                    <option value="member">Member</option>
+                                    @foreach($custom as $c)
+                                    <option value="{{$c->nama_customer}}">{{$c->nama_customer}}</option>
+                                    @endforeach
                                 </select>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="main-card mb-3 card">
-                    <div class="card-body">
-                        <form action="">
+                <div class="col-md-4">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
                             <div class="position-relative form-group">
                                 <div class="input-group">
                                     <input type="hidden" name="id_produk" id="item_id" required="required">
@@ -62,59 +66,56 @@
                                 </div>
                             </div>
                             <div class="position-relative form-group">
-                                <input name="tgl" placeholder="Qty" type="email" class="form-control">
+                                <input name="qty" value="1" type="number" class="form-control">
                             </div>
                             <div class="position-relative form-group">
-                                <button class="btn btn-primary float-right"><i class="pe-7s-cart">
+                                <button type="submit" class="btn btn-primary float-right"><i class="pe-7s-cart">
                                     </i>&nbspTambah</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="main-card mb-3 card">
-                    <div class="card-body">
-                        <p class="text-right">Invoice <strong>TRX{{date('dmY').'000'.$id}}</strong></p>
-                        <strong class="float-right" style="font-size: 40px;">Rp 1.270.000</strong>
+                <div class="col-md-4">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <p class="text-right">Invoice <strong>TRX{{date('dmY').'000'.$id}}</strong></p>
+                            <strong class="float-right" style="font-size: 40px;">Rp 1.270.000</strong>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
 
         <!-- Table -->
         <div class="row">
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="table-responsive">
-                        <div class="container" style="margin-top: 10px; margin-bottom: 10px; padding: 0;">
+                        <div class="container" style="margin-top: 10px; margin-bottom: 10px;">
                             <table class="table table-striped table-bordered data">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Acara</th>
-                                        <th>Deskripsi</th>
-                                        <th>Tanggal</th>
-                                        <th>Tempat</th>
-                                        <th>Waktu</th>
-                                        <th>Jml Peserta</th>
-                                        <th>Keterangan</th>
-                                        <th>Foto</th>
+                                        <th>#</th>
+                                        <th>Kode</th>
+                                        <th>Nama</th>
+                                        <th>Harga</th>
+                                        <th>Qty</th>
+                                        <th>Diskon</th>
+                                        <th>Total</th>
                                         <th width="13%">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($cart as $c)
                                     <tr>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td>yf</td>
-                                        <td>yf</td>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$c->produk->kode_produk}}</td>
+                                        <td>{{$c->produk->nama_produk}}</td>
+                                        <td>Rp {{number_format($c->produk->harga)}}</td>
+                                        <td>{{$c->qty}}</td>
+                                        <td>0</td>
+                                        <td>Rp {{number_format($c->produk->harga)}}</td>
                                         <td width="17%">
                                             <a href="{{url('/acara/edit/')}}"><button type="button"
                                                     class="btn btn-primary btn-sm"><i class="pe-7s-pen"></i>
@@ -125,6 +126,7 @@
                                                     Hapus</button></a>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
