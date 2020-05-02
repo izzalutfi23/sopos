@@ -58,7 +58,7 @@
                             <div class="position-relative form-group">
                                 <div class="input-group">
                                     <input type="hidden" name="id_produk" id="item_id" required="required">
-                                    <input type="text" id="product_name" class="form-control">
+                                    <input type="text" required id="product_name" class="form-control">
                                     <div class="input-group-append">
                                         <button type="button" class="btn btn-info" data-toggle="modal"
                                             data-target="#item"><i class="pe-7s-search"></i></button>
@@ -80,7 +80,7 @@
                     <div class="main-card mb-3 card">
                         <div class="card-body">
                             <p class="text-right">Invoice <strong>TRX{{date('dmY').'000'.$id}}</strong></p>
-                            <strong class="float-right" style="font-size: 40px;">Rp 1.270.000</strong>
+                            <strong class="float-right" style="font-size: 40px;">Rp {{number_format($total)}}</strong>
                         </div>
                     </div>
                 </div>
@@ -115,7 +115,12 @@
                                         <td>Rp {{number_format($c->produk->harga)}}</td>
                                         <td>{{$c->qty}}</td>
                                         <td>0</td>
-                                        <td>Rp {{number_format($c->produk->harga)}}</td>
+                                        <td>
+                                            @php
+                                            $sub = $c->produk->harga*$c->qty;
+                                            @endphp
+                                            Rp {{number_format($sub)}}
+                                        </td>
                                         <td width="17%">
                                             <button type="button" data-toggle="modal" data-target="#cart{{$c->id}}"
                                                 class="btn btn-primary btn-sm"><i class="pe-7s-pen"></i>

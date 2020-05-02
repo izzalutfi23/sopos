@@ -22,11 +22,24 @@ class Kasircontroller extends Controller
         $id = Kasirmodel::latest('id')->first();
         $custom = Customermodel::select('nama_customer')->get();
         $cart = Cartmodel::where('id_karyawan', auth()->user()->karyawan->id)->get();
+        $subtotal = 0;
+        $total = 0;
+        foreach($cart as $c){
+            $subtotal = $c->produk->harga*$c->qty;
+            $total = $total+$subtotal;
+        }
+        if(empty($id->id)){
+            $trx = 1;
+        }
+        else{
+            $trx = $id->id+1;
+        }
         $data = array(
             'item' => $item,
-            'id'=>$id->id+1,
+            'id'=> $trx,
             'custom' => $custom,
-            'cart' => $cart
+            'cart' => $cart,
+            'total' => $total
         );
         return view('kasir/sales', $data);
     }
