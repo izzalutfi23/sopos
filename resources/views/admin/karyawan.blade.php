@@ -42,8 +42,60 @@
     <!-- Alert Success End -->
     <!-- Page-body start -->
     <!-- Simple card start -->
-    <button type="button" class="btn btn-primary waves-effect waves-light m-r-15 my-3"><i
+    <button type="button" data-toggle="modal" data-target="#tambah" class="btn btn-primary waves-effect waves-light m-r-15 my-3"><i
             class="icofont icofont-plus m-r-5"></i>Tambah</button>
+
+    <!-- Modal Tambah Karyawan -->
+    <div class="modal fade" id="tambah" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tambah Data Cabang Toko</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{url('/dashboard/cabangtoko')}}" method="post">
+                        @csrf
+                        <fieldset>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label class="block">Nama Cabang Toko *</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <input name="nama_toko" type="text" class=" form-control" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label class="block">Nama Cabang Toko *</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <input name="nama_toko" type="text" class=" form-control" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label class="block">Nama Cabang Toko *</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <input name="nama_toko" type="text" class=" form-control" required="required">
+                                </div>
+                            </div>
+                        </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light ">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Karyawan End -->
+
 
     <div class="row simple-cards users-card">
         <div class="col-md-12 col-xl-4">
@@ -69,50 +121,6 @@
                             class="icofont icofont-trash m-r-5"></i>Hapus</button>
                     <button type="button" class="btn btn-primary waves-effect waves-light m-r-15"><i
                             class="icofont icofont-edit m-r-5"></i>Edit User/Pass</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 col-xl-4">
-            <div class="card user-card">
-                <div class="card-header-img">
-                    <img class="img-fluid img-radius" src="{{url('/assets/images/user-card/img-round4.jpg')}}"
-                        alt="card-img">
-                    <h4>Cara Stevens</h4>
-                    <h5><a href="..\..\..\cdn-cgi\l\email-protection.htm" class="__cf_email__"
-                            data-cfemail="6c0d0e0f5d5e5f2c0803010d0502420f0301">[email&#160;protected]</a>
-                    </h5>
-                    <h6>Sales Assistant</h6>
-                </div>
-
-                <p>Lorem ipsum dolor sit amet, consectet ur adipisicing elit, sed do
-                    eiusmod temp or incidi dunt ut labore et.</p>
-                <div>
-                    <button type="button" class="btn btn-primary waves-effect waves-light m-r-15"><i
-                            class="icofont icofont-plus m-r-5"></i>Follow</button>
-                    <button type="button" class="btn btn-success waves-effect waves-light"><i
-                            class="icofont icofont-user m-r-5"></i>Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 col-xl-4">
-            <div class="card user-card">
-                <div class="card-header-img">
-                    <img class="img-fluid img-radius" src="{{url('/assets/images/user-card/img-round3.jpg')}}"
-                        alt="card-img">
-                    <h4>Cedric Kelly</h4>
-                    <h5><a href="..\..\..\cdn-cgi\l\email-protection.htm" class="__cf_email__"
-                            data-cfemail="59383b3a686b6a193d3634383037773a3634">[email&#160;protected]</a>
-                    </h5>
-                    <h6>Integration Specialist</h6>
-                </div>
-
-                <p>Lorem ipsum dolor sit amet, consectet ur adipisicing elit, sed do
-                    eiusmod temp or incidi dunt ut labore et.</p>
-                <div>
-                    <button type="button" class="btn btn-primary waves-effect waves-light m-r-15"><i
-                            class="icofont icofont-plus m-r-5"></i>Follow</button>
-                    <button type="button" class="btn btn-success waves-effect waves-light"><i
-                            class="icofont icofont-user m-r-5"></i>Profile</button>
                 </div>
             </div>
         </div>
