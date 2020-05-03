@@ -12,9 +12,9 @@ class Authcontroller extends Controller
     }
 
     public function postlogin(Request $request){
-    	if(Auth::attempt(['name' => $request->name, 'password' => $request->password, 'role' => 'admin'])){
+    	if(Auth::attempt(['name' => $request->name, 'password' => $request->password, 'role' => 'admin', 'status' => 1])){
     		return redirect('/dashboard');
-    	}else if(Auth::attempt(['name' => $request->name, 'password' => $request->password, 'role' => 'kasir'])){
+    	}else if(Auth::attempt(['name' => $request->name, 'password' => $request->password, 'role' => 'kasir', 'status' => 1])){
             return redirect('/kasir');
         }
         else{
