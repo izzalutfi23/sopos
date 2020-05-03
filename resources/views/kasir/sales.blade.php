@@ -93,17 +93,17 @@
                 <div class="main-card mb-3 card">
                     <div class="table-responsive">
                         <div class="" style="margin: 13px 13px 13px 13px;">
-                            <table style="margin-right: 0px;" class="table table-striped table-bordered data">
+                            <table id="example2" style="margin-right: 0px; border: none;" class="table table-striped table-bordered data">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Kode</th>
-                                        <th>Nama</th>
-                                        <th>Harga</th>
-                                        <th>Qty</th>
-                                        <th>Diskon</th>
-                                        <th>Total</th>
-                                        <th width="13%">Aksi</th>
+                                        <th style="border-bottom: none;">#</th>
+                                        <th style="border-bottom: none;">Kode</th>
+                                        <th style="border-bottom: none;">Nama</th>
+                                        <th style="border-bottom: none;">Harga</th>
+                                        <th style="border-bottom: none;">Qty</th>
+                                        <th style="border-bottom: none;">Diskon</th>
+                                        <th style="border-bottom: none;">Total</th>
+                                        <th style="border-bottom: none;" width="13%">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>

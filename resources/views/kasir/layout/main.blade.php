@@ -145,6 +145,11 @@
             <script type="text/javascript">
                 $(document).ready(function () {
                     $('#example1').DataTable();
+                    $('#example2').DataTable({
+                        "searching": false,
+                        "paging": false,
+                        "info": false
+                    });
                 });
 
                 $(document).on('click', '#select', function () {
