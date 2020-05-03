@@ -67,6 +67,8 @@
                             class="icofont icofont-edit m-r-5"></i>Edit</button>
                     <button type="button" class="btn btn-danger waves-effect waves-light"><i
                             class="icofont icofont-trash m-r-5"></i>Hapus</button>
+                    <button type="button" class="btn btn-primary waves-effect waves-light m-r-15"><i
+                            class="icofont icofont-edit m-r-5"></i>Edit User/Pass</button>
                 </div>
             </div>
         </div>
