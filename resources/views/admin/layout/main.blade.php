@@ -253,8 +253,8 @@
 
                             <div class="pcoded-navigatio-lavel">Pengaturan</div>
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="">
-                                    <a href="http://html.codedthemes.com/Adminty/doc" target="_blank">
+                                <li class="{{ (request()->segment(2) == 'karyawan') ? 'active' : '' }}">
+                                    <a href="{{url('/dashboard/karyawan')}}">
                                         <span class="pcoded-micon"><i class="feather icon-user"></i></span>
                                         <span class="pcoded-mtext">User / Karyawan</span>
                                         <span class="pcoded-badge label label-primary">100</span>

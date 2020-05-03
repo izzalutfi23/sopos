@@ -61,6 +61,9 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 
 	// Penjualan
 	Route::get('/dashboard/penjualan', 'Penjualancontroller@index');
+
+	// Karyawan
+	Route::get('/dashboard/karyawan', 'Karyawancontroller@index');
 });
 
 // Kasir
