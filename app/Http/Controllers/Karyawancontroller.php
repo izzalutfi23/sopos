@@ -113,7 +113,32 @@ class Karyawancontroller extends Controller
      */
     public function update(Request $request, Karyawanmodel $karyawanmodel)
     {
-        //
+        if($request->hasFile('foto')){
+            $request->file('foto')->move('foto/user', $request->file('foto')->getClientOriginalName());
+            $nama_file = $request->file('foto')->getClientOriginalName();
+
+            // Update tabel karyawan
+            Karyawanmodel::where('id', $karyawanmodel->id)->update([
+                'id_cabang' => $request->id_cabang,
+                'nama_karyawan' => $request->nama_karyawan,
+                'j_kel' => $request->j_kel,
+                'no_hp' => $request->no_hp,
+                'alamat' => $request->alamat,
+                'foto' => $nama_file
+            ]);
+        }
+        else{
+            // Update tabel karyawan tanpa foto
+            Karyawanmodel::where('id', $karyawanmodel->id)->update([
+                'id_cabang' => $request->id_cabang,
+                'nama_karyawan' => $request->nama_karyawan,
+                'j_kel' => $request->j_kel,
+                'no_hp' => $request->no_hp,
+                'alamat' => $request->alamat
+            ]);
+        }
+
+        return redirect('/dashboard/karyawan')->with('status', '1 Data berhasil diubah');
     }
 
     /**

@@ -220,7 +220,8 @@
         <div class="col-md-12 col-xl-4">
             <div class="card user-card">
                 <div class="card-header-img">
-                    <img class="img-fluid img-radius" style="height: 200px;" src="{{url('/foto/user/'.$k->foto)}}" alt="card-img">
+                    <img class="img-fluid img-radius" style="height: 200px;" src="{{url('/foto/user/'.$k->foto)}}"
+                        alt="card-img">
                     <h4>{{$k->nama_karyawan}}</h4>
                     <h5><a href="..\..\..\cdn-cgi\l\email-protection.htm" class="__cf_email__"
                             data-cfemail="9afbf8f9aba8a9dafef5f7fbf3f4b4f9f5f7">{{ucwords($k->pengguna->name)}}</a>
@@ -248,9 +249,9 @@
                             <th scope="row">Jenis Kel</th>
                             <td style="text-align: right;">
                                 @if($k->j_kel == 'L')
-                                    Laki-laki
+                                Laki-laki
                                 @else
-                                    Perempuan
+                                Perempuan
                                 @endif
                             </td>
                         </tr>
@@ -262,9 +263,9 @@
                             <th scope="row">Status</th>
                             <td style="text-align: right;">
                                 @if($k->pengguna->status == 1)
-                                    Aktif
+                                Aktif
                                 @else
-                                    Tidak Aktif
+                                Tidak Aktif
                                 @endif
                             </td>
                         </tr>
@@ -273,7 +274,8 @@
 
 
                 <div style="padding: 5px;">
-                    <button type="button" class="btn btn-success waves-effect waves-light"><i
+                    <button type="button" data-toggle="modal" data-target="#edit{{$k->id}}"
+                        class="btn btn-success waves-effect waves-light"><i
                             class="icofont icofont-edit m-r-5"></i>Edit</button>
                     <button type="button" class="btn btn-danger waves-effect waves-light"><i
                             class="icofont icofont-trash m-r-5"></i>Hapus</button>
@@ -282,6 +284,106 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- Modal Edit Karyawan -->
+        <div class="modal fade" id="edit{{$k->id}}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Data Karyawan</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url('/dashboard/karyawan/'.$k->id)}}" enctype="multipart/form-data" method="post">
+                            @csrf
+                            @method('patch')
+                            <fieldset>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <label class="block">Nama *</label>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input name="nama_karyawan" type="text" class=" form-control"
+                                            value="{{$k->nama_karyawan}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <label class="block">Cabang Toko *</label>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" name="id_cabang">
+                                            @foreach($cabang as $c)
+                                            <option value="{{$c->id}}" @if($k->id_cabang == $c->id)
+                                                selected="selected" @endif>{{$c->nama_toko}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <label class="block">Jenis Kelamin *</label>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-radio">
+                                            <div class="radio radio-inline">
+                                                <label>
+                                                    <input type="radio" @if($k->j_kel == 'L')
+                                                    checked="checked" @endif name="j_kel" value="L" required="required">
+                                                    <i class="helper"></i>Laki-laki
+                                                </label>
+                                            </div>
+                                            <div class="radio radio-inline">
+                                                <label>
+                                                    <input type="radio" @if($k->j_kel == 'P')
+                                                    checked="checked" @endif name="j_kel" value="P" required="required">
+                                                    <i class="helper"></i>Perempuan
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <label class="block">No Hp *</label>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input name="no_hp" type="number" class=" form-control" value="{{$k->no_hp}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <label class="block">Alamat *</label>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <textarea name="alamat" class="form-control">{{$k->alamat}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <label class="block">Foto</label>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input name="foto" type="file" class=" form-control">
+                                    </div>
+                                </div>
+                            </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Batal</button>
+                        <button type="submit" id="simpan"
+                            class="btn btn-primary waves-effect waves-light ">Edit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Edit Karyawan End -->
+
         @endforeach
     </div>
 
