@@ -93,7 +93,8 @@
                 <div class="main-card mb-3 card">
                     <div class="table-responsive">
                         <div class="" style="margin: 13px 13px 13px 13px;">
-                            <table id="example2" style="margin-right: 0px; border: none;" class="table table-striped table-bordered data">
+                            <table id="example2" style="margin-right: 0px; border: none;"
+                                class="table table-striped table-bordered data">
                                 <thead>
                                     <tr>
                                         <th style="border-bottom: none;">#</th>
