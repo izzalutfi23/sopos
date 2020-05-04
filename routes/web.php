@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 
 	// Karyawan
 	Route::get('/dashboard/karyawan', 'Karyawancontroller@index');
+	Route::post('/dashboard/karyawan', 'Karyawancontroller@store');
 });
 
 // Kasir

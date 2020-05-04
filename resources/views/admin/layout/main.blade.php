@@ -9,34 +9,37 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <!-- Meta -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="#">
-  <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
-  <meta name="author" content="#">
-  <!-- Favicon icon -->
-  <link rel="icon" href="{{asset('assets\images\favicon.ico" type="image/x-icon')}}">
-  <!-- Google font-->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
-  <!-- Required Fremwork -->
-  <link rel="stylesheet" type="text/css" href="{{asset('bower_components\bootstrap\css\bootstrap.min.css')}}">
-  <!-- sweet alert framework -->
-  <link rel="stylesheet" type="text/css" href="{{asset('bower_components\sweetalert\css\sweetalert.css')}}">
-  <!-- animation nifty modal window effects css -->
-  <link rel="stylesheet" type="text/css" href="{{asset('assets\css\component.css')}}">
-  <!-- ico font -->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="#">
+    <meta name="keywords"
+        content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="#">
+    <!-- Favicon icon -->
+    <link rel="icon" href="{{asset('assets\images\favicon.ico" type="image/x-icon')}}">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="{{asset('bower_components\bootstrap\css\bootstrap.min.css')}}">
+    <!-- sweet alert framework -->
+    <link rel="stylesheet" type="text/css" href="{{asset('bower_components\sweetalert\css\sweetalert.css')}}">
+    <!-- animation nifty modal window effects css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\css\component.css')}}">
+    <!-- ico font -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\icofont\css\icofont.css')}}">
-  <!-- feather Awesome -->
-  <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\feather\css\feather.css')}}">
-  <!-- Data Table Css -->
-  <link rel="stylesheet" type="text/css" href="{{asset('bower_components\datatables.net-bs4\css\dataTables.bootstrap4.min.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('assets\pages\data-table\css\buttons.dataTables.min.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('bower_components\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css')}}">
-  <!-- Style.css -->
-  <link rel="stylesheet" type="text/css" href="{{asset('assets\css\style.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('assets\css\jquery.mCustomScrollbar.css')}}">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\feather\css\feather.css')}}">
+    <!-- Data Table Css -->
+    <link rel="stylesheet" type="text/css"
+        href="{{asset('bower_components\datatables.net-bs4\css\dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\pages\data-table\css\buttons.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+        href="{{asset('bower_components\datatables.net-responsive-bs4\css\responsive.bootstrap4.min.css')}}">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\css\style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\css\jquery.mCustomScrollbar.css')}}">
 </head>
 
 <body>
@@ -90,7 +93,8 @@
                             <i class="feather icon-menu"></i>
                         </a>
                         <a href="index-1.htm">
-                            <img class="img-fluid float-left" width="65%" height="25px" style="padding-left: 4%;" src="{{asset('assets\images\sps.png')}}" alt="Theme-Logo">
+                            <img class="img-fluid float-left" width="65%" height="25px" style="padding-left: 4%;"
+                                src="{{asset('assets\images\sps.png')}}" alt="Theme-Logo">
                         </a>
                         <a class="mobile-options">
                             <i class="feather icon-more-horizontal"></i>
@@ -102,9 +106,11 @@
                             <li class="header-search">
                                 <div class="main-search morphsearch-search">
                                     <div class="input-group">
-                                        <span class="input-group-addon search-close"><i class="feather icon-x"></i></span>
+                                        <span class="input-group-addon search-close"><i
+                                                class="feather icon-x"></i></span>
                                         <input type="text" class="form-control">
-                                        <span class="input-group-addon search-btn"><i class="feather icon-search"></i></span>
+                                        <span class="input-group-addon search-btn"><i
+                                                class="feather icon-search"></i></span>
                                     </div>
                                 </div>
                             </li>
@@ -118,11 +124,13 @@
                             <li class="user-profile header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
-                                        <img src="{{asset('assets\images\avatar-4.jpg')}}" class="img-radius" alt="User-Profile-Image">
+                                        <img src="{{asset('assets\images\avatar-4.jpg')}}" class="img-radius"
+                                            alt="User-Profile-Image">
                                         <span>{{auth()->user()->karyawan->nama_karyawan}}</span>
                                         <i class="feather icon-chevron-down"></i>
                                     </div>
-                                    <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                    <ul class="show-notification profile-notification dropdown-menu"
+                                        data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                         <li>
                                             <a href="#!">
                                                 <i class="feather icon-settings"></i> Settings
@@ -183,7 +191,8 @@
                                         <span class="pcoded-badge label label-danger">100</span>
                                     </a>
                                 </li>
-                                <li class="pcoded-hasmenu {{ (request()->segment(2) == 'kategori' || request()->segment(2) == 'unit' || request()->segment(2) == 'item') ? 'active pcoded-trigger' : '' }}">
+                                <li
+                                    class="pcoded-hasmenu {{ (request()->segment(2) == 'kategori' || request()->segment(2) == 'unit' || request()->segment(2) == 'item') ? 'active pcoded-trigger' : '' }}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-layers"></i></span>
                                         <span class="pcoded-mtext">Produk</span>
@@ -206,7 +215,8 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="pcoded-hasmenu {{ (request()->segment(2) == 'stockin' || request()->segment(2) == 'stockout') ? 'active pcoded-trigger' : '' }}">
+                                <li
+                                    class="pcoded-hasmenu {{ (request()->segment(2) == 'stockin' || request()->segment(2) == 'stockout') ? 'active pcoded-trigger' : '' }}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span>
                                         <span class="pcoded-mtext">Transaksi</span>
@@ -224,7 +234,8 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="pcoded-hasmenu {{ (request()->segment(2) == 'penjualan' || request()->segment(2) == 'laporanstock') ? 'active pcoded-trigger' : '' }}">
+                                <li
+                                    class="pcoded-hasmenu {{ (request()->segment(2) == 'penjualan' || request()->segment(2) == 'laporanstock') ? 'active pcoded-trigger' : '' }}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span>
                                         <span class="pcoded-mtext">Laporan</span>
@@ -332,57 +343,63 @@
     <p>Sorry for the inconvenience!</p>
 </div>
 <![endif]-->
-<!-- Warning Section Ends -->
-<!-- Required Jquery -->
-<script data-cfasync="false" src="..\..\..\cdn-cgi\scripts\5c5dd728\cloudflare-static\email-decode.min.js"></script><script type="text/javascript" src="{{asset('bower_components\jquery\js\jquery.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('bower_components\jquery-ui\js\jquery-ui.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('bower_components\popper.js\js\popper.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('bower_components\bootstrap\js\bootstrap.min.js')}}"></script>
-<!-- jquery slimscroll js -->
-<script type="text/javascript" src="{{asset('bower_components\jquery-slimscroll\js\jquery.slimscroll.js')}}"></script>
-<!-- modernizr js -->
-<script type="text/javascript" src="{{asset('bower_components\modernizr\js\modernizr.js')}}"></script>
-<script type="text/javascript" src="{{asset('bower_components\modernizr\js\css-scrollbars.js')}}"></script>
-<!-- data-table js -->
-<script src="{{asset('bower_components\datatables.net\js\jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('bower_components\datatables.net-buttons\js\dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('assets\pages\data-table\js\jszip.min.js')}}"></script>
-<script src="{{asset('assets\pages\data-table\js\pdfmake.min.js')}}"></script>
-<script src="{{asset('assets\pages\data-table\js\vfs_fonts.js')}}"></script>
-<script src="{{asset('bower_components\datatables.net-buttons\js\buttons.print.min.js')}}"></script>
-<script src="{{asset('bower_components\datatables.net-buttons\js\buttons.html5.min.js')}}"></script>
-<script src="{{asset('bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('bower_components\datatables.net-responsive\js\dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('bower_components\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js')}}"></script>
-<!-- Chart js -->
-<script type="text/javascript" src="{{asset('bower_components\chart.js\js\Chart.js')}}"></script>
-<!-- amchart js -->
-<script src="{{asset('assets\pages\widget\amchart\amcharts.js')}}"></script>
-<script src="{{asset('assets\pages\widget\amchart\serial.js')}}"></script>
-<script src="{{asset('assets\pages\widget\amchart\light.js')}}"></script>
-<script src="{{asset('assets\js\jquery.mCustomScrollbar.concat.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets\js\SmoothScroll.js')}}"></script>
-<script src="{{asset('assets\js\pcoded.min.js')}}"></script>
-<!-- custom js -->
-<script src="{{asset('assets\js\vartical-layout.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets\pages\dashboard\custom-dashboard.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets\js\script.min.js')}}"></script>
-<script src="{{asset('assets\pages\data-table\js\data-table-custom.js')}}"></script>
-<!-- sweet alert js -->
-<script type="text/javascript" src="{{asset('bower_components\sweetalert\js\sweetalert.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets\js\modal.js')}}"></script>
-<!-- modalEffects js nifty modal window effects -->
-<script type="text/javascript" src="{{asset('assets\js\modalEffects.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets\js\classie.js')}}"></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Warning Section Ends -->
+    <!-- Required Jquery -->
+    <script data-cfasync="false" src="..\..\..\cdn-cgi\scripts\5c5dd728\cloudflare-static\email-decode.min.js"></script>
+    <script type="text/javascript" src="{{asset('bower_components\jquery\js\jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bower_components\jquery-ui\js\jquery-ui.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bower_components\popper.js\js\popper.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bower_components\bootstrap\js\bootstrap.min.js')}}"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="{{asset('bower_components\jquery-slimscroll\js\jquery.slimscroll.js')}}">
+    </script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="{{asset('bower_components\modernizr\js\modernizr.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bower_components\modernizr\js\css-scrollbars.js')}}"></script>
+    <!-- data-table js -->
+    <script src="{{asset('bower_components\datatables.net\js\jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('bower_components\datatables.net-buttons\js\dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('assets\pages\data-table\js\jszip.min.js')}}"></script>
+    <script src="{{asset('assets\pages\data-table\js\pdfmake.min.js')}}"></script>
+    <script src="{{asset('assets\pages\data-table\js\vfs_fonts.js')}}"></script>
+    <script src="{{asset('bower_components\datatables.net-buttons\js\buttons.print.min.js')}}"></script>
+    <script src="{{asset('bower_components\datatables.net-buttons\js\buttons.html5.min.js')}}"></script>
+    <script src="{{asset('bower_components\datatables.net-bs4\js\dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('bower_components\datatables.net-responsive\js\dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('bower_components\datatables.net-responsive-bs4\js\responsive.bootstrap4.min.js')}}"></script>
+    <!-- Chart js -->
+    <script type="text/javascript" src="{{asset('bower_components\chart.js\js\Chart.js')}}"></script>
+    <!-- amchart js -->
+    <script src="{{asset('assets\pages\widget\amchart\amcharts.js')}}"></script>
+    <script src="{{asset('assets\pages\widget\amchart\serial.js')}}"></script>
+    <script src="{{asset('assets\pages\widget\amchart\light.js')}}"></script>
+    <script src="{{asset('assets\js\jquery.mCustomScrollbar.concat.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets\js\SmoothScroll.js')}}"></script>
+    <script src="{{asset('assets\js\pcoded.min.js')}}"></script>
+    <!-- custom js -->
+    <script src="{{asset('assets\js\vartical-layout.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets\pages\dashboard\custom-dashboard.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets\js\script.min.js')}}"></script>
+    <script src="{{asset('assets\pages\data-table\js\data-table-custom.js')}}"></script>
+    <!-- sweet alert js -->
+    <script type="text/javascript" src="{{asset('bower_components\sweetalert\js\sweetalert.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets\js\modal.js')}}"></script>
+    <!-- modalEffects js nifty modal window effects -->
+    <script type="text/javascript" src="{{asset('assets\js\modalEffects.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets\js\classie.js')}}"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-23581568-13');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+
+    </script>
 </body>
 
 </html>

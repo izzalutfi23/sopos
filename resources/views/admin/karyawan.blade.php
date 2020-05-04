@@ -42,7 +42,8 @@
     <!-- Alert Success End -->
     <!-- Page-body start -->
     <!-- Simple card start -->
-    <button type="button" data-toggle="modal" data-target="#tambah" class="btn btn-primary waves-effect waves-light m-r-15 my-3"><i
+    <button type="button" data-toggle="modal" data-target="#tambah"
+        class="btn btn-primary waves-effect waves-light m-r-15 my-3"><i
             class="icofont icofont-plus m-r-5"></i>Tambah</button>
 
     <!-- Modal Tambah Karyawan -->
@@ -56,38 +57,156 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{url('/dashboard/cabangtoko')}}" method="post">
+                    <form action="{{url('/dashboard/karyawan')}}" enctype="multipart/form-data" method="post">
                         @csrf
                         <fieldset>
                             <div class="form-group row">
                                 <div class="col-sm-12">
-                                    <label class="block">Nama Cabang Toko *</label>
+                                    <label class="block">Nama *</label>
                                 </div>
                                 <div class="col-sm-12">
-                                    <input name="nama_toko" type="text" class=" form-control" required="required">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12">
-                                    <label class="block">Nama Cabang Toko *</label>
-                                </div>
-                                <div class="col-sm-12">
-                                    <input name="nama_toko" type="text" class=" form-control" required="required">
+                                    <input name="nama_karyawan" type="text" class=" form-control" required="required">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12">
-                                    <label class="block">Nama Cabang Toko *</label>
+                                    <label class="block">Email *</label>
                                 </div>
                                 <div class="col-sm-12">
-                                    <input name="nama_toko" type="text" class=" form-control" required="required">
+                                    <input name="email" type="email" class=" form-control" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label class="block">Cabang Toko *</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <select class="form-control" name="id_cabang">
+                                        @foreach($cabang as $c)
+                                        <option value="{{$c->id}}">{{$c->nama_toko}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label class="block">Jenis Kelamin *</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-radio">
+                                        <div class="radio radio-inline">
+                                            <label>
+                                                <input type="radio" name="j_kel" value="L" required="required">
+                                                <i class="helper"></i>Laki-laki
+                                            </label>
+                                        </div>
+                                        <div class="radio radio-inline">
+                                            <label>
+                                                <input type="radio" name="j_kel" value="P" required="required">
+                                                <i class="helper"></i>Perempuan
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label class="block">No Hp *</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <input name="no_hp" type="number" class=" form-control" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label class="block">Alamat *</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <textarea name="alamat" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label class="block">Foto</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <input name="foto" type="file" class=" form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label class="block">Role *</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-radio">
+                                        <div class="radio radio-inline">
+                                            <label>
+                                                <input type="radio" name="role" value="admin" required="required">
+                                                <i class="helper"></i>Admin
+                                            </label>
+                                        </div>
+                                        <div class="radio radio-inline">
+                                            <label>
+                                                <input type="radio" name="role" value="kasir" required="required">
+                                                <i class="helper"></i>Kasir
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label class="block">Status *</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-radio">
+                                        <div class="radio radio-inline">
+                                            <label>
+                                                <input type="radio" name="status" value="1" required="required">
+                                                <i class="helper"></i>Aktif
+                                            </label>
+                                        </div>
+                                        <div class="radio radio-inline">
+                                            <label>
+                                                <input type="radio" name="status" value="0" required="required">
+                                                <i class="helper"></i>Tidak Aktif
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label class="block">Username *</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <input name="name" type="text" class=" form-control" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label class="block">Password *</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <input name="password" id="password" type="password" class=" form-control"
+                                        required="required">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label class="block">Konfirmasi Password *</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <input name="confirm_password" id="confirm_password" type="password"
+                                        class=" form-control" required="required">
+                                    <span id='message'></span>
                                 </div>
                             </div>
                         </fieldset>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary waves-effect waves-light ">Simpan</button>
+                    <button type="submit" id="simpan" class="btn btn-primary waves-effect waves-light ">Simpan</button>
                     </form>
                 </div>
             </div>
@@ -96,24 +215,63 @@
 
     <!-- Modal Tambah Karyawan End -->
 
-
     <div class="row simple-cards users-card">
+        @foreach($karyawan as $k)
         <div class="col-md-12 col-xl-4">
             <div class="card user-card">
                 <div class="card-header-img">
-                    <img class="img-fluid img-radius" src="{{url('/assets/images/user-card/img-round2.jpg')}}"
-                        alt="card-img">
-                    <h4>Michelle House</h4>
+                    <img class="img-fluid img-radius" style="height: 200px;" src="{{url('/foto/user/'.$k->foto)}}" alt="card-img">
+                    <h4>{{$k->nama_karyawan}}</h4>
                     <h5><a href="..\..\..\cdn-cgi\l\email-protection.htm" class="__cf_email__"
-                            data-cfemail="9afbf8f9aba8a9dafef5f7fbf3f4b4f9f5f7">[email&#160;protected]</a>
+                            data-cfemail="9afbf8f9aba8a9dafef5f7fbf3f4b4f9f5f7">{{ucwords($k->pengguna->name)}}</a>
                     </h5>
-                    <h6>Systems Administrator</h6>
+                    <h6>{{ucwords($k->cabang->nama_toko)}}</h6>
                 </div>
 
 
 
-                <p>Lorem ipsum dolor sit amet, consectet ur adipisicing elit, sed do
-                    eiusmod temp or incidi dunt ut labore et.</p>
+                <table class="table" style="margin: 0 auto; width: 80%; margin-top: 15px;">
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+                                Alamat
+                            </th>
+                            <td style="text-align: right;">{{$k->alamat}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                Email
+                            </th>
+                            <td style="text-align: right;">{{$k->pengguna->email}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Jenis Kel</th>
+                            <td style="text-align: right;">
+                                @if($k->j_kel == 'L')
+                                    Laki-laki
+                                @else
+                                    Perempuan
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Alamat</th>
+                            <td style="text-align: right;">{{$k->alamat}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Status</th>
+                            <td style="text-align: right;">
+                                @if($k->pengguna->status == 1)
+                                    Aktif
+                                @else
+                                    Tidak Aktif
+                                @endif
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
                 <div style="padding: 5px;">
                     <button type="button" class="btn btn-success waves-effect waves-light"><i
                             class="icofont icofont-edit m-r-5"></i>Edit</button>
@@ -124,8 +282,21 @@
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
-    <!-- end of row -->
+
     <!-- Page-body end -->
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $('#password, #confirm_password').on('keyup', function () {
+        if ($('#password').val() == $('#confirm_password').val()) {
+            $('#simpan').prop('disabled', false),
+                $('#message').html('Kombinasi Password Sesuai').css('color', 'green');
+        } else
+            $('#simpan').prop('disabled', true),
+            $('#message').html('Kombinasi Password Tidak Sesuai!!!').css('color', 'red');
+    });
+
+</script>
 @endsection()
