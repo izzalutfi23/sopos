@@ -142,7 +142,19 @@ class Karyawancontroller extends Controller
     }
 
     public function edituser(Request $request, User $user){
-        return $request;
+        if(isset($request->password)){
+            User::where('id', $user->id)->update([
+                'name' => $request->name,
+                'password' => bcrypt($request->password)
+            ]);
+        }
+        else{
+            User::where('id', $user->id)->update([
+                'name' => $request->name
+            ]);
+        }
+
+        return redirect('/dashboard/karyawan');
     }
 
     /**

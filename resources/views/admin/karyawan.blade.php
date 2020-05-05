@@ -1,6 +1,7 @@
 @extends('admin/layout/main')
 @section('title', 'Karyawan - Online Poin of Sales')
 @section('container')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <div class="page-wrapper">
     <!-- Page-header start -->
     <div class="page-header">
@@ -224,7 +225,7 @@
                         alt="card-img">
                     <h4>{{$k->nama_karyawan}}</h4>
                     <h5><a href="..\..\..\cdn-cgi\l\email-protection.htm" class="__cf_email__"
-                            data-cfemail="9afbf8f9aba8a9dafef5f7fbf3f4b4f9f5f7">{{ucwords($k->pengguna->name)}}</a>
+                            data-cfemail="9afbf8f9aba8a9dafef5f7fbf3f4b4f9f5f7">{{ucwords($k->pengguna->role)}}</a>
                     </h5>
                     <h6>{{ucwords($k->cabang->nama_toko)}}</h6>
                 </div>
@@ -280,7 +281,8 @@
                     <a href="{{url('/dashboard/karyawan/'.$k->id)}}" class="sweet-1"><button type="button"
                             class="btn btn-danger waves-effect waves-light"><i
                                 class="icofont icofont-trash m-r-5"></i>Hapus</button></a>
-                    <button type="button" data-toggle="modal" data-target="#edituser{{$k->id}}" class="btn btn-primary waves-effect waves-light m-r-15"><i
+                    <button type="button" data-toggle="modal" data-target="#edituser{{$k->id}}"
+                        class="btn btn-primary waves-effect waves-light m-r-15"><i
                             class="icofont icofont-edit m-r-5"></i>Edit User/Pass</button>
                 </div>
             </div>
@@ -396,8 +398,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{url('/dashboard/karyawan/edituser/'.$k->id_user)}}" enctype="multipart/form-data"
-                            method="post">
+                        <form action="{{url('/dashboard/karyawan/edituser/'.$k->id_user)}}"
+                            enctype="multipart/form-data" method="post">
                             @csrf
                             @method('patch')
                             <fieldset>
@@ -406,7 +408,8 @@
                                         <label class="block">Username *</label>
                                     </div>
                                     <div class="col-sm-12">
-                                        <input name="name" type="text" class=" form-control" required="required">
+                                        <input name="name" type="text" class=" form-control"
+                                            value="{{$k->pengguna->name}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -414,8 +417,7 @@
                                         <label class="block">Password *</label>
                                     </div>
                                     <div class="col-sm-12">
-                                        <input name="password" id="passworduser" type="password" class=" form-control"
-                                            required="required">
+                                        <input name="password" id="passworduser{{$k->id}}" type="password" class=" form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -423,9 +425,9 @@
                                         <label class="block">Konfirmasi Password *</label>
                                     </div>
                                     <div class="col-sm-12">
-                                        <input name="confirm_password" id="confirm_passworduser" type="password"
-                                            class=" form-control" required="required">
-                                        <span id='messageuser'></span>
+                                        <input name="confirm_password" id="confirm_passworduser{{$k->id}}" type="password"
+                                            class=" form-control">
+                                        <span id='messageuser{{$k->id}}'></span>
                                     </div>
                                 </div>
                             </fieldset>
@@ -441,12 +443,22 @@
         </div>
         <!-- Modal User Karyawan End -->
 
+        <script>
+            $('#passworduser{{$k->id}}, #confirm_passworduser{{$k->id}}').on('keyup', function () {
+                if ($('#passworduser{{$k->id}}').val() == $('#confirm_passworduser{{$k->id}}').val()) {
+                    $('#simpanuser{{$k->id}}').prop('disabled', false),
+                        $('#messageuser{{$k->id}}').html('Kombinasi Password Sesuai').css('color', 'green');
+                } else
+                    $('#simpanuser{{$k->id}}').prop('disabled', true),
+                    $('#messageuser{{$k->id}}').html('Kombinasi Password Tidak Sesuai!!!').css('color', 'red');
+            });
+
+        </script>
         @endforeach
     </div>
 
     <!-- Page-body end -->
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     $('#password, #confirm_password').on('keyup', function () {
         if ($('#password').val() == $('#confirm_password').val()) {
@@ -455,15 +467,6 @@
         } else
             $('#simpan').prop('disabled', true),
             $('#message').html('Kombinasi Password Tidak Sesuai!!!').css('color', 'red');
-    });
-
-    $('#passworduser, #confirm_passworduser').on('keyup', function () {
-        if ($('#passworduser').val() == $('#confirm_passworduser').val()) {
-            $('#simpanuser').prop('disabled', false),
-                $('#messageuser').html('Kombinasi Password Sesuai').css('color', 'green');
-        } else
-            $('#simpanuser').prop('disabled', true),
-            $('#messageuser').html('Kombinasi Password Tidak Sesuai!!!').css('color', 'red');
     });
 
 </script>
