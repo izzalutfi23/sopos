@@ -277,9 +277,10 @@
                     <button type="button" data-toggle="modal" data-target="#edit{{$k->id}}"
                         class="btn btn-success waves-effect waves-light"><i
                             class="icofont icofont-edit m-r-5"></i>Edit</button>
-                    <button type="button" class="btn btn-danger waves-effect waves-light"><i
-                            class="icofont icofont-trash m-r-5"></i>Hapus</button>
-                    <button type="button" class="btn btn-primary waves-effect waves-light m-r-15"><i
+                    <a href="{{url('/dashboard/karyawan/'.$k->id)}}" class="sweet-1"><button type="button"
+                            class="btn btn-danger waves-effect waves-light"><i
+                                class="icofont icofont-trash m-r-5"></i>Hapus</button></a>
+                    <button type="button" data-toggle="modal" data-target="#edituser{{$k->id}}" class="btn btn-primary waves-effect waves-light m-r-15"><i
                             class="icofont icofont-edit m-r-5"></i>Edit User/Pass</button>
                 </div>
             </div>
@@ -297,7 +298,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{url('/dashboard/karyawan/'.$k->id)}}" enctype="multipart/form-data" method="post">
+                        <form action="{{url('/dashboard/karyawan/'.$k->id)}}" enctype="multipart/form-data"
+                            method="post">
                             @csrf
                             @method('patch')
                             <fieldset>
@@ -381,8 +383,63 @@
                 </div>
             </div>
         </div>
-
         <!-- Modal Edit Karyawan End -->
+
+        <!-- Modal User Karyawan -->
+        <div class="modal fade" id="edituser{{$k->id}}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Username dan Password</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url('/dashboard/karyawan/edituser/'.$k->id_user)}}" enctype="multipart/form-data"
+                            method="post">
+                            @csrf
+                            @method('patch')
+                            <fieldset>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <label class="block">Username *</label>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input name="name" type="text" class=" form-control" required="required">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <label class="block">Password *</label>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input name="password" id="passworduser" type="password" class=" form-control"
+                                            required="required">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <label class="block">Konfirmasi Password *</label>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input name="confirm_password" id="confirm_passworduser" type="password"
+                                            class=" form-control" required="required">
+                                        <span id='messageuser'></span>
+                                    </div>
+                                </div>
+                            </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Batal</button>
+                        <button type="submit" id="simpanuser"
+                            class="btn btn-primary waves-effect waves-light ">Edit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal User Karyawan End -->
 
         @endforeach
     </div>
@@ -398,6 +455,15 @@
         } else
             $('#simpan').prop('disabled', true),
             $('#message').html('Kombinasi Password Tidak Sesuai!!!').css('color', 'red');
+    });
+
+    $('#passworduser, #confirm_passworduser').on('keyup', function () {
+        if ($('#passworduser').val() == $('#confirm_passworduser').val()) {
+            $('#simpanuser').prop('disabled', false),
+                $('#messageuser').html('Kombinasi Password Sesuai').css('color', 'green');
+        } else
+            $('#simpanuser').prop('disabled', true),
+            $('#messageuser').html('Kombinasi Password Tidak Sesuai!!!').css('color', 'red');
     });
 
 </script>

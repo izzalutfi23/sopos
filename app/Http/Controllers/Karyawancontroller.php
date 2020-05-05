@@ -141,6 +141,10 @@ class Karyawancontroller extends Controller
         return redirect('/dashboard/karyawan')->with('status', '1 Data berhasil diubah');
     }
 
+    public function edituser(Request $request, User $user){
+        return $request;
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -149,6 +153,8 @@ class Karyawancontroller extends Controller
      */
     public function destroy(Karyawanmodel $karyawanmodel)
     {
-        //
+        Karyawanmodel::destroy('id', $karyawanmodel->id);
+
+        return redirect('/dashboard/karyawan')->with('hapus', '1 Data item berhasil dihapus');
     }
 }

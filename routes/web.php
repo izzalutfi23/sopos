@@ -66,6 +66,8 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 	Route::get('/dashboard/karyawan', 'Karyawancontroller@index');
 	Route::post('/dashboard/karyawan', 'Karyawancontroller@store');
 	Route::patch('/dashboard/karyawan/{karyawanmodel}', 'Karyawancontroller@update');
+	Route::get('/dashboard/karyawan/{karyawanmodel}', 'Karyawancontroller@destroy');
+	Route::patch('/dashboard/karyawan/edituser/{user}', 'Karyawancontroller@edituser');
 });
 
 // Kasir

@@ -20,6 +20,7 @@
 	            type: "success"
 	        });
 	    }
+
 	    //Basic alert
 	    $('.sweet-1').on('click', function (e) {
 	        e.preventDefault();
