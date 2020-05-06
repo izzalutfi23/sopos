@@ -61,6 +61,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 
 	// Penjualan
 	Route::get('/dashboard/penjualan', 'Penjualancontroller@index');
+	Route::get('/dashboard/penjualan/{id}', 'Penjualancontroller@penjualan');
 
 	// Karyawan
 	Route::get('/dashboard/karyawan', 'Karyawancontroller@index');

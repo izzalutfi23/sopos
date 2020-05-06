@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Penjualanmodel;
+use App\Cabangtokomodel;
+
 use Illuminate\Http\Request;
 
 class Penjualancontroller extends Controller
@@ -14,70 +16,24 @@ class Penjualancontroller extends Controller
      */
     public function index()
     {
-        return view('admin/penjualan');
+        $cabang = Cabangtokomodel::select('id', 'nama_toko')->get();
+        $data = array(
+            'cabang' => $cabang
+        );
+        return view('admin/pilihcabang', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function penjualan(){
+        $idcabang = request()->segment(3);
+        $penjualan = Penjualanmodel::where('id_cabang', $idcabang)->get();
+
+        $data = array(
+            'penjualan' => $penjualan
+        );
+        
+        return view('admin/penjualan');   
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Penjualanmodel  $penjualanmodel
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Penjualanmodel $penjualanmodel)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Penjualanmodel  $penjualanmodel
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Penjualanmodel $penjualanmodel)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Penjualanmodel  $penjualanmodel
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Penjualanmodel $penjualanmodel)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Penjualanmodel  $penjualanmodel
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Penjualanmodel $penjualanmodel)
     {
         //
