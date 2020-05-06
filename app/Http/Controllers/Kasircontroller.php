@@ -6,6 +6,7 @@ use App\Kasirmodel;
 use App\Itemmodel;
 use App\Customermodel;
 use App\Cartmodel;
+use App\Cabangtokomodel;
 
 use Illuminate\Http\Request;
 
@@ -22,6 +23,7 @@ class Kasircontroller extends Controller
         $id = Kasirmodel::latest('id')->first();
         $custom = Customermodel::select('nama_customer')->get();
         $cart = Cartmodel::where('id_karyawan', auth()->user()->karyawan->id)->get();
+        $toko = Cabangtokomodel::select('nama_toko', 'alamat')->where('id', auth()->user()->karyawan->id_cabang)->get();
         $subtotal = 0;
         $total = 0;
         foreach($cart as $c){
@@ -39,7 +41,8 @@ class Kasircontroller extends Controller
             'id'=> $trx,
             'custom' => $custom,
             'cart' => $cart,
-            'total' => $total
+            'total' => $total,
+            'toko' => $toko[0]
         );
         return view('kasir/sales', $data);
     }

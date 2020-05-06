@@ -11,8 +11,8 @@
                         <i class="pe-7s-cart icon-gradient bg-mean-fruit">
                         </i>
                     </div>
-                    <div>Kasir
-                        <div class="page-title-subheading">Penjualan
+                    <div>{{$toko->nama_toko}}
+                        <div class="page-title-subheading">{{$toko->alamat}}
                         </div>
                     </div>
                 </div>
