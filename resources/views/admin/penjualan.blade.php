@@ -9,7 +9,8 @@
                 <div class="page-header-title">
                     <div class="d-inline">
                         <h4>Laporan Penjualan</h4>
-                        <span>Halaman untuk menampung data penjualan</span>
+                        <span>Halaman untuk menampung data penjualan
+                            <u><strong>{{$cabang->nama_toko}}</strong></u></span>
                     </div>
                 </div>
             </div>
@@ -52,73 +53,6 @@
                                 <h4>Data Penjualan</h4>
                             </div>
                             <div class="col-lg-6">
-                                <div class="btn btn-primary float-right" data-toggle="modal" data-target="#tambah"><i
-                                        class="feather icon-plus"></i>Tambah</div>
-
-                                <!-- Modal Tambah Supplier -->
-                                <div class="modal fade" id="tambah" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Tambah Data Supplier</h4>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="{{url('/dashboard/supplier')}}" method="post">
-                                                    @csrf
-                                                    <fieldset>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <label class="block">Nama Supplier *</label>
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <input name="nama_suplier" type="text"
-                                                                    class=" form-control" required="required">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <label class="block">No Hp *</label>
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <input name="no_hp" type="number" class=" form-control"
-                                                                    required="required">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <label class="block">Alamat *</label>
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <textarea class="form-control" name="alamat"
-                                                                    required="required"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-12">
-                                                                <label class="block">Deskripsi</label>
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <textarea class="form-control"
-                                                                    name="deskripsi"></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default waves-effect "
-                                                    data-dismiss="modal">Batal</button>
-                                                <button type="submit"
-                                                    class="btn btn-primary waves-effect waves-light ">Simpan</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Modal Tambah Supplier End -->
 
                             </div>
                         </div>
@@ -128,30 +62,41 @@
                             <table id="multi-colum-dt" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Nama Supplier</th>
-                                        <th>No HP</th>
-                                        <th>Alamat </th>
-                                        <th>Deskripsi</th>
+                                        <th>Faktur</th>
+                                        <th>Customer</th>
+                                        <th>Toko</th>
+                                        <th>Kasir </th>
+                                        <th>Tanggal</th>
+                                        <th>Total</th>
+                                        <th>Diskon</th>
+                                        <th>Harga Akhir</th>
+                                        <th>Bayar</th>
+                                        <th>Kembalian</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                    @foreach($penjualan as $p)
                                     <tr>
-                                        <td>1</td>
-                                        <td>text</td>
-                                        <td>text</td>
-                                        <td>text</td>
-                                        <td>text</td>
+                                        <td>{{$p->faktur}}</td>
+                                        <td>{{$p->customer->nama_customer}}</td>
+                                        <td>{{$p->cabang->nama_toko}}</td>
+                                        <td>{{$p->karyawan->nama_karyawan}}</td>
+                                        <td>{{$p->tgl()}}</td>
+                                        <td>Rp {{$p->total}}</td>
+                                        <td>Rp {{$p->diskon}}</td>
+                                        <td>Rp {{$p->total_akhir}}</td>
+                                        <td>Rp {{$p->bayar}}</td>
+                                        <td>Rp {{$p->kembalian}}</td>
                                         <td align="center">
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit"><i
-                                                    class="feather icon-edit"
-                                                    style="padding: 0; margin: 0;"></i></button>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit">Detail</button>
                                             <a href="{{url('/dashboard/supplier')}}" class="sweet-1"><button
                                                     class="btn btn-danger"><i class="feather icon-trash"
                                                         style="padding: 0; margin: 0;"></i></button></a>
                                         </td>
                                     </tr>
+                                    @endforeach
 
                                     <!-- Modal Edit Supplier -->
                                     <div class="modal fade" id="edit" tabindex="-1" role="dialog">

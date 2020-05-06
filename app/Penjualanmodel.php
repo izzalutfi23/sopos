@@ -11,6 +11,21 @@ class Penjualanmodel extends Model
     protected $primaryKey = 'id';
 
     public function cabang(){
-    	return $this->belongsTo('App\Kategorimodel', 'id_kategori', 'id');
+    	return $this->belongsTo('App\Cabangtokomodel', 'id_cabang', 'id');
+    }
+
+    public function customer(){
+    	return $this->belongsTo('App\Customermodel', 'id_customer', 'id');
+    }
+
+    public function karyawan(){
+    	return $this->belongsTo('App\Karyawanmodel', 'id_karyawan', 'id');
+    }
+
+    public function tgl()
+    {
+    	\Carbon\Carbon::setLocale('id');
+    	return \Carbon\Carbon::parse($this->attributes['created_at'])
+    	->format('d M Y');
     }
 }

@@ -25,13 +25,15 @@ class Penjualancontroller extends Controller
 
     public function penjualan(){
         $idcabang = request()->segment(3);
+        $cabang = Cabangtokomodel::select('nama_toko')->where('id', $idcabang)->get();
         $penjualan = Penjualanmodel::where('id_cabang', $idcabang)->get();
 
         $data = array(
-            'penjualan' => $penjualan
+            'penjualan' => $penjualan,
+            'cabang' => $cabang[0]
         );
         
-        return view('admin/penjualan');   
+        return view('admin/penjualan', $data);
     }
 
     public function destroy(Penjualanmodel $penjualanmodel)
