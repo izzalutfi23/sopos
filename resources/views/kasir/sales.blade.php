@@ -19,6 +19,7 @@
             </div>
         </div>
 
+        <div class="flash-data" data-flashdata="{{session('notif')}}"></div>
         @if (session('status'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Berhasil!</strong> {{session('status')}}.
@@ -144,14 +145,15 @@
             <div class="col-md-3">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <form class="">
+                        <form action="{{url('/kasir/prosestransaksi')}}" method="POST">
+                            @csrf
                             <div class="position-relative form-group">
                                 <div class="row">
                                     <div class="col-lg-5">
                                         <label class=""><strong>Subtotal</strong></label>
                                     </div>
                                     <div class="col-lg-7">
-                                        <input name="tgl" value="01/05/2020" type="email" class="form-control">
+                                        <input name="tgl" value="" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -161,7 +163,7 @@
                                         <label class=""><strong>Diskon</strong></label>
                                     </div>
                                     <div class="col-lg-7">
-                                        <input name="tgl" value="01/05/2020" type="email" class="form-control">
+                                        <input name="tgl" value="01/05/2020" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -171,39 +173,36 @@
                                         <label class=""><strong>Harga Akhir</strong></label>
                                     </div>
                                     <div class="col-lg-7">
-                                        <input name="tgl" value="01/05/2020" type="email" class="form-control">
+                                        <input name="tgl" value="01/05/2020" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <form class="">
-                            <div class="position-relative form-group">
-                                <div class="row">
-                                    <div class="col-lg-5">
-                                        <label class=""><strong>Bayar</strong></label>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <input name="tgl" value="01/05/2020" type="email" class="form-control">
-                                    </div>
+                        <div class="position-relative form-group">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <label class=""><strong>Bayar</strong></label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input name="tgl" value="01/05/2020" type="text" class="form-control">
                                 </div>
                             </div>
-                            <div class="position-relative form-group">
-                                <div class="row">
-                                    <div class="col-lg-5">
-                                        <label class=""><strong>Kembalian</strong></label>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <input name="tgl" value="01/05/2020" type="email" class="form-control">
-                                    </div>
+                        </div>
+                        <div class="position-relative form-group">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <label class=""><strong>Kembalian</strong></label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input name="tgl" value="01/05/2020" type="text" class="form-control">
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -211,31 +210,29 @@
             <div class="col-md-3">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <form class="">
-                            <div class="position-relative form-group">
-                                <div class="row">
-                                    <div class="col-lg-2">
-                                        <label class=""><strong>Note</strong></label>
-                                    </div>
-                                    <div class="col-lg-10">
-                                        <textarea name="note" class="form-control"></textarea>
-                                    </div>
+                        <div class="position-relative form-group">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <label class=""><strong>Note</strong></label>
+                                </div>
+                                <div class="col-lg-10">
+                                    <textarea name="note" class="form-control"></textarea>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <form class="">
-                    <div class="position-relative form-group">
-                        <button class="btn btn-danger" style="border-radius: 0;"><i class="pe-7s-repeat"></i>
-                            Batal</button>
-                    </div>
-                    <div class="position-relative form-group">
-                        <button class="btn btn-success" style="border-radius: 0;"><i class="pe-7s-paper-plane"></i>
-                            Proses Pembayaran</button>
-                    </div>
+                <div class="position-relative form-group">
+                    <button class="btn btn-danger" style="border-radius: 0;"><i class="pe-7s-repeat"></i>
+                        Batal</button>
+                </div>
+                <div class="position-relative form-group">
+                    <button type="submit" class="btn btn-success" style="border-radius: 0;"><i
+                            class="pe-7s-paper-plane"></i>
+                        Proses Pembayaran</button>
+                </div>
                 </form>
             </div>
         </div>

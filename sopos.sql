@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2020 at 04:57 PM
+-- Generation Time: May 06, 2020 at 04:08 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -41,7 +41,8 @@ CREATE TABLE `cabang_toko` (
 --
 
 INSERT INTO `cabang_toko` (`id`, `nama_toko`, `alamat`, `created_at`, `updated_at`) VALUES
-(1, 'Toko Berkah Makmur 1', 'Jl. Japerejo-Banyurip Km. 04 Desa Mlagen, Kec. Pamotan, Kab. Rembang', '2020-03-16 18:00:00', '2020-05-02 04:37:48');
+(1, 'Toko Berkah Makmur 1', 'Jl. Japerejo-Banyurip Km. 04 Desa Mlagen, Kec. Pamotan, Kab. Rembang', '2020-03-16 18:00:00', '2020-05-02 04:37:48'),
+(2, 'Toko Berkah Makmur 2', 'Pekalongan', '2020-05-04 08:13:08', '2020-05-04 08:13:08');
 
 -- --------------------------------------------------------
 
@@ -63,7 +64,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `id_produk`, `id_karyawan`, `qty`, `created_at`, `updated_at`) VALUES
-(1, 3, 4, 2, '2020-05-04 07:53:31', '2020-05-04 07:56:46');
+(3, 4, 7, 1, '2020-05-05 03:13:51', '2020-05-05 03:13:51'),
+(4, 2, 7, 3, '2020-05-05 03:14:04', '2020-05-05 05:13:23');
 
 -- --------------------------------------------------------
 
@@ -143,10 +145,9 @@ CREATE TABLE `karyawan` (
 --
 
 INSERT INTO `karyawan` (`id`, `id_user`, `id_cabang`, `nama_karyawan`, `j_kel`, `no_hp`, `alamat`, `foto`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Muhammad Izza Lutfi', 'L', '085387656785', 'Bulustalan IV', 'imground2.jpg', '2020-03-16 21:00:00', '2020-03-17 05:00:00'),
+(1, 1, 1, 'Christina Peri', 'P', '085387656785', 'Bulustalan IV', 'imground2.jpg', '2020-03-16 21:00:00', '2020-05-05 01:01:21'),
 (4, 3, 1, 'Lucky Arif R', 'L', '089787656545', 'Kota Purwodadi', 'imground3.jpg', '2020-05-25 17:00:00', '2020-05-05 17:00:00'),
-(5, 4, 1, 'Izza Lutfi', 'L', '0987654', 'Mlagen', '2.jpg', '2020-05-04 07:27:55', '2020-05-04 07:27:55'),
-(7, 6, 1, 'Rizki Noor', 'L', '098765987', 'Cilacap', 'badminton.jpg', '2020-05-04 07:55:51', '2020-05-04 07:55:51');
+(7, 6, 2, 'Rizki Noor Ichwanuddin', 'L', '098765987', 'Cilacap', 'badminton.jpg', '2020-05-04 07:55:51', '2020-05-04 08:29:59');
 
 -- --------------------------------------------------------
 
@@ -217,6 +218,8 @@ CREATE TABLE `penjualan` (
   `total` int(10) UNSIGNED NOT NULL,
   `diskon` int(10) UNSIGNED NOT NULL,
   `total_akhir` int(10) UNSIGNED NOT NULL,
+  `bayar` int(10) NOT NULL,
+  `kembalian` int(10) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -225,8 +228,8 @@ CREATE TABLE `penjualan` (
 -- Dumping data for table `penjualan`
 --
 
-INSERT INTO `penjualan` (`id`, `id_customer`, `id_cabang`, `id_karyawan`, `faktur`, `total`, `diskon`, `total_akhir`, `created_at`, `updated_at`) VALUES
-(5, 3, 1, 4, 'TRX300420200001', 10000, 0, 10000, '2020-05-18 17:00:00', '2020-05-18 17:00:00');
+INSERT INTO `penjualan` (`id`, `id_customer`, `id_cabang`, `id_karyawan`, `faktur`, `total`, `diskon`, `total_akhir`, `bayar`, `kembalian`, `created_at`, `updated_at`) VALUES
+(5, 3, 1, 4, 'TRX300420200001', 10000, 0, 10000, 0, 0, '2020-05-18 17:00:00', '2020-05-18 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -252,10 +255,10 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `id_kategori`, `id_unit`, `kode_produk`, `nama_produk`, `harga`, `stok`, `diskon`, `created_at`, `updated_at`) VALUES
-(1, 1, 4, '4567', 'Buku', 23000, 10, 0, '2020-03-26 08:50:52', '2020-05-02 04:49:47'),
-(2, 2, 1, '3456789', 'Beras', 11000, 11, 0, '2020-03-26 08:57:26', '2020-05-02 04:50:49'),
-(3, 3, 3, '4356789', 'Minyak Goreng', 15000, 8, 0, '2020-03-26 09:04:55', '2020-05-04 07:56:46'),
-(4, 1, 1, '3456789', 'Telur', 12000, 11, 0, '2020-04-30 03:53:33', '2020-05-03 06:05:53');
+(1, 1, 4, '4567', 'Buku', 23000, 10, 0, '2020-03-26 08:50:52', '2020-05-04 08:30:42'),
+(2, 2, 1, '3456789', 'Beras', 11000, 8, 0, '2020-03-26 08:57:26', '2020-05-05 05:13:23'),
+(3, 3, 3, '4356789', 'Minyak Goreng', 15000, 10, 0, '2020-03-26 09:04:55', '2020-05-04 08:03:02'),
+(4, 1, 1, '3456789', 'Telur', 12000, 10, 0, '2020-04-30 03:53:33', '2020-05-05 03:13:51');
 
 -- --------------------------------------------------------
 
@@ -374,7 +377,7 @@ INSERT INTO `users` (`id`, `role`, `status`, `name`, `email`, `email_verified_at
 (1, 'admin', '1', 'admin', 'admin@gmail.com', NULL, '$2y$10$nrnIPfe.6sw3gk4z7ihqCeWbu0CDvjVw6wZtaD/00wHZq7tAAPa0e', NULL, '2020-03-17 07:18:23', '2020-03-17 07:18:23'),
 (3, 'kasir', '1', 'kasir', 'kasir@gmail.com', NULL, '$2y$10$3rVEgD57aAYo4Rc7DgEyVOxcGSHI0eD0nNJvS6EN/I4PWfZ.LuT6u', NULL, '2020-05-01 01:32:40', '2020-05-01 01:32:40'),
 (4, 'admin', '1', 'izza', 'lutfi@gmail.com', NULL, '$2y$10$s2AXnyFdX9wchAojOhs/9uqOP4p5RNIqGS.eXq/ldS0LKy0JS0tly', NULL, '2020-05-04 07:27:55', '2020-05-04 07:27:55'),
-(6, 'kasir', '1', 'rizki', 'noor@gmail.com', NULL, '$2y$10$7NX4DmO5kG5xO/57hu2Gauxpv7ZhNd41Ofm1WXh9cHnrcvXOtA35G', NULL, '2020-05-04 07:55:51', '2020-05-04 07:55:51');
+(6, 'kasir', '1', 'rizki', 'noor@gmail.com', NULL, '$2y$10$GQuFDm8uoGsYjw82DXhBOuN/o3yEQcYA1xUdBpI1x83ZWc9nKoXX.', NULL, '2020-05-04 07:55:51', '2020-05-05 03:13:19');
 
 --
 -- Indexes for dumped tables
@@ -493,13 +496,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cabang_toko`
 --
 ALTER TABLE `cabang_toko`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -571,7 +574,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `unit`
 --
 ALTER TABLE `unit`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`

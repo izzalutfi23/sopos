@@ -22,6 +22,9 @@
     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
     <link href="{{asset('main.css')}}" rel="stylesheet">
+
+    <!-- sweet alert framework -->
+    <link rel="stylesheet" type="text/css" href="{{asset('bower_components/sweetalert/css/sweetalert.css')}}">
 </head>
 
 <body>
@@ -137,6 +140,8 @@
             @yield('container')
 
             <script type="text/javascript" src="{{asset('/assets/js/main.js')}}"></script>
+            <!-- sweet alert js -->
+            <script type="text/javascript" src="{{asset('bower_components/sweetalert/js/sweetalert.min.js')}}"></script>
 
             <!-- DataTables -->
             <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
@@ -158,6 +163,17 @@
                     $('#item_id').val(item_id);
                     $('#product_name').val(nama_produk);
                 });
+
+                // Modal sukses hapus
+                const flashData = $('.flash-data').data('flashdata');
+
+                if (flashData) {
+                    swal({
+                        title: "Berhasil",
+                        text: flashData,
+                        type: "success"
+                    });
+                }
 
             </script>
 </body>

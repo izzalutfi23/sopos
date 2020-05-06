@@ -90,79 +90,14 @@
                                         <td>Rp {{$p->bayar}}</td>
                                         <td>Rp {{$p->kembalian}}</td>
                                         <td align="center">
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit">Detail</button>
+                                            <button class="btn btn-primary" data-toggle="modal"
+                                                data-target="#edit">Detail</button>
                                             <a href="{{url('/dashboard/supplier')}}" class="sweet-1"><button
                                                     class="btn btn-danger"><i class="feather icon-trash"
                                                         style="padding: 0; margin: 0;"></i></button></a>
                                         </td>
                                     </tr>
                                     @endforeach
-
-                                    <!-- Modal Edit Supplier -->
-                                    <div class="modal fade" id="edit" tabindex="-1" role="dialog">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Edit Data Supplier</h4>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="{{url('/dashboard/supplier')}}" method="post">
-                                                        @csrf
-                                                        @method('patch')
-                                                        <fieldset>
-                                                            <div class="form-group row">
-                                                                <div class="col-sm-12">
-                                                                    <label class="block">Nama Supplier *</label>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <input name="nama_suplier" type="text"
-                                                                        class=" form-control" value="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <div class="col-sm-12">
-                                                                    <label for="email-2" class="block">No Hp *</label>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <input name="no_hp" type="number"
-                                                                        class=" form-control" value="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <div class="col-sm-12">
-                                                                    <label class="block">Alamat *</label>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <textarea class="form-control"
-                                                                        name="alamat"></textarea>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <div class="col-sm-12">
-                                                                    <label class="block">Deskripsi</label>
-                                                                </div>
-                                                                <div class="col-sm-12">
-                                                                    <textarea class="form-control"
-                                                                        name="deskripsi"></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </fieldset>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default waves-effect "
-                                                        data-dismiss="modal">Batal</button>
-                                                    <button type="submit"
-                                                        class="btn btn-primary waves-effect waves-light ">Edit</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal Edit Supplier End -->
                                 </tbody>
                             </table>
                         </div>
@@ -174,4 +109,53 @@
     </div>
     <!-- Page-body end -->
 </div>
+
+<!-- Modal Detail -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detail Pembelian</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-bordered nowrap">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode</th>
+                            <th>Item</th>
+                            <th>Qty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>3566789776545</td>
+                            <td>Kaca Pembesar Beras</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>3566789776545</td>
+                            <td>Kaca Pembesar Beras</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>3566789776545</td>
+                            <td>Kaca Pembesar Beras</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Detail End -->
+
 @endsection()

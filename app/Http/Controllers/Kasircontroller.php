@@ -78,4 +78,8 @@ class Kasircontroller extends Controller
         return redirect('/kasir');
     }
 
+    public function transaksi(){
+        return redirect('/kasir')->with('notif', 'Transaksi Berhasil');
+    }
+
 }
