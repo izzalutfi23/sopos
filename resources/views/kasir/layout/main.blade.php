@@ -191,12 +191,27 @@
                 const flashData = $('.flash-data').data('flashdata');
 
                 if (flashData) {
-                    window.open('{{url('/kasir/printinvoice')}}', '_blank');
+                    window.open('{{url('/kasir/printinvoice ')}}', '_blank');
                     swal({
                         title: "Berhasil",
                         text: flashData,
                         type: "success"
-                    })
+                    });
+                }
+
+                // Menghitung bayar kembalian
+                function startCalculate() {
+                    interval = setInterval("Calculate()", 10);
+                }
+
+                function Calculate() {
+                    var a = document.transaksi.total_akhir.value;
+                    var b = document.transaksi.bayar.value;
+                    document.transaksi.kembalian.value = (b - a);
+                }
+
+                function stopCalt() {
+                    clearInterval(interval);
                 }
 
             </script>

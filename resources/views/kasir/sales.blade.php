@@ -145,7 +145,7 @@
             <div class="col-md-3">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <form action="{{url('/kasir/prosestransaksi')}}" method="POST">
+                        <form action="{{url('/kasir/prosestransaksi')}}" name="transaksi" method="POST">
                             @csrf
                             <div class="position-relative form-group">
                                 <div class="row">
@@ -153,7 +153,8 @@
                                         <label class=""><strong>Subtotal</strong></label>
                                     </div>
                                     <div class="col-lg-7">
-                                        <input name="tgl" value="" type="text" class="form-control">
+                                        <input name="total" value="{{$total}}" type="number" readonly
+                                            class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -163,7 +164,7 @@
                                         <label class=""><strong>Diskon</strong></label>
                                     </div>
                                     <div class="col-lg-7">
-                                        <input name="tgl" value="01/05/2020" type="text" class="form-control">
+                                        <input name="diskon" value="0" type="number" readonly class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +174,8 @@
                                         <label class=""><strong>Harga Akhir</strong></label>
                                     </div>
                                     <div class="col-lg-7">
-                                        <input name="tgl" value="01/05/2020" type="text" class="form-control">
+                                        <input onfocus="startCalculate()" onblur="stopCalt()" name="total_akhir" value="{{$total}}" type="number" readonly
+                                            class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +191,7 @@
                                     <label class=""><strong>Bayar</strong></label>
                                 </div>
                                 <div class="col-lg-7">
-                                    <input name="tgl" value="01/05/2020" type="text" class="form-control">
+                                    <input onfocus="startCalculate()" onblur="stopCalt()" name="bayar" type="number" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -199,7 +201,7 @@
                                     <label class=""><strong>Kembalian</strong></label>
                                 </div>
                                 <div class="col-lg-7">
-                                    <input name="tgl" value="01/05/2020" type="text" class="form-control">
+                                    <input onfocus="startCalculate()" onblur="stopCalt()" name="kembalian" type="number" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -225,8 +227,9 @@
             </div>
             <div class="col-md-3">
                 <div class="position-relative form-group">
-                    <a href="{{url('/kasir/resetcart/'.auth()->user()->karyawan->id)}}"><button class="btn btn-danger" type="button" style="border-radius: 0;"><i class="pe-7s-repeat"></i>
-                        Batal</button></a>
+                    <a href="{{url('/kasir/resetcart/'.auth()->user()->karyawan->id)}}"><button class="btn btn-danger"
+                            type="button" style="border-radius: 0;"><i class="pe-7s-repeat"></i>
+                            Reset</button></a>
                 </div>
                 <div class="position-relative form-group">
                     <button type="submit" class="btn btn-success" style="border-radius: 0;"><i
@@ -348,4 +351,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    function startCalculate() {
+        interval = setInterval("Calculate()", 10);
+    }
+
+    function Calculate() {
+        var a = document.transaksi.total_akhir.value;
+        var b = document.transaksi.bayar.value;
+        document.form1.kembalian.value = (b - a);
+    }
+
+    function stopCalt() {
+        clearInterval(interval);
+    }
+
+</script>
 @endforeach
