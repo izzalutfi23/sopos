@@ -79,6 +79,9 @@ Route::group(['middleware' => ['auth', 'checkRole:kasir']], function(){
 	Route::get('/kasir/delcart/{cartmodel}', 'Kasircontroller@delcart');
 	Route::post('/kasir/prosestransaksi', 'Kasircontroller@transaksi');
 
+	// Reset Cart
+	Route::get('/kasir/resetcart/{idkaryawan}', 'Kasircontroller@resetcart');
+	
 	// Print
 	Route::get('/kasir/printinvoice', 'Kasircontroller@print');
 });

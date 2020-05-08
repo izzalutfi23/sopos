@@ -48,7 +48,7 @@ class Kasircontroller extends Controller
     }
 
     public function addcart(Request $produk){
-        $cart = Cartmodel::where('id_produk', $produk->id_produk)->get();
+        $cart = Cartmodel::where('id_produk', $produk->id_produk)->where('id_karyawan', $produk->id_karyawan)->get();
         $tcart = $cart->count();
 
         if($tcart > 0){
@@ -77,6 +77,20 @@ class Kasircontroller extends Controller
     public function delcart(Cartmodel $cartmodel){
         Itemmodel::where('id', $cartmodel->id_produk)->increment('stok', $cartmodel->qty);
         Cartmodel::destroy('id', $cartmodel->id);
+
+        return redirect('/kasir');
+    }
+
+    public function resetcart(){
+        $idkaryawan = request()->segment(3);
+        
+        $cart = Cartmodel::where('id_karyawan', $idkaryawan)->get();
+
+        foreach($cart as $c){
+            Itemmodel::where('id', $c->id_produk)->increment('stok', $c->qty);
+        }
+
+        Cartmodel::where('id_karyawan', $idkaryawan)->delete();
 
         return redirect('/kasir');
     }

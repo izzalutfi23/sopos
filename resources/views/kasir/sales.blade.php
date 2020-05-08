@@ -225,8 +225,8 @@
             </div>
             <div class="col-md-3">
                 <div class="position-relative form-group">
-                    <button class="btn btn-danger" style="border-radius: 0;"><i class="pe-7s-repeat"></i>
-                        Batal</button>
+                    <a href="{{url('/kasir/resetcart/'.auth()->user()->karyawan->id)}}"><button class="btn btn-danger" type="button" style="border-radius: 0;"><i class="pe-7s-repeat"></i>
+                        Batal</button></a>
                 </div>
                 <div class="position-relative form-group">
                     <button type="submit" class="btn btn-success" style="border-radius: 0;"><i
@@ -250,7 +250,7 @@
                     <ul class="nav">
                         <li class="nav-item">
                             <a href="javascript:void(0);" class="nav-link">
-                                &copy 2019 E-data PTK
+                                &copy 2020 SOPOS
                             </a>
                         </li>
                     </ul>
