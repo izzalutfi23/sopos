@@ -22,6 +22,29 @@
     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
     <link href="{{asset('main.css')}}" rel="stylesheet">
+    <style type="text/css">
+        @media print {
+            body {
+                visibility: hidden;
+            }
+
+            #printpage,
+            #printpage * {
+                visibility: visible;
+            }
+
+            #printpage {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            #btn-print {
+                display: none;
+            }
+        }
+
+    </style>
 
     <!-- sweet alert framework -->
     <link rel="stylesheet" type="text/css" href="{{asset('bower_components/sweetalert/css/sweetalert.css')}}">
@@ -168,11 +191,12 @@
                 const flashData = $('.flash-data').data('flashdata');
 
                 if (flashData) {
+                    window.open('{{url('/kasir/printinvoice')}}', '_blank');
                     swal({
                         title: "Berhasil",
                         text: flashData,
                         type: "success"
-                    });
+                    })
                 }
 
             </script>
