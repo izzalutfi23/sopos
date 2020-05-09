@@ -191,7 +191,7 @@
                 const flashData = $('.flash-data').data('flashdata');
 
                 if (flashData) {
-                    window.open('{{url('/kasir/printinvoice ')}}', '_blank');
+                    window.open('{{url('/kasir/printinvoice')}}', '_blank');
                     swal({
                         title: "Berhasil",
                         text: flashData,

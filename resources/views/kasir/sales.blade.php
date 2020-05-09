@@ -153,6 +153,7 @@
                                         <label class=""><strong>Subtotal</strong></label>
                                     </div>
                                     <div class="col-lg-7">
+                                        <input type="hidden" name="id_karyawan" value="{{auth()->user()->karyawan->id}}">
                                         <input name="total" value="{{$total}}" type="number" readonly
                                             class="form-control">
                                     </div>
@@ -232,7 +233,7 @@
                             Reset</button></a>
                 </div>
                 <div class="position-relative form-group">
-                    <button type="submit" class="btn btn-success" style="border-radius: 0;"><i
+                    <button type="submit" {{($total<1) ? 'disabled' : ''}} class="btn btn-success" style="border-radius: 0;"><i
                             class="pe-7s-paper-plane"></i>
                         Proses Pembayaran</button>
                 </div>
@@ -351,21 +352,4 @@
         </div>
     </div>
 </div>
-
-<script>
-    function startCalculate() {
-        interval = setInterval("Calculate()", 10);
-    }
-
-    function Calculate() {
-        var a = document.transaksi.total_akhir.value;
-        var b = document.transaksi.bayar.value;
-        document.form1.kembalian.value = (b - a);
-    }
-
-    function stopCalt() {
-        clearInterval(interval);
-    }
-
-</script>
 @endforeach

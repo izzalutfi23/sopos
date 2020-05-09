@@ -95,7 +95,27 @@ class Kasircontroller extends Controller
         return redirect('/kasir');
     }
 
-    public function transaksi(){
+    public function transaksi(Request $request){
+
+        $cart = Cartmodel::with(['produk' => function ($query) {
+            $query->select(['id', 'nama_produk', 'harga']);
+        }])
+        ->where('id_karyawan', $request->id_karyawan)
+        ->get();
+
+        $i=0;
+        foreach($cart as $j){
+            $json = json_decode($j->produk);
+            $test[$i]['nama_produk'] = $json->nama_produk;
+            $test[$i]['harga'] = $json->harga;
+            $test[$i]['qty'] = $j->qty;
+            $i++;
+
+        }
+        $hasiljson = json_encode($test);
+
+        // return $hasiljson;
+
         return redirect('/kasir')->with('notif', 'Transaksi Berhasil');
     }
 

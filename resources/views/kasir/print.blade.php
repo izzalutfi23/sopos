@@ -149,7 +149,7 @@
 
     <script type="text/javascript">
         window.print();
-        setTimeout(window.close, 5);
+        setTimeout(window.close, 1000);
 
     </script>
 </body>
