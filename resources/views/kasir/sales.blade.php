@@ -20,6 +20,7 @@
         </div>
 
         <div class="flash-data" data-flashdata="{{session('notif')}}"></div>
+        <div class="warn-data" data-warn="{{session('warn')}}"></div>
         @if (session('status'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Berhasil!</strong> {{session('status')}}.
@@ -29,7 +30,7 @@
         </div>
         @endif
 
-        <form action="{{url('/kasir/addcart')}}" method="POST">
+        <form action="{{url('/kasir/addcart')}}" method="POST" name="chart">
             @csrf
             <div class="row">
                 <div class="col-md-4">
@@ -59,6 +60,7 @@
                             <div class="position-relative form-group">
                                 <div class="input-group">
                                     <input type="hidden" name="id_produk" id="item_id" required="required">
+                                    <input type="hidden" name="stok" id="stok">
                                     <input type="text" required id="product_name" class="form-control">
                                     <div class="input-group-append">
                                         <button type="button" class="btn btn-info" data-toggle="modal"
@@ -67,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="position-relative form-group">
-                                <input name="qty" value="1" type="number" class="form-control">
+                                <input name="qty" value="1" id="qty" type="number" class="form-control">
                             </div>
                             <div class="position-relative form-group">
                                 <button type="submit" class="btn btn-primary float-right"><i class="pe-7s-cart">
@@ -306,7 +308,7 @@
                                 <td>{{$ditem->stok}}</td>
                                 <td>
                                     <button class="btn btn-primary" id="select" data-id="{{$ditem->id}}"
-                                        data-namaproduk="{{$ditem->nama_produk}}" data-dismiss="modal"
+                                        data-namaproduk="{{$ditem->nama_produk}}" data-stok="{{$ditem->stok}}" data-dismiss="modal"
                                         aria-hidden="true">Pilih</button>
                                 </td>
                             </tr>
@@ -330,7 +332,7 @@
             </div>
             <div class="container"></div>
             <div class="modal-body">
-                <form action="{{url('/kasir/editcart/'.$ca->id)}}" method="POST">
+                <form action="{{url('/kasir/editcart/'.$ca->id)}}" method="POST" name="update">
                     @csrf
                     @method('patch')
                     <div class="position-relative form-group">
@@ -339,10 +341,11 @@
                                 <label class=""><strong>Qty</strong></label>
                             </div>
                             <div class="col-lg-10">
+                                <input type="hidden" name="stok" value="{{$ca->qty}}">
                                 <input value="{{$ca->qty}}"
                                     style="width: 100%; font-size: 18px; padding-left:3%; border-radius: 3px; border: 1px solid#aaa; height: 35px;"
-                                    type="text" name="qty">
-                                <button type="submit" class="btn btn-primary my-2"><i class="pe-7s-pen">
+                                    type="text" name="qty" id="jumlah">
+                                <button type="submit" class="btn btn-primary my-2 update"><i class="pe-7s-pen">
                                     </i> Update</button>
                             </div>
                         </div>

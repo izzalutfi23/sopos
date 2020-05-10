@@ -65,13 +65,22 @@ class Kasircontroller extends Controller
     }
 
     public function updatecart(Request $request, Cartmodel $cartmodel){
-        Itemmodel::where('id', $cartmodel->id_produk)->increment('stok', $cartmodel->qty);
-        Cartmodel::where('id', $cartmodel->id)->update([
-            'qty' => $request->qty
-        ]);
-        Itemmodel::where('id', $cartmodel->id_produk)->decrement('stok', $request->qty);
+        $item = Itemmodel::find($cartmodel->id_produk);
+        
+        $stok = $item->stok+$request->stok;
 
-        return redirect('/kasir');
+        if($stok>=$request->qty){
+            Itemmodel::where('id', $cartmodel->id_produk)->increment('stok', $cartmodel->qty);
+            Cartmodel::where('id', $cartmodel->id)->update([
+                'qty' => $request->qty
+            ]);
+            Itemmodel::where('id', $cartmodel->id_produk)->decrement('stok', $request->qty);
+
+            return redirect('/kasir');
+        }
+        else{
+            return redirect('/kasir')->with('warn', 'Stok tidak mencukupi');
+        }
     }
 
     public function delcart(Cartmodel $cartmodel){

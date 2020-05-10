@@ -183,19 +183,55 @@
                 $(document).on('click', '#select', function () {
                     var item_id = $(this).data('id');
                     var nama_produk = $(this).data('namaproduk');
+                    var stok = $(this).data('stok');
                     $('#item_id').val(item_id);
                     $('#product_name').val(nama_produk);
+                    $('#stok').val(stok);
+                });
+
+                $('.float-right').on('click', function (e) {
+                    e.preventDefault();
+                    var stok = parseInt(document.getElementById("stok").value, 10);
+                    var qty = parseInt(document.getElementById("qty").value, 10);
+
+                    if (stok<qty) {
+                        swal({
+                            title: "Perhatian!!!",
+                            text: "Jumlah barang yang kamu masukkan melebihi stok barang",
+                            type: "warning"
+                        });
+                    }
+                    else if(isNaN(parseFloat(stok))){
+                        swal({
+                            title: "Perhatian!!!",
+                            text: "Tidak ada item yg anda pilih",
+                            type: "warning"
+                        });
+                    }
+                    else {
+                        document.chart.submit();
+                    }
                 });
 
                 // Modal sukses hapus
                 const flashData = $('.flash-data').data('flashdata');
 
                 if (flashData) {
-                    window.open('{{url('/kasir/printinvoice')}}', '_blank');
+                    window.open('{{url(' / kasir / printinvoice ')}}', '_blank');
                     swal({
                         title: "Berhasil",
                         text: flashData,
                         type: "success"
+                    });
+                }
+
+                const warn = $('.warn-data').data('warn');
+
+                if (warn) {
+                    swal({
+                        title: "Perhatian!!!",
+                        text: warn,
+                        type: "warning"
                     });
                 }
 
