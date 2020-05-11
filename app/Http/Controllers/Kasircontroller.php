@@ -105,7 +105,7 @@ class Kasircontroller extends Controller
     }
 
     public function transaksi(Request $request){
-
+        $id = Kasirmodel::latest('id')->first();
         $cart = Cartmodel::with(['produk' => function ($query) {
             $query->select(['id', 'nama_produk', 'harga']);
         }])
@@ -121,11 +121,35 @@ class Kasircontroller extends Controller
             $i++;
 
         }
+
         $hasiljson = json_encode($test);
 
-        // return $hasiljson;
+        if(empty($id->id)){
+            $trx = 1;
+        }
+        else{
+            $trx = $id->id+1;
+        }
 
-        return redirect('/kasir')->with('notif', 'Transaksi Berhasil');
+        $faktur = "TRX".date('dmY')."000".$trx;
+
+        $penjualan = new Kasirmodel;
+        $penjualan->id_karyawan = $request->id_karyawan;
+        $penjualan->id_cabang = $request->id_cabang;
+        $penjualan->customer = $request->customer;
+        $penjualan->faktur = $faktur;
+        $penjualan->total = $request->total;
+        $penjualan->diskon = $request->diskon;
+        $penjualan->total_akhir = $request->total_akhir;
+        $penjualan->bayar = $request->bayar;
+        $penjualan->kembalian = $request->kembalian;
+        $penjualan->note = $request->note;
+        $penjualan->item = $hasiljson;
+        $penjualan->save();
+
+        $idpenjualan = $penjualan->id;
+
+        return redirect('/kasir')->with('notif', 'Transaksi Berhasil')->with('url', $idpenjualan);
     }
 
     public function print(){

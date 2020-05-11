@@ -83,5 +83,5 @@ Route::group(['middleware' => ['auth', 'checkRole:kasir']], function(){
 	Route::get('/kasir/resetcart/{idkaryawan}', 'Kasircontroller@resetcart');
 	
 	// Print
-	Route::get('/kasir/printinvoice', 'Kasircontroller@print');
+	Route::get('/kasir/printinvoice/{id}', 'Kasircontroller@print');
 });

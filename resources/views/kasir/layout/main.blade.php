@@ -189,6 +189,16 @@
                     $('#stok').val(stok);
                 });
 
+                // var custom = document.getElementById("customer").value;
+                // document.getElementById("cus").value = custom;
+
+                function cselect(){
+                    var custom = document.getElementById("customer");
+                    var displaytext = custom.options[custom.selectedIndex].text;
+                    document.getElementById("cus").value = displaytext;
+                }
+
+
                 $('.float-right').on('click', function (e) {
                     e.preventDefault();
                     var stok = parseInt(document.getElementById("stok").value, 10);
@@ -215,9 +225,9 @@
 
                 // Modal sukses hapus
                 const flashData = $('.flash-data').data('flashdata');
-
+                const idpenjualan = $('.idpenjualan').data('idpenjualan');
                 if (flashData) {
-                    window.open('{{url(' / kasir / printinvoice ')}}', '_blank');
+                    window.open('{{url('/kasir/printinvoice/')}}'+'/'+idpenjualan, '_blank');
                     swal({
                         title: "Berhasil",
                         text: flashData,

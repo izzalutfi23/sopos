@@ -21,6 +21,7 @@
 
         <div class="flash-data" data-flashdata="{{session('notif')}}"></div>
         <div class="warn-data" data-warn="{{session('warn')}}"></div>
+        <div class="idpenjualan" data-idpenjualan="{{session('url')}}"></div>
         @if (session('status'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Berhasil!</strong> {{session('status')}}.
@@ -44,7 +45,7 @@
                                     type="text" class="form-control">
                             </div>
                             <div class="position-relative form-group">
-                                <select name="customer" class="form-control">
+                                <select name="customer" id="customer" onchange="cselect()" class="form-control">
                                     <option value="umum">Umum</option>
                                     @foreach($custom as $c)
                                     <option value="{{$c->nama_customer}}">{{$c->nama_customer}}</option>
@@ -156,6 +157,8 @@
                                     </div>
                                     <div class="col-lg-7">
                                         <input type="hidden" name="id_karyawan" value="{{auth()->user()->karyawan->id}}">
+                                        <input type="hidden" name="id_cabang" value="{{auth()->user()->karyawan->id_cabang}}">
+                                        <input type="hidden" id="cus" name="customer" value="Umum">
                                         <input name="total" value="{{$total}}" type="number" readonly
                                             class="form-control">
                                     </div>
