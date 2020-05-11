@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2020 at 04:08 PM
+-- Generation Time: May 11, 2020 at 03:43 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -42,7 +42,7 @@ CREATE TABLE `cabang_toko` (
 
 INSERT INTO `cabang_toko` (`id`, `nama_toko`, `alamat`, `created_at`, `updated_at`) VALUES
 (1, 'Toko Berkah Makmur 1', 'Jl. Japerejo-Banyurip Km. 04 Desa Mlagen, Kec. Pamotan, Kab. Rembang', '2020-03-16 18:00:00', '2020-05-02 04:37:48'),
-(2, 'Toko Berkah Makmur 2', 'Pekalongan', '2020-05-04 08:13:08', '2020-05-04 08:13:08');
+(2, 'Toko Berkah Makmur 2', 'Jl. Imam Bonjol No.207, Pendrikan Kidul, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah 50131, Indonesia', '2020-05-04 08:13:08', '2020-05-08 07:02:45');
 
 -- --------------------------------------------------------
 
@@ -58,14 +58,6 @@ CREATE TABLE `cart` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `id_produk`, `id_karyawan`, `qty`, `created_at`, `updated_at`) VALUES
-(3, 4, 7, 1, '2020-05-05 03:13:51', '2020-05-05 03:13:51'),
-(4, 2, 7, 3, '2020-05-05 03:14:04', '2020-05-05 05:13:23');
 
 -- --------------------------------------------------------
 
@@ -90,21 +82,6 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`id`, `nama_customer`, `j_kel`, `no_hp`, `alamat`, `created_at`, `updated_at`) VALUES
 (1, 'Rizki Noor', 'L', '089768765453', 'Cilacap', '2020-03-25 07:33:58', '2020-03-25 07:33:58'),
 (3, 'Muhammad Izza Lutfi', 'L', '085210539260', 'Desa Mlagen, Kec. Pamotan, Kab. Rembang', '2020-03-25 08:00:40', '2020-03-25 08:01:01');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `detail_penjualan`
---
-
-CREATE TABLE `detail_penjualan` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `id_penjualan` int(10) UNSIGNED NOT NULL,
-  `id_produk` int(10) UNSIGNED NOT NULL,
-  `qty` int(10) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -211,15 +188,17 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `penjualan` (
   `id` int(10) UNSIGNED NOT NULL,
-  `id_customer` int(10) UNSIGNED NOT NULL,
   `id_cabang` int(10) UNSIGNED NOT NULL,
   `id_karyawan` int(10) UNSIGNED NOT NULL,
+  `customer` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `faktur` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `total` int(10) UNSIGNED NOT NULL,
   `diskon` int(10) UNSIGNED NOT NULL,
   `total_akhir` int(10) UNSIGNED NOT NULL,
   `bayar` int(10) NOT NULL,
   `kembalian` int(10) NOT NULL,
+  `note` text COLLATE utf8mb4_unicode_ci,
+  `item` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -228,8 +207,18 @@ CREATE TABLE `penjualan` (
 -- Dumping data for table `penjualan`
 --
 
-INSERT INTO `penjualan` (`id`, `id_customer`, `id_cabang`, `id_karyawan`, `faktur`, `total`, `diskon`, `total_akhir`, `bayar`, `kembalian`, `created_at`, `updated_at`) VALUES
-(5, 3, 1, 4, 'TRX300420200001', 10000, 0, 10000, 0, 0, '2020-05-18 17:00:00', '2020-05-18 17:00:00');
+INSERT INTO `penjualan` (`id`, `id_cabang`, `id_karyawan`, `customer`, `faktur`, `total`, `diskon`, `total_akhir`, `bayar`, `kembalian`, `note`, `item`, `created_at`, `updated_at`) VALUES
+(23, 1, 4, 'Umum', 'TRX110520200001', 11000, 0, 11000, 15000, 4000, NULL, '[{\"nama_produk\":\"Beras\",\"harga\":11000,\"qty\":1}]', '2020-05-11 04:37:47', '2020-05-11 04:37:47'),
+(24, 1, 4, 'Umum', 'TRX1105202000024', 23000, 0, 23000, 23000, 0, NULL, '[{\"nama_produk\":\"Buku\",\"harga\":23000,\"qty\":1}]', '2020-05-11 06:00:54', '2020-05-11 06:00:54'),
+(25, 1, 4, 'Umum', 'TRX1105202000025', 11000, 0, 11000, 11000, 0, NULL, '[{\"nama_produk\":\"Beras\",\"harga\":11000,\"qty\":1}]', '2020-05-11 06:01:19', '2020-05-11 06:01:19'),
+(26, 1, 4, 'Umum', 'TRX1105202000026', 12000, 0, 12000, 15000, 3000, NULL, '[{\"nama_produk\":\"Telur\",\"harga\":12000,\"qty\":1}]', '2020-05-11 06:02:07', '2020-05-11 06:02:07'),
+(27, 1, 4, 'Umum', 'TRX1105202000027', 15000, 0, 15000, 15000, 0, NULL, '[{\"nama_produk\":\"Minyak Goreng\",\"harga\":15000,\"qty\":1}]', '2020-05-11 06:12:47', '2020-05-11 06:12:47'),
+(28, 1, 4, 'Umum', 'TRX1105202000028', 58000, 0, 58000, 60000, 2000, NULL, '[{\"nama_produk\":\"Buku\",\"harga\":23000,\"qty\":1},{\"nama_produk\":\"Telur\",\"harga\":12000,\"qty\":2},{\"nama_produk\":\"Beras\",\"harga\":11000,\"qty\":1}]', '2020-05-11 06:15:57', '2020-05-11 06:15:57'),
+(29, 2, 7, 'Umum', 'TRX1105202000029', 75000, 0, 75000, 100000, 25000, NULL, '[{\"nama_produk\":\"Minyak Goreng\",\"harga\":15000,\"qty\":1},{\"nama_produk\":\"Telur\",\"harga\":12000,\"qty\":5}]', '2020-05-11 06:23:41', '2020-05-11 06:23:41'),
+(30, 2, 7, 'Umum', 'TRX1105202000030', 11000, 0, 11000, 12000, 1000, NULL, '[{\"nama_produk\":\"Beras\",\"harga\":11000,\"qty\":1}]', '2020-05-11 06:27:21', '2020-05-11 06:27:21'),
+(31, 2, 7, 'Umum', 'TRX1105202000031', 11000, 0, 11000, 15000, 4000, NULL, '[{\"nama_produk\":\"Beras\",\"harga\":11000,\"qty\":1}]', '2020-05-11 06:41:37', '2020-05-11 06:41:37'),
+(32, 2, 7, 'Umum', 'TRX1105202000032', 15000, 0, 15000, 15000, 0, NULL, '[{\"nama_produk\":\"Minyak Goreng\",\"harga\":15000,\"qty\":1}]', '2020-05-11 06:42:00', '2020-05-11 06:42:00'),
+(33, 2, 7, 'Umum', 'TRX1105202000033', 23000, 0, 23000, 25000, 2000, NULL, '[{\"nama_produk\":\"Buku\",\"harga\":23000,\"qty\":1}]', '2020-05-11 06:42:32', '2020-05-11 06:42:32');
 
 -- --------------------------------------------------------
 
@@ -255,10 +244,10 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `id_kategori`, `id_unit`, `kode_produk`, `nama_produk`, `harga`, `stok`, `diskon`, `created_at`, `updated_at`) VALUES
-(1, 1, 4, '4567', 'Buku', 23000, 10, 0, '2020-03-26 08:50:52', '2020-05-04 08:30:42'),
-(2, 2, 1, '3456789', 'Beras', 11000, 8, 0, '2020-03-26 08:57:26', '2020-05-05 05:13:23'),
-(3, 3, 3, '4356789', 'Minyak Goreng', 15000, 10, 0, '2020-03-26 09:04:55', '2020-05-04 08:03:02'),
-(4, 1, 1, '3456789', 'Telur', 12000, 10, 0, '2020-04-30 03:53:33', '2020-05-05 03:13:51');
+(1, 1, 4, '4567', 'Buku', 23000, 7, 0, '2020-03-26 08:50:52', '2020-05-11 06:42:24'),
+(2, 2, 1, '3456789', 'Beras', 11000, 6, 0, '2020-03-26 08:57:26', '2020-05-11 06:41:29'),
+(3, 3, 3, '4356789', 'Minyak Goreng', 15000, 7, 0, '2020-03-26 09:04:55', '2020-05-11 06:41:51'),
+(4, 1, 1, '3456789', 'Telur', 12000, 3, 0, '2020-04-30 03:53:33', '2020-05-11 06:23:26');
 
 -- --------------------------------------------------------
 
@@ -297,10 +286,9 @@ CREATE TABLE `stokin` (
 
 INSERT INTO `stokin` (`id`, `id_produk`, `id_supplier`, `qty`, `foto`, `created_at`, `updated_at`) VALUES
 (9, 2, 3, 4, NULL, '2020-04-08 05:48:20', '2020-04-08 05:48:20'),
-(11, 3, 3, 10, NULL, '2020-04-15 02:40:18', '2020-04-15 02:40:18'),
-(15, 4, 1, 10, NULL, '2020-05-02 04:35:30', '2020-05-02 04:35:30'),
 (16, 1, 2, 7, NULL, '2020-05-02 04:36:30', '2020-05-02 04:36:30'),
-(17, 2, 1, 7, NULL, '2020-05-02 04:44:32', '2020-05-02 04:44:32');
+(17, 2, 1, 7, NULL, '2020-05-02 04:44:32', '2020-05-02 04:44:32'),
+(18, 3, 1, 1, NULL, '2020-05-10 06:50:49', '2020-05-10 06:50:49');
 
 -- --------------------------------------------------------
 
@@ -377,7 +365,7 @@ INSERT INTO `users` (`id`, `role`, `status`, `name`, `email`, `email_verified_at
 (1, 'admin', '1', 'admin', 'admin@gmail.com', NULL, '$2y$10$nrnIPfe.6sw3gk4z7ihqCeWbu0CDvjVw6wZtaD/00wHZq7tAAPa0e', NULL, '2020-03-17 07:18:23', '2020-03-17 07:18:23'),
 (3, 'kasir', '1', 'kasir', 'kasir@gmail.com', NULL, '$2y$10$3rVEgD57aAYo4Rc7DgEyVOxcGSHI0eD0nNJvS6EN/I4PWfZ.LuT6u', NULL, '2020-05-01 01:32:40', '2020-05-01 01:32:40'),
 (4, 'admin', '1', 'izza', 'lutfi@gmail.com', NULL, '$2y$10$s2AXnyFdX9wchAojOhs/9uqOP4p5RNIqGS.eXq/ldS0LKy0JS0tly', NULL, '2020-05-04 07:27:55', '2020-05-04 07:27:55'),
-(6, 'kasir', '1', 'rizki', 'noor@gmail.com', NULL, '$2y$10$GQuFDm8uoGsYjw82DXhBOuN/o3yEQcYA1xUdBpI1x83ZWc9nKoXX.', NULL, '2020-05-04 07:55:51', '2020-05-05 03:13:19');
+(6, 'kasir', '1', 'rizki', 'noor@gmail.com', NULL, '$2y$10$3B2XkrA4HwYl9wpC3a0YJeLMADTABLH2i8H/9g0yZaqj5gWsge.DS', NULL, '2020-05-04 07:55:51', '2020-05-08 06:29:26');
 
 --
 -- Indexes for dumped tables
@@ -402,14 +390,6 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `detail_penjualan`
---
-ALTER TABLE `detail_penjualan`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_penjualan` (`id_penjualan`),
-  ADD KEY `id_produk` (`id_produk`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -442,7 +422,6 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `penjualan`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_customer` (`id_customer`),
   ADD KEY `id_cabang` (`id_cabang`),
   ADD KEY `id_karyawan` (`id_karyawan`);
 
@@ -502,19 +481,13 @@ ALTER TABLE `cabang_toko`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `detail_penjualan`
---
-ALTER TABLE `detail_penjualan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -544,7 +517,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `produk`
@@ -562,7 +535,7 @@ ALTER TABLE `stockout`
 -- AUTO_INCREMENT for table `stokin`
 --
 ALTER TABLE `stokin`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `supplier`
@@ -594,13 +567,6 @@ ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`id_karyawan`) REFERENCES `karyawan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `detail_penjualan`
---
-ALTER TABLE `detail_penjualan`
-  ADD CONSTRAINT `detail_penjualan_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `detail_penjualan_ibfk_2` FOREIGN KEY (`id_penjualan`) REFERENCES `penjualan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `karyawan`
 --
 ALTER TABLE `karyawan`
@@ -611,7 +577,6 @@ ALTER TABLE `karyawan`
 -- Constraints for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  ADD CONSTRAINT `penjualan_ibfk_1` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `penjualan_ibfk_2` FOREIGN KEY (`id_cabang`) REFERENCES `cabang_toko` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `penjualan_ibfk_3` FOREIGN KEY (`id_karyawan`) REFERENCES `karyawan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
