@@ -10,18 +10,18 @@
     <style type="text/css">
         .content {
             width: 50%;
-            height: 500px;
+            height: auto;
         }
 
         .header {
             width: 100%;
-            height: 90px;
+            height: auto;
             border-bottom: 2px dashed #7f8583;
         }
 
         .subheader {
             width: 100%;
-            height: 50px;
+            height: auto;
             border-bottom: 2px solid#79807e;
         }
 
@@ -64,7 +64,7 @@
 
         .footer {
             width: 100%;
-            height: 50px;
+            height: auto;
         }
 
     </style>
@@ -73,37 +73,34 @@
 <body>
     <div class="content">
         <div class="header">
-            <p style="text-align: center; font-family: Merchant Copy; font-size: 25px; font-weight: bold;">Toko Berkah
-                Makmur 1</p>
-            <p style="text-align: center; font-family: Merchant Copy; font-size: 23px;">Jl. Japerejo-Banyurip Km. 04
-                Desa Mlagen, Kec. Pamotan, Kab. Rembang</p>
+            <p style="text-align: center; font-family: Merchant Copy; font-size: 25px; font-weight: bold;">{{$print->cabang->nama_toko}}</p>
+            <p style="text-align: center; font-family: Merchant Copy; font-size: 23px;">{{$print->cabang->alamat}}</p>
         </div>
         <div class="subheader">
             <table width="100%" class="tb-header">
                 <tr>
-                    <td>08/05/2020 03:57</td>
-                    <td style="text-align: right;">Kasir : Lucky Arif</td>
+                    <td>{{$print->tgl()}}</td>
+                    <td style="text-align: right;">Kasir : {{$print->karyawan->nama_karyawan}}</td>
                 </tr>
                 <tr>
-                    <td>TRX080520200003</td>
-                    <td style="text-align: right;">Customer : Umum</td>
+                    <td>{{$print->faktur}}</td>
+                    <td style="text-align: right;">Customer : {{$print->customer}}</td>
                 </tr>
             </table>
         </div>
         <div class="center">
             <table width="100%" class="tb-center">
+                @php
+                    $json = json_decode($print->item);
+                @endphp
+                @foreach($json as $data)
                 <tr>
-                    <td>Pop Mie</td>
-                    <td style="text-align: right;">1</td>
-                    <td width="17%" style="text-align: right;">5000</td>
-                    <td width="17%" style="text-align: right;">5000</td>
+                    <td>{{$data->nama_produk}}</td>
+                    <td style="text-align: right;">{{$data->qty}}</td>
+                    <td width="17%" style="text-align: right;">{{$data->harga}}</td>
+                    <td width="17%" style="text-align: right;">{{$data->qty*$data->harga}}</td>
                 </tr>
-                <tr>
-                    <td>Indomie Soto Kuah</td>
-                    <td style="text-align: right;">2</td>
-                    <td width="17%" style="text-align: right;">2500</td>
-                    <td width="17%" style="text-align: right;">5000</td>
-                </tr>
+                @endforeach
             </table>
         </div>
         <div class="subcenter">
@@ -112,31 +109,31 @@
                     <td></td>
                     <td></td>
                     <td width="17%" style="text-align: right;">Subtotal</td>
-                    <td width="17%" style="text-align: right;">95000</td>
+                    <td width="17%" style="text-align: right;">{{$print->total}}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td width="17%" style="text-align: right; border-bottom: 2px dashed #7f8583;">Disc</td>
-                    <td width="17%" style="text-align: right; border-bottom: 2px dashed #7f8583;">500</td>
+                    <td width="17%" style="text-align: right; border-bottom: 2px dashed #7f8583;">{{$print->diskon}}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td width="17%" style="text-align: right; border-bottom: 2px dashed #7f8583;">Total</td>
-                    <td width="17%" style="text-align: right; border-bottom: 2px dashed #7f8583;">500</td>
+                    <td width="17%" style="text-align: right; border-bottom: 2px dashed #7f8583;">{{$print->total_akhir}}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td width="17%" style="text-align: right;">Bayar</td>
-                    <td width="17%" style="text-align: right;">95000</td>
+                    <td width="17%" style="text-align: right;">{{$print->bayar}}</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td width="17%" style="text-align: right;">Kembali</td>
-                    <td width="17%" style="text-align: right;">500</td>
+                    <td width="17%" style="text-align: right;">{{$print->kembalian}}</td>
                 </tr>
             </table>
         </div>
@@ -149,8 +146,7 @@
 
     <script type="text/javascript">
         window.print();
-        setTimeout(window.close, 1000);
-
+        setTimeout(window.close, 5000);
     </script>
 </body>
 

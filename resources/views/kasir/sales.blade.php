@@ -197,7 +197,7 @@
                                     <label class=""><strong>Bayar</strong></label>
                                 </div>
                                 <div class="col-lg-7">
-                                    <input onfocus="startCalculate()" onblur="stopCalt()" name="bayar" type="number" class="form-control">
+                                    <input required onfocus="startCalculate()" onblur="stopCalt()" name="bayar" type="number" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -207,7 +207,7 @@
                                     <label class=""><strong>Kembalian</strong></label>
                                 </div>
                                 <div class="col-lg-7">
-                                    <input onfocus="startCalculate()" onblur="stopCalt()" name="kembalian" type="number" class="form-control">
+                                    <input required onfocus="startCalculate()" onblur="stopCalt()" name="kembalian" type="number" class="form-control">
                                 </div>
                             </div>
                         </div>

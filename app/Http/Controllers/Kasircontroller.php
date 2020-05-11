@@ -154,8 +154,9 @@ class Kasircontroller extends Controller
         return redirect('/kasir')->with('notif', 'Transaksi Berhasil')->with('url', $idpenjualan);
     }
 
-    public function print(){
-        return view('kasir/print');
+    public function print(Kasirmodel $kasirmodel){
+
+        return view('kasir/print', ['print' => $kasirmodel]);
     }
 
 }
