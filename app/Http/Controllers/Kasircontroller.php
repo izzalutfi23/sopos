@@ -149,6 +149,8 @@ class Kasircontroller extends Controller
 
         $idpenjualan = $penjualan->id;
 
+        Cartmodel::where('id_karyawan', $request->id_karyawan)->delete();
+
         return redirect('/kasir')->with('notif', 'Transaksi Berhasil')->with('url', $idpenjualan);
     }
 
