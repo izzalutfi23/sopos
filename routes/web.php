@@ -69,6 +69,9 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 	Route::patch('/dashboard/karyawan/{karyawanmodel}', 'Karyawancontroller@update');
 	Route::get('/dashboard/karyawan/{karyawanmodel}', 'Karyawancontroller@destroy');
 	Route::patch('/dashboard/karyawan/edituser/{user}', 'Karyawancontroller@edituser');
+
+	// Print Penjualan
+	Route::get('/dashboard/printinvoice/{kasirmodel}', 'Kasircontroller@print');
 });
 
 // Kasir

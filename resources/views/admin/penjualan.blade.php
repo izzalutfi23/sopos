@@ -80,7 +80,7 @@
                                     @foreach($penjualan as $p)
                                     <tr>
                                         <td>{{$p->faktur}}</td>
-                                        <td>{{$p->customer->nama_customer}}</td>
+                                        <td>{{$p->customer}}</td>
                                         <td>{{$p->cabang->nama_toko}}</td>
                                         <td>{{$p->karyawan->nama_karyawan}}</td>
                                         <td>{{$p->tgl()}}</td>
@@ -91,9 +91,12 @@
                                         <td>Rp {{$p->kembalian}}</td>
                                         <td align="center">
                                             <button class="btn btn-primary" data-toggle="modal"
-                                                data-target="#edit">Detail</button>
+                                                data-target="#edit{{$p->id}}">Detail</button>
                                             <a href="{{url('/dashboard/supplier')}}" class="sweet-1"><button
                                                     class="btn btn-danger"><i class="feather icon-trash"
+                                                        style="padding: 0; margin: 0;"></i></button></a>
+                                            <a href="{{url('/dashboard/printinvoice/'.$p->id)}}" target="_blank"><button
+                                                    class="btn btn-success"><i class="feather icon-printer"
                                                         style="padding: 0; margin: 0;"></i></button></a>
                                         </td>
                                     </tr>
@@ -110,8 +113,10 @@
     <!-- Page-body end -->
 </div>
 
+
 <!-- Modal Detail -->
-<div class="modal fade" id="edit" tabindex="-1" role="dialog">
+@foreach($penjualan as $pen)
+<div class="modal fade" id="edit{{$pen->id}}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -125,30 +130,21 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kode</th>
                             <th>Item</th>
                             <th>Qty</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $json = json_decode($pen->item);
+                        @endphp
+                        @foreach($json as $data)
                         <tr>
-                            <td>1</td>
-                            <td>3566789776545</td>
-                            <td>Kaca Pembesar Beras</td>
-                            <td>2</td>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$data->nama_produk}}</td>
+                            <td>{{$data->qty}}</td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>3566789776545</td>
-                            <td>Kaca Pembesar Beras</td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>3566789776545</td>
-                            <td>Kaca Pembesar Beras</td>
-                            <td>2</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
 
@@ -156,6 +152,7 @@
         </div>
     </div>
 </div>
+@endforeach
 <!-- Modal Detail End -->
 
 @endsection()

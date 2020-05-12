@@ -14,10 +14,6 @@ class Penjualanmodel extends Model
     	return $this->belongsTo('App\Cabangtokomodel', 'id_cabang', 'id');
     }
 
-    public function customer(){
-    	return $this->belongsTo('App\Customermodel', 'id_customer', 'id');
-    }
-
     public function karyawan(){
     	return $this->belongsTo('App\Karyawanmodel', 'id_karyawan', 'id');
     }
