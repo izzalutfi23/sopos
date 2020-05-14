@@ -46,6 +46,10 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 	Route::post('/dashboard/item', 'Itemcontroller@store');
 	Route::patch('/dashboard/item/{itemmodel}', 'Itemcontroller@update');
 	Route::get('/dashboard/item/{itemmodel}', 'Itemcontroller@destroy');
+	// Diskon
+	Route::get('/dashboard/diskon', 'Diskoncontroller@index');
+	Route::post('/dashboard/diskon', 'Diskoncontroller@store');
+	Route::get('/dashboard/diskon/{diskonmodel}', 'Diskoncontroller@destroy');
 	// Stock In
 	Route::get('/dashboard/stockin', 'Stockincontroller@index');
 	Route::post('/dashboard/stockin', 'Stockincontroller@store');

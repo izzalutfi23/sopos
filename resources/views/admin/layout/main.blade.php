@@ -192,7 +192,7 @@
                                     </a>
                                 </li>
                                 <li
-                                    class="pcoded-hasmenu {{ (request()->segment(2) == 'kategori' || request()->segment(2) == 'unit' || request()->segment(2) == 'item') ? 'active pcoded-trigger' : '' }}">
+                                    class="pcoded-hasmenu {{ (request()->segment(2) == 'kategori' || request()->segment(2) == 'unit' || request()->segment(2) == 'item' || request()->segment(2) == 'diskon') ? 'active pcoded-trigger' : '' }}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-layers"></i></span>
                                         <span class="pcoded-mtext">Produk</span>
@@ -211,6 +211,11 @@
                                         <li class="{{ (request()->segment(2) == 'item') ? 'active' : '' }}">
                                             <a href="{{url('/dashboard/item')}}">
                                                 <span class="pcoded-mtext">Item</span>
+                                            </a>
+                                        </li>
+                                        <li class="{{ (request()->segment(2) == 'diskon') ? 'active' : '' }}">
+                                            <a href="{{url('/dashboard/diskon')}}">
+                                                <span class="pcoded-mtext">Diskon</span>
                                             </a>
                                         </li>
                                     </ul>
