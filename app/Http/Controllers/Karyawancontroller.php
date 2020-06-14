@@ -68,6 +68,15 @@ class Karyawancontroller extends Controller
             ]);
         }
         else{
+            // Insert tabel user
+            $user = new User;
+            $user->role = $request->role;
+            $user->status = $request->status;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->save();
+            
             // Insert tabel karyawan tanpa foto
             Karyawanmodel::create([
                 'id_user' => $user->id,
