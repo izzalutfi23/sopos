@@ -55,7 +55,9 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
 	Route::post('/dashboard/stockin', 'Stockincontroller@store');
 	Route::get('/dashboard/stockin/{stockinmodel}', 'Stockincontroller@destroy');
 	// Stock Out
-    Route::get('/dashboard/stockout', 'Stockoutcontroller@index');
+	Route::get('/dashboard/stockout', 'Stockoutcontroller@index');
+	Route::post('/dashboard/stockout', 'Stockoutcontroller@store');
+	Route::get('/dashboard/stockout/{stockoutmodel}', 'Stockoutcontroller@destroy');
 
     // Cabang Toko
     Route::get('/dashboard/cabangtoko', 'Cabangtokocontroller@index');
